@@ -1,0 +1,13 @@
+word = "echo"
+guess = input("Guess the 4-letter word:")
+tries = 1
+
+if guess != word:
+    print("Wrong answer. Try again if you have the nerve.")
+    tries += 1
+    guess = input("Guess the 4-letter word:")
+if tries==2:
+        input("You failed to guess the word was it that hard?\n Press any key to exit!")
+
+print("Well done you guessed correctly!The number was echo.")
+input("\n\nPress the enter key to exit.")
