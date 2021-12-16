@@ -11,7 +11,7 @@ rooms = {
     "Terrace": {"Jump": "Death", "or Back": "Staircase"},
     "Waiting_Area": {"Up": "Staircase", "or Exit": "Exit", "or Right": "Morgue", "or Left": "Operating_Room", "or Inspect": "Find pepper Spray"},
     "Operating_Room": {"Back": "Waiting_Area"},
-    "Morgue": {"Body": "Unlock a letter", "or Buzzing": "Death", "or Back": "Waiting_Area"},
+    "Morgue": {"Body": "Unlock a letter", "Buzzing": "Death", "Back": "Waiting_Area"},
     "Exit": {"Back": "Waiting_Area", "or Try": "Finish"}
 }
 
@@ -64,19 +64,10 @@ def bathroom():
 
     print("You head inside to wash your face.")
     time.sleep(1)
-    print("While washing, something caught your eyes.")
-    time.sleep(1)
-    print("It's a Spiked-razor! ")
-    print("Should you take it? ")
-    print("But what could you possibly use it for?")
-    print()
-    time.sleep(1)
-    print("Pick it up?")
-    take_razor()
     print()
     print()
     time.sleep(2)
-    print("Suddenly, you hear knocking coming from the last stall.")
+    print("Suddenly, You hear knocking coming from the last toilet stall.")
     time.sleep(2)
     print("*knock*")
     time.sleep(1)
@@ -108,20 +99,33 @@ def bathroom():
         bathroom()
 
 
-def take_razor():
-    take_the_razor = input("Yes/No: \n>> ").lower().strip()
+def take_crowbar():
+    while 'crowbar' not in inventory:
+        print()
+        print()
+        print()
+        print("On the way up the stairs, something catches your eye.")
+        time.sleep(1)
+        print("It's a Crowbar! ")
+        print("Should you take it? ")
+        print("But what could you possibly use it for?")
+        print()
+        time.sleep(1)
+        print("Pick it up?")
+        take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
 
-    if take_the_razor == "yes":
-        if "Spiked-razor" in inventory:
-            print("You already have this item!")
-            print("Inventory:")
-            print(inventory)
-        elif "Spiked-razor" not in inventory:
-            add_to_inventory("Spiked-razor")
-            print("SPIKED-RAZOR added to inventory")
-            print("Inventory:")
-            print(inventory)
+        if take_the_crowbar == "yes":
+                add_to_inventory("crowbar")
+                print("CROWBAR added to inventory")
+                print("Inventory:")
+                print(inventory)
+                time.sleep(1)
+                terrace()
+
+        elif take_the_crowbar == "no":
+            print("You leave the Crowbar in the Terrace.")
             time.sleep(1)
+            terrace()
 
         else:
             print()
@@ -130,43 +134,40 @@ def take_razor():
             print()
             print()
             print()
-            take_the_razor = input("Take Spiked-razor? (Yes/No): \n>> ")
-            if "Spiked-razor" in inventory:
-                print("You already have this item!")
-                print("Inventory:")
-                print(inventory)
-                waiting_area()
-
-    elif take_the_razor == "no":
-        print("You leave the Spiked-razor in the Bathroom.")
-        time.sleep(1)
-
-    else:
-        print()
-        print("Invalid move! \nOnly Enter Valid Statements.")
-        time.sleep(1)
-        print()
-        print()
-        print()
-        take_the_razor = input("Take Spiked-razor? (Yes/No): \n>> ")
-        if "Spiked-razor" in inventory:
-            print("You already have this item!")
-            print("Inventory:")
-            print(inventory)
+            take_crowbar()
+    terrace()
 
 
 def bathroom_ex():
-    location = "Bathroom"
+    location = "Bathroom Stall"
     direction = ""
 
-    print("You see a girl holding two papers; one Red, one Blue. Her eyes are completely black")
+    print()
+    print()
+    print()
+    print("You are in the", location)
+    print()
+    time.sleep(1)
+    print("You see a girl holding out two cards; one Red, one Blue. Her eyes are Black, and hair is also completely Black.")
     time.sleep(2)
-    answer = input("Which do you choose? \n> Red \n> Blue \n>> ").lower().strip()
+    print("You remember reading about a story of a ghost that kills you regardless of the color you choose.")
+    time.sleep(1)
+    print("You wonder if your fate here is to die in a similar way.")
+    print()
+    time.sleep(1.5)
+    print("Scared, you try to move out of the stall, only to find your feet stuck to the ground.")
+    time.sleep(1)
+    print("She won't let you go without making a decision.")
+    time.sleep(2)
+    answer = input("Which color do you choose? \n>> ").lower().strip()
 
     if answer == "red":
         print()
-        print("The girl pulls out a knife and stabs you.")
-        print("Looks Like Curiosity Killed the Cat. Should have retreated when you had the chance. Better luck next time!")
+        print("The red card materializes into a knife. The girl's Black eyes twinkle as her arm extends to stab you.")
+        print("You died.")
+        print()
+        print("Wrong Decision.")
+        print("Perhaps next time, you could try picking a color you see on her.")
         print()
         print("------------------")
         print("|    GAME OVER   |")
@@ -176,14 +177,38 @@ def bathroom_ex():
 
     elif answer == "blue":
         print()
-        print("The girl gives you a creepy smiles and strangles you.")
-        print("Looks Like Curiosity Killed the Cat. Should have retreated when you had the chance. Better luck next time!")
+        print("The girl gives you a creepy smile as her head tilts down, her Black hair completely covering her face.")
+        print("Her arms quickly extend unnaturally, reaching towards your neck to strangle you.")
+        print("You died.")
+        print()
+        print("Perhaps next time, you could try picking a color you see on her.")
         print()
         print("------------------")
         print("|    GAME OVER   |")
         print("------------------")
         print()
         restart_seq()
+
+    elif answer == "black":
+        print()
+        print("Ah. Interesting. You choose a completely different color.")
+        time.sleep(2)
+        print("The Red and Blue papers disappear from the girl's extended arms.")
+        time.sleep(2)
+        print("Slowly, she turns her head to the side, not stopping until it did a complete 180 degree turn.")
+        time.sleep(2)
+        print("She makes no other move.")
+        print()
+        time.sleep(2)
+        print("You let your eyes focus on the back of her head, and notice the letter 'H' written on it")
+        print()
+        time.sleep(2)
+        print("You get a feeling that this is important.")
+        print()
+        time.sleep(2)
+        print("Seeing as nothing more happened, you head back to the corridor.")
+        time.sleep(1.5)
+        corridor()
 
     else:
         print()
@@ -268,7 +293,7 @@ def staircase():
 
     if direction == "up":
         print()
-        terrace()
+        take_crowbar()
     elif direction == "down":
         print()
         waiting_area()
@@ -290,11 +315,10 @@ def terrace():
 
     print()
     print()
-    print()
     print("* ,   . +   `. *` . . +,   *  ` . + ,  . `  .")
     print("  .  *  ` . + ,  . `  .   . +   `. *` . . + `")
 
-    print("You are in the,", location)
+    print("You are in the", location)
 
     print("The stars look pretty tonight.")
     print("You wonder what exactly you're doing here.")
@@ -394,14 +418,16 @@ def waiting_area():
             print()
             password()
         elif direction == "inspect":
-            print("You navigate your way through the chairs.")
-            print("You see a door that leads to the cleaning closet.")
-            print("In there you find a bottle of pepper spray")
-            print("Pick it up?")
+            if 'pepper spray' not in inventory:
+                print("You navigate your way through the chairs.")
+                print("You see a door that leads to the cleaning closet.")
+                print("In there you find a bottle of pepper spray")
+                print("Pick it up?")
+                take_spray()
+            elif 'pepper spray' in inventory:
+                print()
+                print("You've already searched the area")
 
-
-
-            take_spray()
 
         else:
             print()
@@ -429,19 +455,6 @@ def take_spray():
             print("You head back to the waiting_area")
             time.sleep(1)
             waiting_area()
-        else:
-            print()
-            print("Invalid move! \nOnly Enter Valid Statements.")
-            time.sleep(1)
-            print()
-            print()
-            print()
-            take_the_spray = input("Take Spray? (Yes/No): \n>> ")
-            if "pepper spray" in inventory:
-                print("You already have this item!")
-                print("Inventory:")
-                print(inventory)
-                waiting_area()
 
     elif take_the_spray == "no":
         print("You leave the Pepper Spray in the cabinet.")
@@ -462,6 +475,14 @@ def take_spray():
             print("Inventory:")
             print(inventory)
             waiting_area()
+        elif "pepper spray" not in inventory:
+            add_to_inventory("pepper spray")
+            print("PEPPER SPRAY added to inventory")
+            print("Inventory:")
+            print(inventory)
+            print("You head back to the waiting_area")
+            time.sleep(1)
+            waiting_area()
 
 
 def password():
@@ -469,7 +490,7 @@ def password():
     direction = ""
 
     while direction != "exit":
-        print("You are at the ", location)
+        print("You are at the", location)
 
         print("There's a four digit code that you need to enter to get out.")
         print("Do you wish to try? Remember, you have a limited amount of attempts")
@@ -477,10 +498,10 @@ def password():
         print("")
 
         possible_moves = rooms[location].keys()
-        print("possible moves: ", *possible_moves)
+        print("possible moves:", *possible_moves)
 
         direction = input("Move which direction? \n>> ").strip().lower()
-        print("You entered: ", direction)
+        print("You entered:", direction)
 
         if direction == "back":
             print()
@@ -541,15 +562,15 @@ def operation_room():
     location = "Operating_Room"
     direction = ""
 
-    print("You are in the ", location)
+    print("You are in the", location)
 
     print()
     print("You can go Back to the Waiting_Area")
     possible_moves = rooms[location].keys()
-    print("Possible moves: ", *possible_moves)
+    print("Possible moves:", *possible_moves)
 
     direction = input("Move which direction? \n>> ").strip().lower()
-    print("You entered: ", direction)
+    print("You entered:", direction)
 
     if direction == "back":
         print()
@@ -568,7 +589,7 @@ def morgue():
     location = "Morgue"
     direction = ""
 
-    print("You are in the ", location)
+    print("You are in the", location)
 
     print()
     print("The Lights Flicker.\n")
@@ -581,10 +602,10 @@ def morgue():
     print("(You may also go back to the Waiting_Area)")
 
     possible_moves = rooms[location].keys()
-    print("Possible moves: ", *possible_moves)
+    print("Possible moves:", *possible_moves)
 
     direction = input("Decision? \n>> ").strip().lower()
-    print("You entered: ", direction)
+    print("You entered:", direction)
 
     if direction == "back":
         print()
@@ -658,6 +679,8 @@ time.sleep(2)
 print("GAME LOADING...")
 time.sleep(1)
 print("TIP: use lower-case characters only")
+time.sleep(1)
+print("You may use items from your inventory, but they might not always work for the situation.")
 time.sleep(1)
 print("LOADING...")
 print()
