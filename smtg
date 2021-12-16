@@ -1,0 +1,22 @@
+def take_spray():
+
+    if "pepper spray" in inventory:
+        print()
+    if "pepper spray" not in inventory:
+        add_to_inventory("pepper spray")
+        take_the_spray = input("Yes/No: \n>> ").lower().strip()
+        if take_the_spray == "yes":
+            print("PEPPER SPRAY added to inventory")
+            print("Inventory:")
+            print(inventory)
+            print("You head back to the waiting_area")
+            time.sleep(1)
+
+        else:
+            print()
+            print("Invalid move! \nOnly Enter Valid Statements.")
+            time.sleep(1)
+            print()
+            print()
+            print()
+            take_spray()
