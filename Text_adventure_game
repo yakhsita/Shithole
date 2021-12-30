@@ -754,7 +754,7 @@ def buzz():
     print("*Buzzzzz*")
     print("Before you know it, a whole swarm of bluebottle flies surrounds you.")
     print("But you feel something strange about it.")
-    print("It's your skin. They are feeding on your skin!")
+    print("It's your skin. They are feeding on to your skin!")
     print("Possible moves: Inventory or run")
     decide = input("What do you do? \n>>").strip().lower()
 
