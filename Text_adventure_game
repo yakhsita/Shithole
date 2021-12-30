@@ -306,10 +306,21 @@ def cafeteria():
 
     print("It seems to be connected to the stairway.")
 
-    print("Suddenly, you smell something weird, like rotten meat.")
-    print("You cautiously look at the food there, and discover that they all look like organs.")
-
+    print("As you enter, you see the menu.")
+    print("—— —— —— —— —— —— —— ")
+    print("|       menu       |")
+    print("| 1)juIce          |")
+    print("| 2)pIzza          |")
+    print("| 3)Ice cream      |")
+    print("| 4)rIce           |")
+    print("| 5)chIcken wIngs  |")
+    print("—— —— —— —— —— —— —— ")
+    print("How peculiar… The letter ‘I’ stands out.")
+    print()
+    print("Behind the counter you see a wide variety of…")
     print("Human organs...")
+    print()
+    print("You don’t know why. But looking at it makes your stomach hurl each time. ")
 
     answer1 = input("What do you do? \n>Run to the staircase! \n>Eat the organs! \n>Go Back to Corridor! \n(Type Run or Eat or Back) \n>> ").lower().strip()
     if answer1 == "run":
@@ -320,11 +331,12 @@ def cafeteria():
 
     elif answer1 == "eat":
         print()
+        print("You don’t understand what compels you to do this.")
+        print("But you eat the organs.")
         print()
         print()
-        print("You're back here again.")
-        print("Just like every other time.")
-        print("Perhaps cannibalism isn't the answer.")
+        print("You wake up in the white room. The feeling of nausea won’t leave you.")
+        print("Maybe cannibalism isn't the answer.")
         white_room()
     elif answer1 == "back":
         print()
@@ -436,11 +448,10 @@ def waiting_area():
         print()
         print("You are in the ", location)
 
-        print("You feel sick to the stomach, the sight of human organs still plaguing your thoughts.")
-        print("Never the less, you carry on.")
-        print("")
-        print("The Waiting_Area is connected to two other rooms and the Exit.")
-        print("You may inspect the area.")
+        print("The deeper down the stairs you go, the stranger you feel. Each time.")
+        print("The Waiting Area is nothing much, except for the safe locker.")
+        print("To the left is an operating room and to the right... a morgue.")
+        print("There’s also a supply closet.")
         print("You may also go back up the staircase. (Type 'up')")
         print()
 
@@ -572,13 +583,14 @@ def password():
 
             print()
             print("CORRECT PASSWORD")
-            print("You made it out alive.")
+            print("You did it!")
             print()
             print("------------------")
             print("|     YOU WON    |")
             print("------------------")
             print()
-            restart_seq()
+            safe()
+
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -587,6 +599,30 @@ def password():
             print()
             print()
             password()
+
+def safe():
+
+    print("You see a locket; it was your mom's. It has a picture of us together.")
+    print("//FLASHBACK//")
+    print("It was the only thing that was left of hers.")
+    print("She used to suffer from nightmares, something similar to yours.")
+    print("But she was brave enough to resist. She even managed to overcome it.")
+    print("Perhaps you’re just not strong enough…")
+    print()
+    print("You remember... She used to say:")
+    print("        \"My little bird, I hope when you take")
+    print("that leap of faith, you don't fear anything, anymore...\"")
+    print("//FLASHBACK END//")
+    print()
+    print("A leap of faith...")
+    print("A leap. Of faith. a Jump...?!")
+    print("Is that what it means?")
+    print("Maybe...")
+    print("But I’ve tried. More than maybe a hundred times.")
+    print("It always ends in the White Room.")
+    print("Well. There can’t be any harm in trying once more.")
+    print("It might be different this time around")
+
 
 
 def operation_room():
