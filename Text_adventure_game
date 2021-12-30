@@ -175,45 +175,6 @@ def bathroom():
         bathroom()
 
 
-def take_crowbar():
-    while 'crowbar' not in inventory:
-        print()
-        print()
-        print()
-        print("On the way up the stairs, something catches your eye.")
-
-        print("It's a Crowbar! ")
-        print("Should you take it? ")
-        print("But what could you possibly use it for?")
-        print()
-
-        print("Pick it up?")
-        take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
-
-        if take_the_crowbar == "yes":
-            add_to_inventory("crowbar")
-            print("CROWBAR added to inventory")
-            print("Inventory:")
-            print(inventory)
-
-            terrace()
-
-        elif take_the_crowbar == "no":
-            print("You leave the Crowbar in the Terrace.")
-
-            terrace()
-
-        else:
-            print()
-            print("Invalid move! \nOnly Enter Valid Statements.")
-
-            print()
-            print()
-            print()
-            take_crowbar()
-    terrace()
-
-
 def bathroom_ex():
     location = "Bathroom Stall"
     direction = ""
@@ -397,6 +358,45 @@ def staircase():
         staircase()
 
 
+def take_crowbar():
+    while 'crowbar' not in inventory:
+        print()
+        print()
+        print()
+        print("On the way up the stairs, something catches your eye.")
+
+        print("It's a Crowbar! ")
+        print("Should you take it? ")
+        print("But what could you possibly use it for?")
+        print()
+
+        print("Pick it up?")
+        take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
+
+        if take_the_crowbar == "yes":
+            add_to_inventory("crowbar")
+            print("CROWBAR added to inventory")
+            print("Inventory:")
+            print(inventory)
+
+            terrace()
+
+        elif take_the_crowbar == "no":
+            print("You leave the Crowbar in the Terrace.")
+
+            terrace()
+
+        else:
+            print()
+            print("Invalid move! \nOnly Enter Valid Statements.")
+
+            print()
+            print()
+            print()
+            take_crowbar()
+    terrace()
+
+
 def terrace():
     location = "Terrace"
     direction = ""
@@ -535,94 +535,6 @@ def take_spray():
         print()
         take_spray()
 # have to change this part to fit our new script
-
-
-def password():
-    location = "Exit"
-    direction = ""
-
-    while direction != "exit":
-        print("You are at the ", location)
-
-        print("There's a four digit code that you need to enter to get out.")
-        print("Do you wish to try? Remember, you have a limited amount of attempts")
-        print("Head Back if you think you aren't ready.")
-        print("")
-
-        possible_moves = rooms[location].keys()
-        print("possible moves: ", *possible_moves)
-
-        direction = input("Move which direction? \n>> ").strip().lower()
-        print("You entered: ", direction)
-
-        if direction == "back":
-            print()
-            waiting_area()
-
-        elif direction == "try":
-            word = "echo"
-            guess = input("Guess the 4-letter word (You have only 2 tries): ")
-            tries = 1
-
-            if guess != word:
-                print()
-                print("INCORRECT PASSWORD.")
-                print("Try again, and get it right if you wish to live.")
-                tries += 1
-                guess = input("Guess the 4-letter word: ")
-            if guess != word and tries == 2:
-
-                print("INCORRECT PASSWORD")
-
-                print()
-                print()
-                print("You're back here again.")
-                print("Just like every other time.")
-                print("Death just doesn't seem to exist here.")
-                white_room()
-
-            print()
-            print("CORRECT PASSWORD")
-            print("You did it!")
-            print()
-            print("------------------")
-            print("|     YOU WON    |")
-            print("------------------")
-            print()
-            safe()
-
-        else:
-            print()
-            print("Invalid move! \nOnly Enter Valid Statements.")
-
-            print()
-            print()
-            print()
-            password()
-
-def safe():
-
-    print("You see a locket; it was your mom's. It has a picture of us together.")
-    print("//FLASHBACK//")
-    print("It was the only thing that was left of hers.")
-    print("She used to suffer from nightmares, something similar to yours.")
-    print("But she was brave enough to resist. She even managed to overcome it.")
-    print("Perhaps you’re just not strong enough…")
-    print()
-    print("You remember... She used to say:")
-    print("        \"My little bird, I hope when you take")
-    print("that leap of faith, you don't fear anything, anymore...\"")
-    print("//FLASHBACK END//")
-    print()
-    print("A leap of faith...")
-    print("A leap. Of faith. a Jump...?!")
-    print("Is that what it means?")
-    print("Maybe...")
-    print("But I’ve tried. More than maybe a hundred times.")
-    print("It always ends in the White Room.")
-    print("Well. There can’t be any harm in trying once more.")
-    print("It might be different this time around")
-
 
 
 def operation_room():
@@ -793,7 +705,7 @@ def buzz():
     print("But something about it doesn't feel right. What is it?")
     print("It's your skin. They are feeding on your skin!")
     print("Possible moves: Inventory or run")
-    decide = input("What do you do? \n>>").strip().lower()
+    decide = input("What do you do? \n>> ").strip().lower()
 
     if decide == "inventory":
         print(inventory)
@@ -814,7 +726,7 @@ def buzz():
                 print("Before the flies can feed on you anymore,")
                 print("You use bugspray to kill 'em.")
                 print("You spray it all over the room and they fall on the ground like a shower.")
-                print("You feel awful and you return to the Waiting_Area")
+                print("You feel awful so you return to the Waiting_Area")
                 print()
                 waiting_area()
             elif defend == "crowbar":
@@ -851,6 +763,95 @@ def buzz():
         print()
         print()
         buzz()
+
+
+def password():
+    location = "Exit"
+    direction = ""
+
+    while direction != "exit":
+        print("You are at the ", location)
+
+        print("There's a four digit code that you need to enter to get out.")
+        print("Do you wish to try? Remember, you have a limited amount of attempts")
+        print("Head Back if you think you aren't ready.")
+        print("")
+
+        possible_moves = rooms[location].keys()
+        print("possible moves: ", *possible_moves)
+
+        direction = input("Move which direction? \n>> ").strip().lower()
+        print("You entered: ", direction)
+
+        if direction == "back":
+            print()
+            waiting_area()
+
+        elif direction == "try":
+            word = "bird"
+            guess = input("Guess the 4-letter word (You have only 2 tries): ")
+            tries = 1
+
+            if guess != word:
+                print()
+                print("INCORRECT PASSWORD.")
+                print("Try again, and get it right if you wish to live.")
+                tries += 1
+                guess = input("Guess the 4-letter word: ")
+            if guess != word and tries == 2:
+
+                print("INCORRECT PASSWORD")
+
+                print()
+                print()
+                print("You're back here again.")
+                print("Just like every other time.")
+                print("Death just doesn't seem to exist here.")
+                white_room()
+
+            print()
+            print("CORRECT PASSWORD")
+            print("You did it!")
+            print()
+            print("------------------")
+            print("|     YOU WON    |")
+            print("------------------")
+            print()
+            safe()
+
+        else:
+            print()
+            print("Invalid move! \nOnly Enter Valid Statements.")
+
+            print()
+            print()
+            print()
+            password()
+
+
+def safe():
+
+    print("You open the safe, with happiness all over your face cause you never managed to reach this point before.")
+    print("You see a locket; it was your mom's. It has a picture of us together.")
+    print("//FLASHBACK//")
+    print("It was the only thing that was left of hers.")
+    print("She used to suffer from nightmares, something similar to yours.")
+    print("But she was brave enough to resist. She even managed to overcome it.")
+    print("Perhaps you’re just not strong enough…")
+    print()
+    print("You remember... She used to say:")
+    print("        \"My little bird, I hope when you take")
+    print("that leap of faith, you don't fear anything, anymore...\"")
+    print("//FLASHBACK END//")
+    print()
+    print("A leap of faith...")
+    print("A leap. Of faith. a Jump...?!")
+    print("Is that what it means?")
+    print("Maybe...")
+    print("But I’ve tried. More than maybe a hundred times.")
+    print("It always ends in the White Room.")
+    print("Well. There can’t be any harm in trying once more.")
+    print("It might be different this time around")
 
 
 def add_to_inventory(item):
