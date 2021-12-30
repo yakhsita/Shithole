@@ -140,11 +140,9 @@ def bathroom():
     print()
     print()
 
-    print("Like clockwork, you hear knocking coming from the last stall.")
-
     print("*knock*")
 
-    print("*knock*.... *knock*")
+    print("*knock* *knock*")
 
     print("You never did put a ghost in this bathroom, at least not consciously.")
     print("But it’s always there now. In the last stall. Each time you come in.")
@@ -185,58 +183,43 @@ def bathroom_ex():
     print("You are in the ", location)
     print()
 
-    print("You see a girl holding out two cards; one Red, one Blue. Her eyes are Black, and hair is also completely Black.")
+    print("A young girl, holding out two cards. One red and One blue.")
+    print("Her empty Black eyes peak at your soul from the fringes of her Black hair. ")
 
-    print("You remember reading about a story of a ghost that kills you regardless of the color you choose.")
-
-    print("You wonder if your fate here is to die in a similar way.")
+    print("She asks you to choose. But regardless of your choice, you die each time.")
     print()
 
-    print("Scared, you try to move out of the stall, only to find your feet stuck to the ground.")
-
-    print("She won't let you go without making a decision.")
+    print("Maybe you should try something new.")
 
     answer = input("Which color do you choose? \n>> ").lower().strip()
 
     if answer == "red":
         print()
-        print("The red card materializes into a knife. The girl's Black eyes twinkle as her arm extends to stab you.")
-        print("You died.")
-        print()
-        print("Wrong Decision.")
-        print("Perhaps next time, you could try picking a color you see on her.")
+        print("You knew it was coming, but still flinched when she stabs you. ")
         print()
         print()
-        print()
-        print("You're back here again.")
-        print("Just like every other time.")
-        print("Death just doesn't seem to exist here.")
+        print("You wake up in the white room.")
+        print("Her Black eyes still haunt your memories.")
+        print("Maybe Red isn’t the answer.")
         white_room()
 
     elif answer == "blue":
         print()
-        print("The girl gives you a creepy smile as her head tilts down, her Black hair completely covering her face.")
-        print("Her arms quickly extend unnaturally, reaching towards your neck to strangle you.")
-        print("You died.")
-        print()
-        print("Perhaps next time, you could try picking a color you see on her.")
+        print("You knew it was coming, but still flinched when she strangles you.")
+
         print()
         print()
-        print()
-        print("You're back here again.")
-        print("Just like every other time.")
-        print("Death just doesn't seem to exist here.")
+        print("You wake up in the white room.")
+        print("Her Black eyes still haunt your memories.")
+        print("Maybe Blue isn’t the answer.")
         white_room()
 
     elif answer == "black":
         print()
         print("Ah. Interesting. You choose a completely different color.")
-
-        print("The Red and Blue papers disappear from the girl's extended arms.")
+        print()
 
         print("Slowly, she turns her head to the side, not stopping until it did a complete 180 degree turn.")
-
-        print("She makes no other move.")
         print()
 
         print("You let your eyes focus on the back of her head, and notice the letter 'H' written on it")
@@ -268,15 +251,15 @@ def cafeteria():
     print("It seems to be connected to the stairway.")
 
     print("As you enter, you see the menu.")
-    print("—— —— —— —— —— —— —— ")
-    print("|       menu       |")
-    print("| 1)juIce          |")
-    print("| 2)pIzza          |")
-    print("| 3)Ice cream      |")
-    print("| 4)rIce           |")
-    print("| 5)chIcken wIngs  |")
-    print("—— —— —— —— —— —— —— ")
-    print("How peculiar… The letter ‘I’ stands out.")
+    print("    —— —— —— —— —— —— —— ")
+    print("    |       menu       |")
+    print("    | 1)juIce          |")
+    print("    | 2)pIzza          |")
+    print("    | 3)Ice cream      |")
+    print("    | 4)rIce           |")
+    print("    | 5)chIcken wIngs  |")
+    print("    —— —— —— —— —— —— —— ")
+    print("How peculiar... The letter ‘I’ stands out.")
     print()
     print("Behind the counter you see a wide variety of…")
     print("Human organs...")
@@ -618,7 +601,7 @@ def deny():
                 print(" How stupid! You try to run away, but he catches up to you.")
                 print()
                 print()
-                print("You wake up, again in the white room.")
+                print("You wake up in the white room, yet again.")
                 white_room()
 
             else:
@@ -681,6 +664,7 @@ def morgue():
         print()
         print("You dust off some of the mud. You see the letter 'C' written on it.")
         print("Suddenly, the body sits up.")
+        print("Scared to death, you run back to the waiting room.")
     elif direction == "buzzing":
         buzz()
 
@@ -789,7 +773,7 @@ def password():
 
         elif direction == "try":
             word = "bird"
-            guess = input("Guess the 4-letter word (You have only 2 tries): ")
+            guess = input("Guess the 4-letter word (You have only 2 tries): ").strip().lower()
             tries = 1
 
             if guess != word:
@@ -831,7 +815,7 @@ def password():
 
 def safe():
 
-    print("You open the safe, with happiness all over your face cause you never managed to reach this point before.")
+    print("You slowly open the safe, with a smile hoping for something good to happen for once.")
     print("You see a locket; it was your mom's. It has a picture of us together.")
     print("//FLASHBACK//")
     print("It was the only thing that was left of hers.")
@@ -852,6 +836,7 @@ def safe():
     print("It always ends in the White Room.")
     print("Well. There can’t be any harm in trying once more.")
     print("It might be different this time around")
+    waiting_area()
 
 
 def add_to_inventory(item):
@@ -882,6 +867,7 @@ def restart_seq():
         print("You can't wake up. You can't die. If you die, you wake up back in this room.")
         print("Last time, you died jumping off the terrace.")
         print("You're not sure if it's going to be any different this time.")
+        print("So you head back to the waiting room.")
         white_room()
 
     elif answer1 == "no":
