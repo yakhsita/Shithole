@@ -48,7 +48,7 @@ rooms = {
     "Morgue": {
         "Body": "Unlock a letter",
         "or Buzzing": "Death",
-        "or `Back": "Waiting_Area"
+        "or Back": "Waiting_Area"
     },
     "Exit": {
         "Back": "Waiting_Area",
@@ -748,13 +748,14 @@ def morgue():
 
 def buzz():
     print()
-    print("You head towards the cabinet wondering what it may be.")
-    print("It stops, you don't hear a thing")
-    print("You open the cabinet")
-    print("*Buzzzzz*")
+    print("You head towards the cabinet wondering what's causing that noise.")
+    print("It stops, you don't hear a thing.")
+    print("Something's fishy and you know it, but you open the cabinet anyway.")
+    print("*Buzzzzzz*")
     print("Before you know it, a whole swarm of bluebottle flies surrounds you.")
-    print("But you feel something strange about it.")
-    print("It's your skin. They are feeding on to your skin!")
+    print("\"It's just bluebottle flies\" you think.")
+    print("But something about it doesn't feel right. What is it?")
+    print("It's your skin. They are feeding on your skin!")
     print("Possible moves: Inventory or run")
     decide = input("What do you do? \n>>").strip().lower()
 
@@ -771,8 +772,9 @@ def buzz():
             print("Maybe next time you should find something to defend yourself with...")
             white_room()
         else:
-            defend = input("Pick something to defend yourself with. \n>> ").lower().strip()
+            defend = input("Pick something to defend yourself with. \n>> ").strip().lower()
             if defend == "bugspray":
+                print()
                 print("Before the flies can feed on you anymore,")
                 print("You use bugspray to kill 'em.")
                 print("You spray it all over the room and they fall on the ground like a shower.")
