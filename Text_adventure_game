@@ -65,6 +65,7 @@ def white_room():
     location = "White_Room"
     direction = ""
 
+    inventory.clear()
     print()
     print("A white room. A single bed. One window. ")
     print("There is a door that leads to the corridor")
@@ -962,10 +963,6 @@ def terrace_alt():
 
 def add_to_inventory(item):
     inventory.append(item)
-
-
-def delete_from_inventory(item):
-    inventory.remove(item)
 
 
 def restart_seq():
