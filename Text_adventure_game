@@ -239,7 +239,7 @@ def bathroom_ex():
 
         corridor()
 
-    elif direction == "quit":
+    elif answer == "quit":
         print("")
         quit("GAME TERMINATING...")
     else:
@@ -293,7 +293,7 @@ def cafeteria():
     elif answer1 == "back":
         print()
         corridor()
-    elif direction == "quit":
+    elif answer1 == "quit":
         print("")
         quit("GAME TERMINATING...")
     else:
