@@ -87,9 +87,8 @@ def white_room():
         print()
         white_room()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print("Please enter valid statements")
         white_room()
@@ -123,9 +122,8 @@ def corridor():
             print()
             cafeteria()
         elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+            print("")
+            quit("GAME TERMINATING...")
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -171,9 +169,8 @@ def bathroom():
         print()
         bathroom_ex()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -243,9 +240,8 @@ def bathroom_ex():
         corridor()
 
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -298,9 +294,8 @@ def cafeteria():
         print()
         corridor()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -333,9 +328,8 @@ def staircase():
         print()
         cafeteria()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -368,10 +362,9 @@ def take_crowbar():
         elif take_the_crowbar == "no":
             print("You leave the Crowbar in the Terrace.")
             terrace()
-        elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+        elif take_the_crowbar == "quit":
+            print("")
+            quit("GAME TERMINATING...")
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -423,9 +416,8 @@ def terrace():
         print()
         white_room()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -481,13 +473,11 @@ def waiting_area():
                 print("There is nothing left to inspect")
                 waiting_area()
             elif direction == "quit":
-                print()
-                print("GAME TERMINATING...")
-                exit()
+                print("")
+            quit("GAME TERMINATING...")
         elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+            print("")
+            quit("GAME TERMINATING...")
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -512,10 +502,9 @@ def take_spray():
             print(inventory)
             print("You head back to the waiting_area")
             waiting_area()
-        elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+        elif take_the_spray == "quit":
+            print("")
+            quit("GAME TERMINATING...")
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -527,10 +516,9 @@ def take_spray():
         print("You leave the Bug spray in the cabinet.")
         print("You head back to the waiting_area")
         waiting_area()
-    elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+    elif take_the_spray == "quit":
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -575,9 +563,8 @@ def operation_room():
     elif direction == "deny":
         deny()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -625,10 +612,9 @@ def deny():
                 print()
                 print("You wake up in the white room, yet again.")
                 white_room()
-            elif direction == "quit":
-                print()
-                print("GAME TERMINATING...")
-                exit()
+            elif defend == "quit":
+                print("")
+                quit("GAME TERMINATING...")
             else:
                 print()
                 print("Invalid move! \nOnly Enter Valid Statements.")
@@ -643,10 +629,9 @@ def deny():
         print()
         print("You wake up in the white room.")
         white_room()
-    elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+    elif decide == "quit":
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -695,9 +680,8 @@ def morgue():
     elif direction == "buzzing":
         buzz()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -734,10 +718,9 @@ def buzz():
             print("You wake up in the white room.")
             print("Maybe next time you should find something to defend yourself with...")
             white_room()
-        elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+        elif decide == "quit":
+            print("")
+            quit("GAME TERMINATING...")
         else:
             defend = input("Pick something to defend yourself with. \n>> ").lower().replace(" ","")
             if defend == "bugspray":
@@ -761,10 +744,9 @@ def buzz():
                 print()
                 print("You wake up, again in the white room.")
                 white_room()
-            elif direction == "quit":
-                print()
-                print("GAME TERMINATING...")
-                exit()
+            elif defend == "quit":
+                print("")
+                quit("GAME TERMINATING...")
             else:
                 print()
                 print("Invalid move! \nOnly Enter Valid Statements.")
@@ -780,10 +762,9 @@ def buzz():
         print()
         print("You wake up in the white room.")
         white_room()
-    elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+    elif decide == "quit":
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -798,7 +779,7 @@ def password():
     direction = ""
 
     while direction != "exit":
-        print("You are at the ", location, ". Or you hope it is.")
+        print("You are at the", location, ". Or you hope it is.")
 
         print("There's a safe with a four digit code.")
         print("Do you wish to try? Remember, you have a limited amount of attempts.")
@@ -806,10 +787,10 @@ def password():
         print("")
 
         possible_moves = rooms[location].keys()
-        print("possible moves: ", *possible_moves)
+        print("possible moves:", *possible_moves)
 
         direction = input("Your choice? \n>> ").lower().strip()
-        print("You entered: ", direction)
+        print("You entered:", direction)
 
         if direction == "back":
             print()
@@ -840,9 +821,8 @@ def password():
             print()
             safe()
         elif direction == "quit":
-            print()
-            print("GAME TERMINATING...")
-            exit()
+            print("")
+            quit("GAME TERMINATING...")
         else:
             print()
             print("Invalid move! \nOnly Enter Valid Statements.")
@@ -999,9 +979,8 @@ def terrace_alt():
         print()
         restart_seq()
     elif direction == "quit":
-        print()
-        print("GAME TERMINATING...")
-        exit()
+        print("")
+        quit("GAME TERMINATING...")
     else:
         print()
         print("Invalid move! \nOnly Enter Valid Statements.")
@@ -1074,13 +1053,16 @@ print()
 
 print("You're back here again.")
 print("You know it's a dream, that’s for sure.")
+cont = input("(Press Enter to Continue...)")
 print("But you're stuck here. Stuck for too long.")
 print("You can't control all of it. It feels like it's the dream that controls you.")
+cont = input()
 print("You are trapped in this twisted hospital")
 print("You can't wake up. You can't die. If you die, you wake up back in this room.")
+cont = input()
 print("All you want is to be freed.")
 
-
+cont = input()
 print()
 
 
