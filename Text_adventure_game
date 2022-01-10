@@ -544,7 +544,7 @@ def operation_room():
 
     print()
     print("You can go Back to the Waiting_Area")
-    print("Possible moves: ", "Accept,", "Deny,", " or Back")
+    print("Possible moves:", "Accept,", "Deny,", " or Back")
 
     direction = input("What do you do? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -577,7 +577,7 @@ def operation_room():
 def deny():
     print("The surgeon charges at you with a scalpel.")
     print("Possible moves: 'Inventory' or 'Run'")
-    decide = input("What do you do?: \n>>").lower().strip()
+    decide = input("What do you do?: \n>> ").lower().strip()
 
     if decide == "inventory":
         print(inventory)
@@ -663,7 +663,7 @@ def morgue():
     print("Possible moves:", *possible_moves)
 
     direction = input("Decision? \n>> ").lower().strip()
-    print("You entered: ", direction)
+    print("You entered:", direction)
 
     if direction == "back":
         print()
