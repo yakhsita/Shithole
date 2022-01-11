@@ -186,6 +186,7 @@ def bathroom():
     pass
     print("\nWhat do you do? Investigate the knocking or Head Back (go back to corridor) \n")
     print()
+    
     time.sleep(1)
     possible_moves = rooms[location].keys()
     print("Possible moves:", *possible_moves)
@@ -265,24 +266,20 @@ def bathroom_ex():
         print()
         time.sleep(1)
         raw = input("You knew it was coming, but still flinched when she strangles you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input()
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print("Her Black eyes still haunt your memories.")
         print()
         print("Maybe Blue isn’t the answer.")
         raw = input("(Press Enter to Continue...)")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print()
         raw = input("You wake up in the white room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         white_room()
@@ -291,22 +288,18 @@ def bathroom_ex():
         print()
         time.sleep(1)
         raw = input("Ah. Interesting. You choose a completely different color.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Slowly, she turns her head to the side, not stopping until it did a complete 180 degree turn.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You let your eyes focus on the back of her head, and notice the letter 'R' written on it")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print("You get a feeling that this is important.")
         print()
         raw = input("Seeing as nothing more happened, you head back to the corridor.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -335,11 +328,9 @@ def cafeteria():
     print()
     time.sleep(1)
     raw = input("It seems to be connected to the stairway.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("As you enter, you see the menu.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print("    —— —— —— —— —— —— —— ")
@@ -352,20 +343,16 @@ def cafeteria():
     print("    —— —— —— —— —— —— —— ")
     time.sleep(0.7)
     raw = input("How peculiar... The letter ‘I’ stands out.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("Behind the counter you see a wide variety of...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Human organs...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You don’t know why. But looking at it makes your stomach hurl each time. ")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -376,7 +363,6 @@ def cafeteria():
         print()
         time.sleep(1)
         raw = input("The sight of the 'food' still makes you uncomfortable.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print("Perhaps you could go up for some fresh air or go down.")
@@ -387,25 +373,20 @@ def cafeteria():
         print()
         time.sleep(1)
         raw = input("You don’t understand what compels you to do this.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But you eat the organs.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("You wake up in the white room. The feeling of nausea won’t leave you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("Maybe cannibalism isn't the answer.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         white_room()
@@ -469,19 +450,15 @@ def take_crowbar():
         print()
         print()
         raw = input("On the way up the stairs, something catches your eye.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("It's a Crowbar! ")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Should you take it? ")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But what could you possibly use it for?")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -501,7 +478,6 @@ def take_crowbar():
         elif take_the_crowbar == "no":
             print("You leave the Crowbar in the Terrace.")
             raw = input("...")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
@@ -529,19 +505,15 @@ def terrace():
     print("You are in the", location)
     time.sleep(1)
     raw = input("The stars look pretty tonight.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You wonder what exactly you're doing here.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You're not sure what exactly you want to do either.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Would you like to go back downstairs or...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -557,11 +529,9 @@ def terrace():
         print()
         time.sleep(1)
         raw = input("As tempting as a trip to the stars sounds like, you decide to keep fighting.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You could come back here anytime, anyway.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -572,27 +542,22 @@ def terrace():
         time.sleep(1)
         print("Do you really wish to jump? Nothing special would happen. You’ll just die.")
         raw = input("As always wake up in the white room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Maybe it's different this time...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You brace yourself and fall forward.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         time.sleep(1)
         raw = input("... Only to wake up in the White Room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print("God dammit.")
         raw = input("Same thing, again and again.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -622,19 +587,15 @@ def waiting_area():
         print()
         time.sleep(0.7)
         raw = input("The deeper levels always felt strange to you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("The Waiting Area is nothing much, except for the safe locker.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("To the left is an operating room and to the right... a morgue.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("There’s also a supply closet.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print("You may also go back up the staircase. (Type 'up')")
@@ -669,15 +630,12 @@ def waiting_area():
                 print()
                 time.sleep(1)
                 raw = input("You navigate your way through the chairs.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You see a door that leads to the cleaning closet.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("In there you find a bottle of bug spray.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
@@ -758,36 +716,28 @@ def operation_room():
     print()
     time.sleep(1)
     raw = input("'The Mad Surgeon', as you’ve come to call him, greets you.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("He wears his scrubs and a face mask and a face shield.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("He asks you if you want to get rid of your depression.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("What a concept. But maybe it’s worth another shot...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("All you know is that you can't kill him, but you can stall for time.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Every time he 'dies', it only takes him a few minutes to come back to life.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Looks like he's alive again.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("You can go Back to the Waiting_Area")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -804,28 +754,22 @@ def operation_room():
     elif direction == "accept":
         print()
         raw = input("You lay on the bench, telling yourself that maybe this time he can actually cure you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You sigh as you hear him laugh. The Mad Surgeon tells you that all he wants from you are your organs.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("He congratulates you for being stupid enough to think anything could cure you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You hope you won’t wake up in the White Room again.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("But of course, you do.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         white_room()
@@ -862,7 +806,6 @@ def deny():
             print()
             time.sleep(1)
             raw = input("Uh-oh. Looks like you have nothing to defend yourself with.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print("Only thing you can do now, is run.")
@@ -884,29 +827,23 @@ def deny():
                 print()
                 time.sleep(1)
                 raw = input("The surgeon tries to stab you with his scalpel.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You block his attacks.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You delt him a deadly blow with your crowbar and watch as his body flops to the ground.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("You notice his ID card.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("It has the letter 'B' written on it.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("Feeling a little shaky, you return to the Waiting_Area")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
@@ -915,24 +852,19 @@ def deny():
             elif defend == "bugspray":
                 time.sleep(1)
                 raw = input("The surgeon tries to stab you with his scalpel.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You use the bug spray, but realize how ineffective it is against his surgical mask and face shield")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("How stupid! You try to run away, but he catches up to you.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You were unable to make it out alive.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("You wake up in the white room, yet again.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
@@ -951,20 +883,16 @@ def deny():
         time.sleep(1)
         print()
         raw = input("The surgeon tries to stab you with his scalpel.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You turn around and try to run,")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But you couldn't make it in time.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("You wake up in the white room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -990,37 +918,29 @@ def morgue():
     print()
     time.sleep(1)
     raw = input("The Lights Flicker.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("This place gives you a bad vibe")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("There’s a body on the stretcher. A white sheet covers it.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("The blood seeps through the fabric.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("The foot is uncovered. You can see the toe tag.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("At the same time, you hear a sharp buzzing sound.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("*Buzzzzzz*")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("It originates from one of the body storage cabinets.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -1044,24 +964,19 @@ def morgue():
         print()
         time.sleep(1)
         raw = input("You cautiously make your way towards the body.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Upon closer inspection, you notice that the foot is decomposing.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("The toe tag seems to be covered in mud. How unusual.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You reach forward to dust off the mud.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("Suddenly, the body sits up.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1085,39 +1000,31 @@ def buzz():
     print()
     time.sleep(1)
     raw = input("You head towards the cabinet wondering what's causing that noise.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("It stops; you don't hear a thing.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Something's fishy and you know it, but you open the cabinet anyway.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("*Buzzzzzz*")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("Before you realize, a swarm of bluebottle flies surround you.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("\"It's just flies,\" you think.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Something feels off. But what?")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print("It's your skin.")
     time.sleep(0.6)
     raw = input("Crap. They are feeding on your skin!")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -1133,30 +1040,24 @@ def buzz():
             print()
             time.sleep(1)
             raw = input("Uh-oh. Looks like you have nothing to defend yourself with.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("Only one thing left to do.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("You turn around and run,")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("But you can't get through. It's an impenetrable swarm of flies.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("You try but you get eaten to death by those flies.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
             print()
             print("You wake up in the white room.")
             raw = input("Maybe next time you should find something to defend yourself with...")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
@@ -1172,37 +1073,29 @@ def buzz():
                 print()
                 time.sleep(1)
                 raw = input("The flies won't leave you alone.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("So you use the bugspray to kill 'em.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You spray it all over the room and watch as they rain down to the ground.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("A simple, but effective solution.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("Once the last of them die, you notice a piece of paper in the cabinet.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("It has the letter 'D' written on it.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("You get the feeling that this is important. You return to the Waiting Area.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("...")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
@@ -1212,24 +1105,19 @@ def buzz():
                 print()
                 time.sleep(1)
                 raw = input("The swarm of flies dive on to you.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You use the crowbar, but realize that the flies just escapes your every hit.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("How stupid! You try to run away, but it's of no use")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 raw = input("You get eaten up to death by those flies.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
                 raw = input("You wake up; again in the white room.")
-
                 while raw != "": raw = input("(Please press ENTER key to continue)")
                 pass
                 print()
@@ -1248,25 +1136,20 @@ def buzz():
         print()
         time.sleep(1)
         raw = input("The swarm of flies dive on to you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You turn around and try to run")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But you just can't get through it.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("And you get eaten up to death by those flies.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print()
         raw = input("You wake up in the white room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1294,12 +1177,10 @@ def password():
     print()
     time.sleep(1)
     raw = input("There's a safe with a FOUR letter code.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print("Do you wish to try? Remember, you have a limited amount of attempts.")
     raw = input("Head Back if you think you aren't ready.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -1332,30 +1213,24 @@ def password():
             print("\nINCORRECT PASSWORD")
             time.sleep(0.3)
             raw = input("You got it wrong!")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
             raw = input("\nA tiny part of you wished that this meant you would die. For real.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("But reality is often disappointing.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
             raw = input("You're back at the White Room again.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
             raw = input("Just like every other time.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             raw = input("Death just doesn't seem to exist here.")
-
             while raw != "": raw = input("(Please press ENTER key to continue)")
             pass
             print()
@@ -1381,35 +1256,28 @@ def safe():
     print()
     time.sleep(1)
     raw = input("You open the safe, smiling, hoping for something good to happen.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Inside, you see a locket; it was your mom's. It has a picture of us together.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     time.sleep(0.3)
     raw = input("It was the only thing that was left of hers.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     print("//FLASHBACK//")
     time.sleep(0.6)
     raw = input("She used to suffer from nightmares, something similar to yours.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("But she was brave enough to resist. She even managed to overcome it.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Perhaps you’re just not strong enough...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You remember... She used to say:")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     time.sleep(0.6)
@@ -1417,46 +1285,37 @@ def safe():
     print("       of faith, you have nothing to fear anymore...\"")
     time.sleep(1)
     raw = input("//FLASHBACK END//")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     time.sleep(1)
     raw = input("A leap of faith...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     time.sleep(0.7)
     raw = input("A leap... a Jump...?!")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Is that what it means?")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("Maybe...")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     print("But I’ve tried jumping off the terrace. Maybe more than a hundred times.")
     raw = input("It always ends in the White Room.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("Well. There can’t be any harm in trying once more.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("It might be different.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
     raw = input("You head straight to the terrace.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -1475,23 +1334,18 @@ def terrace_alt():
     print("You are in the", location)
     time.sleep(1)
     raw = input("This is it.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You take one last look at the stars.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("You could jump... Or you could head back.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("But you've exhausted every inch of this nightmare.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     raw = input("There is no point in heading back.")
-
     while raw != "": raw = input("(Please press ENTER key to continue)")
     pass
     print()
@@ -1504,25 +1358,20 @@ def terrace_alt():
         print()
         time.sleep(0.6)
         raw = input("Alright. No.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You don't want to jump. Not right now, at least.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You could come back here anytime, anyway.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("Right...?")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("... It doesn't feel right though...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1530,27 +1379,22 @@ def terrace_alt():
         print("On the way downstairs, you feel your vision black out.")
         print()
         raw = input("You slowly come to yourself.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You're in a white room. The White Room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print("You squeeze your eyes shut. It shouldn't be happening. No, not after everything— just to come back here—")
         print("But what else did you expect? You did nothing different.")
         raw = input("You were a coward who didn't take the chance to change.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("You’re stuck. You can’t get out.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("It’s a dream. It’s a nightmare.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         time.sleep(0.4)
@@ -1564,7 +1408,6 @@ def terrace_alt():
         time.sleep(0.1)
         print("Stuck. Stuck. Stuck. Stu—")
         raw = input("...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1581,25 +1424,20 @@ def terrace_alt():
         time.sleep(1)
         print("You couldn't make it out.")
         raw = input("You stayed, despite knowing there was a way out.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Your grief and thoughts weigh you down.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You wonder if you could have done anything differently.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("If you had been brave.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("Maybe things would have been better...")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1609,17 +1447,14 @@ def terrace_alt():
     elif direction == "jump":
         print()
         raw = input("You brace yourself, and fall forward.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         print()
         raw = input("You slowly come to yourself, waking up in a white room.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("A white room? /The/ white room?")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print("You squeeze your eyes shut. It couldn’t be happening. No, not after everything— just to come back here—")
@@ -1627,24 +1462,19 @@ def terrace_alt():
         print("*knock*")
         time.sleep(0.2)
         raw = input("*knock*")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Someone walks in through the door— a man— a man that you recognize.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("A man from the hospital— the one you were in before the dream.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("This isn't a part of the dream. It’s not the dream— is it the dream?")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("It can’t be. There are in people here. Real people you haven’t seen in your dreams. ")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1654,41 +1484,32 @@ def terrace_alt():
         print()
         print()
         raw = input("You search for your mother's locket on your bedside table.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("It's there. You see two faces smiling at one another.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("You carefully rip the picture until only your mother’s face remains, and place it back into the locket.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("Your mother lives in dreams. You belong here.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
         raw = input("You’re not sure when you’re going to be okay... but that’s okay.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("It might take a while, but you will make it out of this hospital.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("With a full recovery.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You won’t get stuck.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You look at your mother one last time before you close the locket with a click.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1703,15 +1524,12 @@ def terrace_alt():
         print()
         time.sleep(1)
         raw = input("It was the fear of being stuck in a hospital that put you in an endless loop of actually being stuck.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("After coming to terms with yourself, you realize that it might take a while for you to be alright.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But you know it’ll happen someday.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1749,29 +1567,23 @@ def restart_seq():
         print()
         time.sleep(1)
         raw = input("(Press Enter to Continue...)")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("But you're stuck here. Stuck for too long.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("You can't control all of it. It feels like it's the dream that controls you.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input()
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print("You are trapped in this twisted hospital")
         print("You can't wake up. You can't die. If you die, you wake up back in this room.")
         raw = input()
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         raw = input("All you want is to be freed.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         print()
@@ -1779,18 +1591,17 @@ def restart_seq():
         time.sleep(0.7)
         print("A white room. A single bed. One window. ")
         raw = input("There is a door that leads to the corridor.")
-
         while raw != "": raw = input("(Please press ENTER key to continue)")
         pass
         white_room()
 
     elif answer1 == "no":
+        print()
         print("Thank you for playing :)")
         quit()
     else:
         print()
         print("Sorry, I don't understand. English please!")
-
         print()
         print()
         restart_seq()
