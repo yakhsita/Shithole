@@ -12,7 +12,7 @@ rooms = {
     "Corridor": {
         "Left": "Bathroom",
         "or Right": "Cafeteria"
-    },
+    }, 
     "Bathroom": {
         "Investigate": "Red or Blue",
         "or Back": "Corridor"
