@@ -1,6 +1,7 @@
 # a text-based adventure game set in a hospital
 
 import time
+import sys
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
@@ -1393,7 +1394,7 @@ def enter(raw):
     while raw != "quit":
         break
     else:
-        quit("GAME TERMINATING...")
+        sys.exit("GAME TERMINATING...")
 
 
 
