@@ -32,7 +32,7 @@ rooms = {
     "Waiting_Area": {
         "Up": "Staircase",
         "or Exit": "Exit",
-        "or Right": "Morgue",
+        "or Right": "Morgue", 
         "or Left": "Operating_Room",
         "or Inspect": "Find pepper Spray"
     },
