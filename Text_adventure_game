@@ -32,7 +32,7 @@ rooms = {
     "Waiting_Area": {
         "Up": "Staircase",
         "or Exit": "Exit",
-        "or Right": "Morgue", 
+        "or Right": "Morgue",
         "or Left": "Operating_Room",
         "or Inspect": "Find pepper Spray"
     },
@@ -1388,8 +1388,13 @@ def restart_seq():
 
 
 def enter(raw):
-    while raw != "":
+    while raw != "" and raw != "quit":
         raw = input("(Please press ENTER key to continue)")
+    while raw != "quit":
+        break
+    else:
+        quit("GAME TERMINATING...")
+
 
 
 # call stuff
@@ -1414,7 +1419,7 @@ print("TIP: use lower-case characters only")
 time.sleep(0.7)
 print("LOADING...")
 time.sleep(1.5)
-print("You always have 'quit' option to exit game")
+print("Type 'quit' to exit game")
 time.sleep(0.7)
 print("STARTING GAME...")
 print()
