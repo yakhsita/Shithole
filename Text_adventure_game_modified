@@ -1377,7 +1377,7 @@ def enter(raw):
         print("|Terrace| + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .   |")
         print("|—————————————————————————————————————————|s|——————————— |")
         print("|       |  [▪⌂▪]---------------[▪⌂▪]------|t|            |")
-        print("| First | bathroom-----| |-----cafeteria--|a|            |")
+        print("| First | bathroom-----| |----cafeteria---|a|            |")
         print("| floor |             [▪⌂▪]               |i|            |")
         print("|       |          white_room             |r|            |")
         print("|—————————————————————————————————————————|s|——————————— |")
