@@ -1403,7 +1403,6 @@ def enter(raw):
         break
     else:
         map()
-        raw = input("\n(Press Enter key to continue) ")
     while raw != "quit":
         break
     else:
@@ -1428,7 +1427,8 @@ def map():
     print("| floor |                                [▪⌂▪]           |")
     print("|       |                                Exit            |")
     print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
-    time.sleep(1)
+    time.sleep(0.8)
+    raw = input("\n(Press Enter key to continue) ")
 
 
 # call stuff
