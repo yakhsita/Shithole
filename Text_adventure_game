@@ -329,7 +329,6 @@ def cafeteria():
         enter(raw)
         print("Perhaps you could go up for some fresh air or go down. ")
         print()
-        print()
         staircase()
     elif answer1 == "eat":
         print()
@@ -369,10 +368,10 @@ def staircase():
     direction = ""
 
     print()
-    time.sleep(0.7)
+    time.sleep(0.6)
     print("You are in the", location)
     print()
-    time.sleep(0.7)
+    time.sleep(0.5)
     print()
     possible_moves = rooms[location].keys()
     print("Possible moves:", *possible_moves)
@@ -404,6 +403,7 @@ def staircase():
 
 
 def take_crowbar():
+
     while 'crowbar' not in inventory:
         print()
         print()
@@ -422,7 +422,7 @@ def take_crowbar():
         take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
 
         if take_the_crowbar == "yes":
-            add_to_inventory("crowbar ")
+            add_to_inventory("crowbar")
             time.sleep(0.5)
             print("CROWBAR added to inventory ")
             time.sleep(0.5)
@@ -536,6 +536,8 @@ def waiting_area():
         enter(raw)
         raw = input("To the left is an operating room and to the right... a morgue. ").lower()
         enter(raw)
+        raw = input("And in front of you an 'exit', that's always calls out to you.")
+        enter(raw)
         raw = input("There’s also a supply closet. ").lower()
         enter(raw)
         print("You may also go back up the staircase. (Type 'up') ")
@@ -608,7 +610,7 @@ def take_spray():
     print("Pick it up? ")
     take_the_spray = input("Yes/No: \n>> ").lower().strip()
     if take_the_spray == "yes":
-        add_to_inventory("bug spray ")
+        add_to_inventory("bug spray")
         print()
         time.sleep(0.5)
         print("Bug spray added to inventory ")
