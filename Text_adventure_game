@@ -799,7 +799,6 @@ def deny():
         print()
         raw = input("You wake up in the white room. ").lower()
         enter(raw)
-        print()
         white_room()
     elif decide == "map":
         map() + deny()
@@ -1018,8 +1017,6 @@ def buzz():
         print()
         raw = input("You wake up in the white room. ").lower()
         enter(raw)
-        print()
-        print()
         white_room()
     elif decide == "map":
         map() + buzz()
