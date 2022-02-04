@@ -11,20 +11,21 @@ root['bg']='black'
 import tkinter as tk
 
 canvas = tk.Canvas(root,
-                 height=600,
-                 width=700).pack()
+                 height=700,
+                 width=800).pack()
 
 frame = tk.Frame(root, bg='black')
 frame.place(relwidth=1, relheight=1)
-tk.Label(root,
+
+photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
+photo_label = tk.Label(root, image=photo, bg='black')
+photo_label.place(relx=0.25,rely=0.22, relheight=0.5, relwidth=0.5)
+
+tk.Button(frame,
       text='Click me!',
       bg='black',
       fg='white',
-      font=('Bradley Hand ITC', 20, 'bold')).pack(side=BOTTOM, pady=10)
-
-photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
-
-Button(frame, image=photo).pack(side=TOP, expand=True)
+      font=('Bradley Hand ITC', 20, 'bold')).place(relx=0.4145,rely=0.75)
 
 root.mainloop()
 
