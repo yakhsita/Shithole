@@ -2,6 +2,24 @@
 
 import time
 import sys
+from tkinter import *
+from tkinter.ttk import *
+
+# creating tkinter window
+root = Tk()
+
+# Adding widgets to the root window
+Label(root, text='Click me!', font=(
+    'Bradley Hand ITC', 20, 'bold')).pack(side=BOTTOM, pady=10)
+
+# Creating a photoimage object to use image
+photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
+
+# here, image option is used to
+# set image on button
+Button(root, image=photo).pack(side=TOP)
+
+mainloop()
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
@@ -10,8 +28,8 @@ rooms = {
         "or Inspect": "Description"
     },
     "Corridor": {
-        "Left": "Bathroom",
-        "or Right": "Cafeteria"
+        "or Left": "Bathroom",
+        "Right": "Cafeteria"
     },
     "Bathroom": {
         "Investigate": "Red or Blue",
@@ -31,8 +49,8 @@ rooms = {
         "or Back": "Staircase"
     },
     "Waiting_Area": {
-        "Up": "Staircase",
-        "or Exit": "Exit",
+        "or Up": "Staircase",
+        "Exit": "Exit",
         "or Right": "Morgue",
         "or Left": "Operating_Room",
         "or Inspect": "Find pepper Spray"
@@ -47,8 +65,8 @@ rooms = {
         }
     },
     "Morgue": {
-        "Body": "Unlock a letter",
-        "or Buzzing": "Death",
+        "or Body": "Unlock a letter",
+        "Buzzing": "Death",
         "or Back": "Waiting_Area"
     },
     "Exit": {
@@ -70,8 +88,7 @@ def white_room():
     print()
     print()
 
-    possible_moves = rooms[location].keys()
-    print("possible moves:", *possible_moves)
+    print("possible moves: Door or Inspect")
 
     direction = input("What will you do? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -122,8 +139,7 @@ def corridor():
     print()
 
     print()
-    possible_moves = rooms[location].keys()
-    print("possible moves:", *possible_moves)
+    print("possible moves: Left or Right")
 
     direction = input("Move which direction? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -174,11 +190,10 @@ def bathroom():
     raw = input("... ").lower()
     enter(raw)
     print()
-    print("\nWhat do you do? Investigate the knocking or Head Back (go back to corridor) \n ")
+    print("\nWhat do you do? Investigate the Knocking or Head Back (go back to corridor) \n ")
 
     time.sleep(0.6)
-    possible_moves = rooms[location].keys()
-    print("Possible moves:", *possible_moves)
+    print("Possible moves: Investigate or Back")
 
     direction = input("Decision? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -311,7 +326,7 @@ def cafeteria():
     raw = input("How peculiar... The letter ‘I’ stands out. ").lower()
     enter(raw)
     print()
-    raw = input("Behind the counter you see a wide variety of... ").lower()
+    raw = input("Behind the counter you see a wide variety of...").lower()
     enter(raw)
     raw = input("Human organs... ").lower()
     enter(raw)
@@ -328,7 +343,6 @@ def cafeteria():
         raw = input("The sight of the 'food' still makes you uncomfortable. ").lower()
         enter(raw)
         print("Perhaps you could go up for some fresh air or go down. ")
-        print()
         print()
         staircase()
     elif answer1 == "eat":
@@ -369,13 +383,12 @@ def staircase():
     direction = ""
 
     print()
-    time.sleep(0.7)
+    time.sleep(0.6)
     print("You are in the", location)
     print()
-    time.sleep(0.7)
+    time.sleep(0.5)
     print()
-    possible_moves = rooms[location].keys()
-    print("Possible moves:", *possible_moves)
+    print("Possible moves: Up or Down or Cafeteria (Type: 'Back')")
 
     direction = input("Move which direction? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -404,6 +417,7 @@ def staircase():
 
 
 def take_crowbar():
+
     while 'crowbar' not in inventory:
         print()
         print()
@@ -422,7 +436,7 @@ def take_crowbar():
         take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
 
         if take_the_crowbar == "yes":
-            add_to_inventory("crowbar ")
+            add_to_inventory("crowbar")
             time.sleep(0.5)
             print("CROWBAR added to inventory ")
             time.sleep(0.5)
@@ -471,8 +485,7 @@ def terrace():
     print()
 
     print()
-    possible_moves = rooms[location].keys()
-    print("Possible moves:", *possible_moves)
+    print("Possible moves: Jump or Back")
 
     direction = input("Decision? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -530,21 +543,21 @@ def waiting_area():
         print("You are in the", location)
         print()
         time.sleep(0.7)
-        raw = input("The deeper levels always felt strange to you. ").lower()
+        raw = input("\nThe deeper levels always felt strange to you. ")
         enter(raw)
-        raw = input("The Waiting Area is nothing much, except for the safe locker. ").lower()
+        raw = input("\nThe Waiting Area is nothing much, except for the safe locker. (Type 'left')")
         enter(raw)
-        raw = input("To the left is an operating room and to the right... a morgue. ").lower()
+        raw = input("\nTo the left is an operating room and to the right... a morgue. (Type 'right')")
         enter(raw)
-        raw = input("There’s also a supply closet. ").lower()
+        raw = input("\nAnd in front of you an 'exit', where the safe locker is located. (Type 'exit')")
         enter(raw)
-        print("You may also go back up the staircase. (Type 'up') ")
+        raw = input("\nThere’s also a supply closet. (Type 'inspect')")
+        enter(raw)
+        print("\nYou may also go back up the staircase. (Type 'up') ")
         print()
 
         time.sleep(0.7)
         print()
-        possible_moves = rooms[location].keys()
-        print("possible moves:", *possible_moves)
 
         direction = input("Move which direction? \n>> ").lower().strip()
         print("You entered:", direction)
@@ -608,7 +621,7 @@ def take_spray():
     print("Pick it up? ")
     take_the_spray = input("Yes/No: \n>> ").lower().strip()
     if take_the_spray == "yes":
-        add_to_inventory("bug spray ")
+        add_to_inventory("bug spray")
         print()
         time.sleep(0.5)
         print("Bug spray added to inventory ")
@@ -671,7 +684,7 @@ def operation_room():
     enter(raw)
     print()
 
-    print("Possible moves: ", "Accept,", "Deny", " or Back ")
+    print("Possible moves: ", "Accept,", "Deny,", "or Back ")
 
     direction = input("What do you do? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -682,18 +695,18 @@ def operation_room():
         waiting_area()
     elif direction == "accept":
         print()
-        raw = input("You lay on the bench, telling yourself that maybe this time he can actually cure you. ").lower()
+        raw = input("\nYou lay on the bench, telling yourself that maybe this time he can actually cure you. ").lower()
         enter(raw)
         raw = input("... ").lower()
         enter(raw)
-        raw = input("You sigh as you hear him laugh. The Mad Surgeon tells you that all he wants from you are your organs. ").lower()
+        raw = input("\nYou sigh as you hear him laugh. The Mad Surgeon tells you that all he wants from you are your organs. ").lower()
         enter(raw)
-        raw = input("He congratulates you for being stupid enough to think anything could cure you. ").lower()
+        raw = input("\nHe congratulates you for being stupid enough to think anything could cure you. ").lower()
         enter(raw)
         print()
-        raw = input("You hope you won’t wake up in the White Room again. ").lower()
+        raw = input("\nYou hope you won’t wake up in the White Room again. ").lower()
         enter(raw)
-        raw = input("But of course, you do. ").lower()
+        raw = input("\n\nBut of course, you do. ").lower()
         enter(raw)
         white_room()
     elif direction == "deny":
@@ -714,7 +727,7 @@ def operation_room():
 def deny():
     print()
     time.sleep(0.6)
-    raw = input("The surgeon charges at you with a scalpel. ").lower()
+    raw = input("Furious, the surgeon charges at you with a scalpel. ").lower()
     enter(raw)
     print()
     print("Possible moves: 'Inventory' or 'Run' ")
@@ -799,7 +812,6 @@ def deny():
         print()
         raw = input("You wake up in the white room. ").lower()
         enter(raw)
-        print()
         white_room()
     elif decide == "map":
         map() + deny()
@@ -847,8 +859,7 @@ def morgue():
     time.sleep(0.6)
     print()
     print()
-    possible_moves = rooms[location].keys()
-    print("Possible moves:", *possible_moves)
+    print("Possible moves: Body or Back")
 
     direction = input("Decision? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -860,18 +871,18 @@ def morgue():
     elif direction == "body":
         print()
         time.sleep(0.6)
-        raw = input("You cautiously make your way towards the body. ").lower()
+        raw = input("\nYou cautiously make your way towards the body. ").lower()
         enter(raw)
-        raw = input("Upon closer inspection, you notice that the foot is decomposing. ").lower()
+        raw = input("\nUpon closer inspection, you notice that the foot is decomposing. ").lower()
         enter(raw)
-        raw = input("The toe tag seems to be covered in mud. How unusual. ").lower()
+        raw = input("\nThe toe tag seems to be covered in mud. How unusual. ").lower()
         enter(raw)
-        raw = input("You reach forward to dust off the mud. ").lower()
+        raw = input("\nYou reach forward to dust off the mud. ").lower()
         enter(raw)
         print()
-        raw = input("Suddenly, the body sits up. ").lower()
+        raw = input("\nSuddenly, the body sits up. ").lower()
         enter(raw)
-        print("Scared to death, you run back to the waiting room. ")
+        print("\nScared to death, you run back to the waiting room. ")
         print()
         waiting_area()
     elif direction == "buzzing":
@@ -893,25 +904,25 @@ def morgue():
 def buzz():
     print()
     time.sleep(0.6)
-    raw = input("You head towards the cabinet wondering what's causing that noise. ").lower()
+    raw = input("\nYou head towards the cabinet wondering what's causing that noise. ").lower()
     enter(raw)
-    raw = input("It stops; you don't hear a thing. ").lower()
+    raw = input("\nIt stops; you don't hear a thing. ").lower()
     enter(raw)
-    raw = input("Something's fishy and you know it, but you open the cabinet anyway. ").lower()
-    enter(raw)
-    print()
-    raw = input("*Buzzzzzz* ").lower()
+    raw = input("\nSomething's fishy and you know it, but you open the cabinet anyway. ").lower()
     enter(raw)
     print()
-    raw = input("Before you realize, a swarm of bluebottle flies surround you. ").lower()
+    raw = input("\n*Buzzzzzz* ").lower()
     enter(raw)
-    raw = input("\"It's just flies,\" you think. ").lower()
+    print()
+    raw = input("\nBefore you realize, a swarm of bluebottle flies surround you. ").lower()
     enter(raw)
-    raw = input("Something feels off. But what? ").lower()
+    raw = input("\n\"It's just flies,\" you think. ").lower()
     enter(raw)
-    print("It's your skin. ")
+    raw = input("\nSomething feels off. But what? ").lower()
+    enter(raw)
+    print("\nIt's your skin. ")
     time.sleep(0.6)
-    raw = input("Crap. They are feeding on your skin! ").lower()
+    raw = input("\nCrap. They are feeding on your skin! ").lower()
     enter(raw)
     print()
     print()
@@ -925,20 +936,20 @@ def buzz():
         if not inventory:
             print()
             time.sleep(0.6)
-            raw = input("Uh-oh. Looks like you have nothing to defend yourself with. ").lower()
+            raw = input("\nUh-oh. Looks like you have nothing to defend yourself with. ").lower()
             enter(raw)
-            raw = input("Only one thing left to do. ").lower()
+            raw = input("\nOnly one thing left to do. ").lower()
             enter(raw)
-            raw = input("You turn around and run, ").lower()
+            raw = input("\nYou turn around and run, ").lower()
             enter(raw)
-            raw = input("But you can't get through. It's an impenetrable swarm of flies. ").lower()
+            raw = input("\nBut you can't get through. It's an impenetrable swarm of flies. ").lower()
             enter(raw)
-            raw = input("You try but you get eaten to death by those flies. ").lower()
+            raw = input("\nYou try but you get eaten to death by those flies. ").lower()
             enter(raw)
             print()
             print()
-            print("You wake up in the white room. ")
-            raw = input("Maybe next time you should find something to defend yourself with... ").lower()
+            print("\nYou wake up in the white room. ")
+            raw = input("\nMaybe next time you should find something to defend yourself with... ").lower()
             enter(raw)
             print()
             print()
@@ -954,21 +965,21 @@ def buzz():
             if defend == "bugspray":
                 print()
                 time.sleep(0.6)
-                raw = input("The flies won't leave you alone. ").lower()
+                raw = input("\nThe flies won't leave you alone. ").lower()
                 enter(raw)
-                raw = input("So you use the bugspray to kill 'em. ").lower()
+                raw = input("\nSo you use the bugspray to kill 'em. ").lower()
                 enter(raw)
-                raw = input("You spray it all over the room and watch as they rain down to the ground. ").lower()
+                raw = input("\nYou spray it all over the room and watch as they rain down to the ground. ").lower()
                 enter(raw)
-                raw = input("A simple, but effective solution. ").lower()
-                enter(raw)
-                print()
-                raw = input("Once the last of them die, you notice a piece of paper in the cabinet. ").lower()
-                enter(raw)
-                raw = input("It has the letter 'D' written on it. ").lower()
+                raw = input("\nA simple, but effective solution. ").lower()
                 enter(raw)
                 print()
-                raw = input("You get the feeling that this is important. You return to the Waiting Area. ").lower()
+                raw = input("\nOnce the last of them die, you notice a piece of paper in the cabinet. ").lower()
+                enter(raw)
+                raw = input("\nIt has the letter 'D' written on it. ").lower()
+                enter(raw)
+                print()
+                raw = input("\nYou get the feeling that this is important. You return to the Waiting Area. ").lower()
                 enter(raw)
                 raw = input("... ").lower()
                 enter(raw)
@@ -978,17 +989,17 @@ def buzz():
             elif defend == "crowbar":
                 print()
                 time.sleep(0.6)
-                raw = input("The swarm of flies dive on to you. ").lower()
+                raw = input("\nThe swarm of flies dive on to you. ").lower()
                 enter(raw)
-                raw = input("You use the crowbar, but realize that the flies just escapes your every hit. ").lower()
+                raw = input("\nYou use the crowbar, but realize that the flies just escapes your every hit. ").lower()
                 enter(raw)
-                raw = input("How stupid! You try to run away, but it's of no use ").lower()
+                raw = input("\nHow stupid! You try to run away, but it's of no use ").lower()
                 enter(raw)
-                raw = input("You get eaten up to death by those flies. ").lower()
+                raw = input("\nYou get eaten up to death by those flies. ").lower()
                 enter(raw)
                 print()
                 print()
-                raw = input("You wake up; again in the white room. ").lower()
+                raw = input("\nYou wake up; again in the white room. ").lower()
                 enter(raw)
                 white_room()
             elif defend == "map":
@@ -1006,20 +1017,18 @@ def buzz():
     elif decide == "run":
         print()
         time.sleep(0.6)
-        raw = input("The swarm of flies dive on to you. ").lower()
+        raw = input("\nThe swarm of flies dive on to you. ").lower()
         enter(raw)
-        raw = input("You turn around and try to run ").lower()
+        raw = input("\nYou turn around and try to run ").lower()
         enter(raw)
-        raw = input("But you just can't get through it. ").lower()
+        raw = input("\nBut you just can't get through it. ").lower()
         enter(raw)
-        raw = input("And you get eaten up to death by those flies. ").lower()
-        enter(raw)
-        print()
-        print()
-        raw = input("You wake up in the white room. ").lower()
+        raw = input("\nAnd you get eaten up to death by those flies. ").lower()
         enter(raw)
         print()
         print()
+        raw = input("\nYou wake up in the white room. ").lower()
+        enter(raw)
         white_room()
     elif decide == "map":
         map() + buzz()
@@ -1051,8 +1060,7 @@ def password():
     print()
 
     print()
-    possible_moves = rooms[location].keys()
-    print("possible moves:", *possible_moves)
+    print("possible moves: Try or Back")
 
     direction = input("Your choice? \n>> ").lower().strip()
     print("You entered:", direction)
@@ -1403,7 +1411,6 @@ def enter(raw):
         break
     else:
         map()
-        raw = input("\n(Press Enter key to continue) ")
     while raw != "quit":
         break
     else:
@@ -1415,20 +1422,21 @@ def enter(raw):
 def map():
     time.sleep(0.6)
     print("\n                          MAP                            ")
-    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
-    print("|Terrace| + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .   |")
-    print("|—————————————————————————————————————————|s|——————————— |")
-    print("|       |  [▪⌂▪]---------------[▪⌂▪]------|t|            |")
-    print("| First | bathroom-----| |----cafeteria---|a|            |")
-    print("| floor |             [▪⌂▪]               |i|            |")
-    print("|       |          white_room             |r|            |")
-    print("|—————————————————————————————————————————|s|——————————— |")
-    print("|       |                     [▪⌂▪]-------   -----[▪⌂▪]  |")
-    print("| Ground|              operation_room-----| |----morgue  |")
-    print("| floor |                                [▪⌂▪]           |")
-    print("|       |                                Exit            |")
-    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
-    time.sleep(1)
+    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
+    print("|Terrace| + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |")
+    print("|—————————————————————————————————————————|s|—————————————— |")
+    print("|       |   [▪⌂▪]---------------[▪⌂▪]----- t|               |")
+    print("| First | bathroom-----| |----cafeteria--- a|               |")
+    print("| floor |             [▪⌂▪]               |i|               |")
+    print("|       |          white_room             |r|               |")
+    print("|—————————————————————————————————————————|s|—————————————— |")
+    print("|       |                   [▪⌂▪]---- waiting_area ---[▪⌂▪] |")
+    print("| Ground|              operation_room-----| |-------morgue  |")
+    print("| floor |                                [▪⌂▪]              |")
+    print("|       |                                Exit               |")
+    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
+    time.sleep(0.8)
+    raw = input("\n(Press Enter key to continue) ")
 
 
 # call stuff
@@ -1449,7 +1457,7 @@ print("The rules of the game are simple. Type the command from given options. Fi
 time.sleep(0.7)
 print("GAME LOADING... ")
 time.sleep(2)
-print("TIP: use lower-case characters only ")
+print("TIP: patience is key.")
 time.sleep(1)
 print("UNPACKING RESOURCES... ")
 time.sleep(2.5)
