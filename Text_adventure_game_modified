@@ -5,21 +5,28 @@ import sys
 from tkinter import *
 from tkinter.ttk import *
 
-# creating tkinter window
 root = Tk()
+root['bg']='black'
 
-# Adding widgets to the root window
-Label(root, text='Click me!', font=(
-    'Bradley Hand ITC', 20, 'bold')).pack(side=BOTTOM, pady=10)
+import tkinter as tk
 
-# Creating a photoimage object to use image
+canvas = tk.Canvas(root,
+                 height=600,
+                 width=700).pack()
+
+frame = tk.Frame(root, bg='black')
+frame.place(relwidth=1, relheight=1)
+tk.Label(root,
+      text='Click me!',
+      bg='black',
+      fg='white',
+      font=('Bradley Hand ITC', 20, 'bold')).pack(side=BOTTOM, pady=10)
+
 photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
 
-# here, image option is used to
-# set image on button
-Button(root, image=photo).pack(side=TOP)
+Button(frame, image=photo).pack(side=TOP, expand=True)
 
-mainloop()
+root.mainloop()
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
