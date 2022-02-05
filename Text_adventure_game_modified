@@ -10,22 +10,32 @@ root['bg']='black'
 
 import tkinter as tk
 
-canvas = tk.Canvas(root,
-                 height=700,
-                 width=800).pack()
+canvas = tk.Canvas(root, height=700, width=800).pack()
 
 frame = tk.Frame(root, bg='black')
 frame.place(relwidth=1, relheight=1)
 
-photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
+photo = PhotoImage(file="H:\Logo_page.png")
 photo_label = tk.Label(root, image=photo, bg='black')
-photo_label.place(relx=0.25,rely=0.22, relheight=0.5, relwidth=0.5)
+photo_label.place(relx=0.25, rely=0.22, relheight=0.5, relwidth=0.5)
 
-tk.Button(frame,
-      text='Click me!',
-      bg='black',
-      fg='white',
-      font=('Bradley Hand ITC', 20, 'bold')).place(relx=0.4145,rely=0.75)
+img = tk.PhotoImage(file = "H:\Frame1,2.png")
+pic_label = Label(frame, image=img)
+
+def frame1():
+
+    photo_label.destroy()
+
+    tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72)).place(relx=0.33, rely=0.3)
+    tk.Label(root,
+             text=' The rules of the game are simple.\nType the command from given options. \nFind a way to escape.',
+             bg='black', fg='white', font=('Chiller', 28)).place(relx=0.23, rely=0.46)
+
+    pic_label.img = img  # to keep the reference for the image.
+    pic_label.pack()  # <--- pack
+    return pic_label
+
+tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), command=frame1).place(relx=0.4145, rely=0.75)
 
 root.mainloop()
 
@@ -1446,21 +1456,8 @@ def map():
     time.sleep(0.8)
     raw = input("\n(Press Enter key to continue) ")
 
-
 # call stuff
 
-print()
-print()
-print()
-print("******************** ")
-print("*   LUCID DREAMS   * ")
-print("******************** ")
-print()
-print()
-print()
-time.sleep(0.7)
-print("Welcome! ")
-time.sleep(0.7)
 print("The rules of the game are simple. Type the command from given options. Find a way to escape. ")
 time.sleep(0.7)
 print("GAME LOADING... ")
