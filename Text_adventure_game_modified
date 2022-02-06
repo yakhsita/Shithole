@@ -5,29 +5,34 @@ import sys
 from tkinter import *
 from tkinter.ttk import *
 
-root = Tk()
-root['bg']='black'
-root.resizable(0,0) #the window stays in the same size
+root = Tk() # root is for making the window
+root['bg']='black' # window in black
+root.resizable(0,0) #the window stays in the not resizable
 
 import tkinter as tk
 
-# logo frame
-canvas = tk.Canvas(root, height=700, width=800).pack()
+canvas = tk.Canvas(root, height=700, width=800) # window size
+canvas.pack() # packing is needed for every widget
+# we can either pack, place, grid, or other stuff... I mostly used place() cause here we can use proper coordinates that we learnt in our junior
 
+# I am putting the these things out of their def fucntion
+# cause for defining, it has to be above the function where it's being forgotton(.pack_forget())/(.place_forgot()) or destroyed(.pack_destroy())/(.place_destroy())
+
+#1 logo frame <- first pg
 frame = tk.Frame(root, bg='black')
-frame.place(relwidth=1, relheight=1)
+frame.place(relwidth=1, relheight=1) #relative height and width
 
 photo = PhotoImage(file="H:\Logo_page.png")
-photo_label = tk.Label(frame, image=photo, bg='black')
+photo_label = tk.Label(frame, image=photo, bg='black') # making the image into a label
 photo_label.place(relx=0.25, rely=0.22, relheight=0.5, relwidth=0.5)
 
-# frame1 stuff
+#2 frame1 stuff
 f1_img = PhotoImage(file = "H:\Frame1,2.png")
 f1_pic_label = Label(frame, image=f1_img)
 
-w = tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72))
+w = tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72)) # text label
 r = tk.Label(root,
-             text=' The rules of the game are simple.\nType the command from given options. \nFind a way to escape.',
+             text=' The rules of the game are simple.\nChoose the command from given options.\nFind a way to escape.',
              bg='black', fg='white', font=('Chiller', 28))
 
 # frame2 stuff
@@ -37,19 +42,79 @@ l = tk.Label(root,text=" . . .", font=('Stencil', 28), bg="black", fg="white")
 # frame3 stuff
 f3_img = PhotoImage(file = "H:\Frame3.png")
 f3_pic_label = Label(frame, image=f3_img)
+y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room.\n\nAll you want is to be freed.",
+                 font=("Bell MT", 18), justify="center", bg="#010e16", fg="white")
+
+# frame4 stuff
+b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+f4_img = PhotoImage(file = "H:\Frame4.png")
+f4_pic_label = Label(frame, image=f4_img)
+y1 = tk.Label(frame, text="A white room.\nA single bed. One window.\nThere is a door that leads to the corridor.",
+                 font=("Bell MT", 18), justify="center", bg="#0d1111", fg="white")
+
+# map
+frame_map = tk.Frame(root, bg='black')
+ma = tk.Label(frame_map, text="\n —— —— —— —— —— —— —— —— —— \n| Terrace |  + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |\n|———————————————|s|————|\n|              |    [▪⌂▪]---------------[▪⌂▪]----- t|               |\n|   First    | bathroom---|  |---cafeteria--- a|               |\n|    floor   |                 [▪⌂▪]                   |i|               |\n|              |            white_room             |r|               |\n|———————————————|s|————|\n|              |                  [▪⌂▪]---- waiting_area --[▪⌂▪] |\n| Ground |           operation_room-----|  |---morgue  |\n|   floor   |                                        [▪⌂▪]              |\n|             |                                         Exit              |\n —— —— —— —— —— —— —— —— —— ",
+                  font=("Times New Roman", 14), bg="black", fg="white") #sorry for that ^ , I was trying to put it in one line... hehe
+mt = tk.Label(frame_map, text='MAP', font=('Stencil', 22), bg="Black", fg="white")
+fmap_img = PhotoImage(file = "H:\Map.png") # Storing the photo in a variable
+fmap_pic_label = Label(frame, image=fmap_img) # Converting the variable in to a label and storing it in a new variable
+
+def map():
+
+    fmap_pic_label.img = fmap_img   # to keep the reference for the image.
+    fmap_pic_label.place(x=-10, y=-10)   # <--- place
+    frame_map.place(relx=0.15, rely=0.14, relwidth=0.7, relheight=0.7)
+    ma.place(x=83, y=95)
+    mt.place(x=245, y=65)
+
+def map1():
+
+    m1.place_forget()
+    b4.place_forget()
+    y1.place_forget()
+    f4_pic_label.pack_forget()
+    map() # I didn't know but after this function is completed the below Button works, it's so COOL
+    c1 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=frame4)
+    c1.place(x=707, y=630)
+
+
+def frame4():
+
+    global m1   # This is used when you are defining a variable in the def function but using it outside the def function. It technically becomes universal
+    y.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children(): # This rarely works, but frame.winfo_children considers all the widgets in the frame, e.g. button, label, etc.
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    f4_pic_label.img = f4_img
+    f4_pic_label.pack()
+
+    y1.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+    b4.place(x=710, y=630)
 
 def frame3():
 
+    global b3
     g.place_forget()
     l.place_forget()
     f3_pic_label.img = f1_img
     f3_pic_label.pack()
-    y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room. ",
-                 font=("Bell MT", 18), justify="center", bg="#010e16", fg="white")
     y.place(relx=0.02, rely=0.24)
 
     b3 = tk.Button(frame, text='Next', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
-                  command=frame1)
+                  command=frame4)
     b3.place(relx=0.25, rely=0.74)
 
 
@@ -63,7 +128,7 @@ def frame2():
     g.place(x=230, y=330)
     l.place(x=492, y=330)
 
-    root.after(1000, frame3)
+    root.after(2000, frame3) # This delays time, I don't know how much is 2000 but you try it out
 
 
 def frame1():
@@ -82,9 +147,9 @@ def frame1():
 
 
 b1 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame1)
-b1.place(relx=0.4145, rely=0.75)
+b1.place(relx=0.4145, rely=0.75) # It's out of the def function, hence is the first most button that appears, the click button
 
-root.mainloop()
+root.mainloop() # Last thing that should exist, the excution function 
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
@@ -1482,49 +1547,3 @@ def enter(raw):
         print(" ")
         time.sleep(0.6)
         sys.exit("GAME TERMINATING...\n")
-
-
-def map():
-    time.sleep(0.6)
-    print("\n                          MAP                            ")
-    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
-    print("|Terrace| + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |")
-    print("|—————————————————————————————————————————|s|—————————————— |")
-    print("|       |   [▪⌂▪]---------------[▪⌂▪]----- t|               |")
-    print("| First | bathroom-----| |----cafeteria--- a|               |")
-    print("| floor |             [▪⌂▪]               |i|               |")
-    print("|       |          white_room             |r|               |")
-    print("|—————————————————————————————————————————|s|—————————————— |")
-    print("|       |                   [▪⌂▪]---- waiting_area ---[▪⌂▪] |")
-    print("| Ground|              operation_room-----| |-------morgue  |")
-    print("| floor |                                [▪⌂▪]              |")
-    print("|       |                                Exit               |")
-    print("—— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— —— ")
-    time.sleep(0.8)
-    raw = input("\n(Press Enter key to continue) ")
-
-# call stuff
-
-raw = input("You're back here again. ")
-enter(raw)
-raw = input("You know it's a dream, that’s for sure. ")
-enter(raw)
-raw = input("But you're stuck here. Stuck for too long. ")
-enter(raw)
-raw = input("You can't control all of it. It feels like it's the dream that controls you. ")
-enter(raw)
-raw = input("You are trapped in this twisted hospital. ")
-enter(raw)
-raw = input("You can't wake up. You can't die. If you die, you wake up back in this room. ")
-enter(raw)
-print()
-raw = input("All you want is to be freed. ")
-enter(raw)
-print()
-print()
-time.sleep(0.7)
-print("A white room. A single bed. One window. ")
-raw = input("There is a door that leads to the corridor. ")
-enter(raw)
-
-white_room()
