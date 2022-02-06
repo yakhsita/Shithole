@@ -7,35 +7,82 @@ from tkinter.ttk import *
 
 root = Tk()
 root['bg']='black'
+root.resizable(0,0) #the window stays in the same size
 
 import tkinter as tk
 
+# logo frame
 canvas = tk.Canvas(root, height=700, width=800).pack()
 
 frame = tk.Frame(root, bg='black')
 frame.place(relwidth=1, relheight=1)
 
 photo = PhotoImage(file="H:\Logo_page.png")
-photo_label = tk.Label(root, image=photo, bg='black')
+photo_label = tk.Label(frame, image=photo, bg='black')
 photo_label.place(relx=0.25, rely=0.22, relheight=0.5, relwidth=0.5)
 
-img = tk.PhotoImage(file = "H:\Frame1,2.png")
-pic_label = Label(frame, image=img)
+# frame1 stuff
+f1_img = PhotoImage(file = "H:\Frame1,2.png")
+f1_pic_label = Label(frame, image=f1_img)
+
+w = tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72))
+r = tk.Label(root,
+             text=' The rules of the game are simple.\nType the command from given options. \nFind a way to escape.',
+             bg='black', fg='white', font=('Chiller', 28))
+
+# frame2 stuff
+g = tk.Label(root, text='Game loading', font=('Stencil', 28), bg="Black", fg="white")
+l = tk.Label(root,text=" . . .", font=('Stencil', 28), bg="black", fg="white")
+
+# frame3 stuff
+f3_img = PhotoImage(file = "H:\Frame3.png")
+f3_pic_label = Label(frame, image=f3_img)
+
+def frame3():
+
+    g.place_forget()
+    l.place_forget()
+    f3_pic_label.img = f1_img
+    f3_pic_label.pack()
+    y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room. ",
+                 font=("Bell MT", 18), justify="center", bg="#010e16", fg="white")
+    y.place(relx=0.02, rely=0.24)
+
+    b3 = tk.Button(frame, text='Next', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                  command=frame1)
+    b3.place(relx=0.25, rely=0.74)
+
+
+def frame2():
+
+    b2.destroy()
+    f1_pic_label.destroy()
+    w.destroy()
+    r.destroy()
+
+    g.place(x=230, y=330)
+    l.place(x=492, y=330)
+
+    root.after(1000, frame3)
+
 
 def frame1():
 
+    global b2
+    b1.destroy()
     photo_label.destroy()
+    w.place(relx=0.33, rely=0.3)
+    r.place(relx=0.23, rely=0.46)
 
-    tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72)).place(relx=0.33, rely=0.3)
-    tk.Label(root,
-             text=' The rules of the game are simple.\nType the command from given options. \nFind a way to escape.',
-             bg='black', fg='white', font=('Chiller', 28)).place(relx=0.23, rely=0.46)
+    f1_pic_label.img = f1_img  # to keep the reference for the image.
+    f1_pic_label.pack()  # <--- pack
 
-    pic_label.img = img  # to keep the reference for the image.
-    pic_label.pack()  # <--- pack
-    return pic_label
+    b2 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame2)
+    b2.place(relx=0.4145, rely=0.75)
 
-tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), command=frame1).place(relx=0.4145, rely=0.75)
+
+b1 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame1)
+b1.place(relx=0.4145, rely=0.75)
 
 root.mainloop()
 
@@ -1458,26 +1505,6 @@ def map():
 
 # call stuff
 
-print("The rules of the game are simple. Type the command from given options. Find a way to escape. ")
-time.sleep(0.7)
-print("GAME LOADING... ")
-time.sleep(2)
-print("TIP: patience is key.")
-time.sleep(1)
-print("UNPACKING RESOURCES... ")
-time.sleep(2.5)
-print("Type 'map' to open the map ")
-time.sleep(1)
-print("DOWNLOADING MAPS... ")
-time.sleep(2.5)
-print("Type 'quit' to exit game ")
-time.sleep(0.7)
-print("STARTING GAME...\n\n\n")
-time.sleep(2)
-raw = input("(Press Enter to Continue...) ")
-enter(raw)
-print()
-print()
 raw = input("You're back here again. ")
 enter(raw)
 raw = input("You know it's a dream, that’s for sure. ")
