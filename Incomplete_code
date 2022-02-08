@@ -1,0 +1,1470 @@
+# a text-based adventure game set in a hospital
+
+import time
+import sys
+from tkinter import *
+from tkinter.ttk import *
+import random
+from tkinter import font
+import tkinter as tk
+
+
+
+root = Tk()
+root.geometry("800x700")
+root['bg'] = 'black'
+root.resizable(0,0)
+
+canvas = Canvas(root, height=700, width=800)
+canvas.pack()
+
+#1 logo frame <- first pg
+frame = tk.Frame(root, bg="black")
+frame.place(relwidth=1, relheight=1)
+
+photo = PhotoImage(file="H:\Logo_page.png")
+photo_label = tk.Label(frame, image=photo, bg='black') # making the image into a label
+photo_label.place(x=-80, y=-10)
+
+# frame1 stuff
+f1_img = PhotoImage(file="H:/Frame1.png")
+f1_pic_label = tk.Label(frame, image=f1_img, bg="black")
+
+w = tk.Label(root,
+             text='WELCOME!',
+             bg='black',
+             fg='white',
+             font=('Times', 50)
+             )
+
+r = tk.Label(root,
+             text=' The rules of the game are simple.\nChoose the command from given options.\nFind a way to escape.',
+             bg='black',
+             fg='white',
+             font=('Times New Roman', 15),
+             justify='center'
+             )
+
+# Game laoding stuff
+f2_img = PhotoImage(file="H:\Loading....png")
+f2_pic_label = tk.Label(frame, image=f2_img, bg="black")
+
+# frame3 stuff
+f3_img = PhotoImage(file ="H:\Frame3.png")
+f3_pic_label = Label(frame, image=f3_img)
+y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room.\n\nAll you want is to be freed.",
+                 font=("Times New Roman", 15), justify="center", bg="#010e16", fg="white")
+
+# frame4 stuff
+b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2, command=root.destroy)
+#f4_img = PhotoImage(file = "C:/Users/shrirang/Downloads/Frame4.png")
+#f4_pic_label = Label(frame, image=f4_img)
+y1 = tk.Label(frame, text="A white room.\nA single bed. One window.\nThere is a door that leads to the corridor.",
+                 font=("Bell MT", 18), justify="center", bg="#0d1111", fg="white")
+
+# frame5 stuff <-- Inspect
+# f5_img = PhotoImage(file = "")
+# f5_pic_label = Label(frame, image=f5_img)
+y2 = tk.Label(frame, text="It’s plain, clean, and impersonal.\nYou can’t jump out of the window; it’s grilled shut.\nThe walls are clean, immaculate. The floor— pristine.\nThe bed is always made. No matter how much you destroy the place,\nit reverts back to its original state.",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame6 stuff <-- Door
+# f6_img = PhotoImage(file = "")
+# f6_pic_label = Label(frame, image=f6_img)
+y3 = tk.Label(frame, text="It is a long, straight hallway.\nWhite floors, white walls.\nTo the left is the bathroom.\nTo the right, the cafeteria.\n\nMove which direction?",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame7 stuff <-- Corridor
+# f7_img = PhotoImage(file = "")
+# f7_pic_label = Label(frame, image=f7_img)
+y4 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame8 stuff <-- Left(Bathroom)
+# f8_img = PhotoImage(file = "")
+# f8_pic_label = Label(frame, image=f8_img)
+y5 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame9 stuff <-- Back(From Bathroom to Corridor)
+# f9_img = PhotoImage(file = "")
+# f9_pic_label = Label(frame, image=f9_img)
+y6 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame10a stuff <-- Red Colour
+# f10a_img = PhotoImage(file = "")
+# f10a_pic_label = Label(frame, image=f10a_img)
+y7a = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame10b stuff <-- Blue Colour
+# f10b_img = PhotoImage(file = "")
+# f10b_pic_label = Label(frame, image=f10b_img)
+y7b = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame10c stuff <-- Black Colour
+# f10c_img = PhotoImage(file = "")
+# f10c_pic_label = Label(frame, image=f10c_img)
+y7c = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame11 stuff <-- Right(Cafeteria)
+# f11_img = PhotoImage(file = "")
+# f11_pic_label = Label(frame, image=f11_img)
+y8 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame12 stuff <-- Eat(In Cafeteria)
+# f12_img = PhotoImage(file = "")
+# f12_pic_label = Label(frame, image=f12_img)
+y9 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame13 stuff <-- Back(From cafeteria to corridor)
+# f13_img = PhotoImage(file = "")
+# f13_pic_label = Label(frame, image=f13_img)
+y10 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame14 stuff <-- Run to the stairs(From the cafeteria)
+# f14_img = PhotoImage(file = "")
+# f14_pic_label = Label(frame, image=f14_img)
+y11 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame15 stuff <-- Up(Crowbar)
+# f15_img = PhotoImage(file = "")
+# f15_pic_label = Label(frame, image=f15_img)
+y12 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame16 stuff <-- Terrace
+# f16_img = PhotoImage(file = "")
+# f16_pic_label = Label(frame, image=f16_img)
+y13 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame17 stuff <-- Down(From Terrace)
+# f17_img = PhotoImage(file = "")
+# f17_pic_label = Label(frame, image=f17_img)
+y14 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame18 stuff <-- Jump(From Terrace)
+# f18_img = PhotoImage(file = "")
+# f18_pic_label = Label(frame, image=f18_img)
+y15 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame19 stuff <-- White_room(Down from staircase)
+# f19_img = PhotoImage(file = "")
+# f19_pic_label = Label(frame, image=f19_img)
+y16 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame20 stuff <-- Operation_Theater(Left)
+# f20_img = PhotoImage(file = "")
+# f20_pic_label = Label(frame, image=f20_img)
+y17 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame21 stuff <-- Accept(In operation_theater)
+# f21_img = PhotoImage(file = "")
+# f21_pic_label = Label(frame, image=f21_img)
+y18 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame22 stuff <-- Deny(without crowbar)(In operation_theater)
+# f22_img = PhotoImage(file = "")
+# f22_pic_label = Label(frame, image=f22_img)
+y19 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame23 stuff <-- Deny(with crowbar)(In operation_theater)
+# f23_img = PhotoImage(file = "")
+# f23_pic_label = Label(frame, image=f23_img)
+y20 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame24 stuff <-- Morgue(right)
+# f24_img = PhotoImage(file = "")
+# f24_pic_label = Label(frame, image=f24_img)
+y21 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame25 stuff <-- Body(In morgue)
+# f25_img = PhotoImage(file = "")
+# f25_pic_label = Label(frame, image=f25_img)
+y22 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame26 stuff <-- Buzzing(without bugspray)(In morgue)
+# f26_img = PhotoImage(file = "")
+# f26pic_label = Label(frame, image=f26_img)
+y23 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame27 stuff <-- Buzzing(with bugspray)(In morgue)
+# f27_img = PhotoImage(file = "")
+# f27_pic_label = Label(frame, image=f27_img)
+y24 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame28 stuff <-- Exit
+# f28_img = PhotoImage(file = "")
+# f28_pic_label = Label(frame, image=f8_img)
+y25 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame29 stuff <-- Back(From Exit)
+# f29_img = PhotoImage(file = "")
+# f29_pic_label = Label(frame, image=f29_img)
+y26 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame30 stuff <-- Try(Entry1 correct)(In Exit)
+# f30_img = PhotoImage(file = "")
+# f30_pic_label = Label(frame, image=f30_img)
+y27 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame31 stuff <-- Try(Entry1 wrong)(In Exit)
+# f31_img = PhotoImage(file = "")
+# f31_pic_label = Label(frame, image=f31_img)
+y28 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+
+# frame32 stuff <-- Try(Entry2 correct)(In Exit)
+# f32_img = PhotoImage(file = "")
+# f32_pic_label = Label(frame, image=f32_img)
+y29 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame33 stuff <-- Try(Entry2 worng)(In Exit)
+# f33_img = PhotoImage(file = "")
+# f33_pic_label = Label(frame, image=f33_img)
+y30 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame34 stuff <-- Safe
+# f34_img = PhotoImage(file = "")
+# f34_pic_label = Label(frame, image=f34_img)
+y31 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame35 stuff <-- Last Terrace
+# f35_img = PhotoImage(file = "")
+# f35_pic_label = Label(frame, image=f35_img)
+y32 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame36 stuff <-- Last Terrace(Stay)
+# f36_img = PhotoImage(file = "")
+# f36_pic_label = Label(frame, image=f36_img)
+y33 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# frame37 stuff <-- Last Terrace(Jump)
+# f37_img = PhotoImage(file = "")
+# f37_pic_label = Label(frame, image=f37_img)
+y34 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
+
+# map
+frame_map = tk.Frame(root, bg='black')
+ma = tk.Label(frame_map, text="\n —— —— —— —— —— —— —— —— —— \n| Terrace |  + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |\n|———————————————|s|————|\n|              |    [▪⌂▪]---------------[▪⌂▪]----- t|               |\n|   First    | bathroom---|  |---cafeteria--- a|               |\n|    floor   |                 [▪⌂▪]                   |i|               |\n|              |            white_room             |r|               |\n|———————————————|s|————|\n|              |                  [▪⌂▪]---- waiting_area --[▪⌂▪] |\n| Ground |           operation_room-----|  |---morgue  |\n|   floor   |                                        [▪⌂▪]              |\n|             |                                         Exit              |\n —— —— —— —— —— —— —— —— —— ",
+                  font=("Times New Roman", 14), bg="black", fg="white") #sorry for that ^ , I was trying to put it in one line... hehe
+mt = tk.Label(frame_map, text='MAP', font=('Stencil', 22), bg="Black", fg="white")
+#fmap_img = PhotoImage(file = "C:/Users/shrirang/Downloads/Map.png") # Storing the photo in a variable
+#fmap_pic_label = Label(frame, image=fmap_img) # Converting the variable in to a label and storing it in a new variable
+
+def map():
+
+    #fmap_pic_label.img = fmap_img   # to keep the reference for the image.
+    #fmap_pic_label.place(x=-10, y=-10)   # <--- place
+    #frame_map.place(relx=0.15, rely=0.14, relwidth=0.7, relheight=0.7)
+    ma.place(x=83, y=95)
+    mt.place(x=245, y=65)
+
+def map1():
+
+    m1.place_forget()
+    b4.place_forget()
+    for y1 in frame.winfo_children():
+        y1.place_forget()
+    for y2 in frame.winfo_children():
+        y2.place_forget()
+    for y3 in frame.winfo_children():
+        y3.place_forget()
+    for y4 in frame.winfo_children():
+        y4.place_forget()
+    for y5 in frame.winfo_children():
+        y5.place_forget()
+    for y6 in frame.winfo_children():
+        y6.place_forget()
+    for y7 in frame.winfo_children():
+        y7.place_forget()
+    for y8 in frame.winfo_children():
+        y8.place_forget()
+    for y9 in frame.winfo_children():
+        y9.place_forget()
+    for y10 in frame.winfo_children():
+        y10.place_forget()
+    for y10a in frame.winfo_children():
+        y10a.place_forget()
+    for y10b in frame.winfo_children():
+        y10b.place_forget()
+    for y10c in frame.winfo_children():
+        y10c.place_forget()
+    for y11 in frame.winfo_children():
+        y11.place_forget()
+    for y12 in frame.winfo_children():
+        y12.place_forget()
+    for y12 in frame.winfo_children():
+        y12.place_forget()
+    for y13 in frame.winfo_children():
+        y13.place_forget()
+    for y14 in frame.winfo_children():
+        y14.place_forget()
+    for y15 in frame.winfo_children():
+        y15.place_forget()
+    for y16 in frame.winfo_children():
+        y16.place_forget()
+    for y17 in frame.winfo_children():
+        y17.place_forget()
+    for y18 in frame.winfo_children():
+        y18.place_forget()
+    for y19 in frame.winfo_children():
+        y19.place_forget()
+    for y20 in frame.winfo_children():
+        y20.place_forget()
+    for y21 in frame.winfo_children():
+        y21.place_forget()
+    for y22 in frame.winfo_children():
+        y22.place_forget()
+    for y23 in frame.winfo_children():
+        y23.place_forget()
+    for y24 in frame.winfo_children():
+        y24.place_forget()
+    for y25 in frame.winfo_children():
+        y25.place_forget()
+    for y26 in frame.winfo_children():
+        y26.place_forget()
+    for y27 in frame.winfo_children():
+        y27.place_forget()
+    for y28 in frame.winfo_children():
+        y28.place_forget()
+    for y29 in frame.winfo_children():
+        y29.place_forget()
+    for y30 in frame.winfo_children():
+        y30.place_forget()
+    for y31 in frame.winfo_children():
+        y31.place_forget()
+    for y32 in frame.winfo_children():
+        y32.place_forget()
+    for y33 in frame.winfo_children():
+        y33.place_forget()
+    for y34 in frame.winfo_children():
+        y34.place_forget()
+    for f4_pic_label in frame.winfo_children():
+        f4_pic_label.pack_forget()
+    for f5_pic_label in frame.winfo_children():
+        f5_pic_label.pack_forget()
+    for f6_pic_label in frame.winfo_children():
+        f6_pic_label.pack_forget()
+    for f7_pic_label in frame.winfo_children():
+        f7_pic_label.pack_forget()
+    for f8_pic_label in frame.winfo_children():
+        f8_pic_label.pack_forget()
+    for f9_pic_label in frame.winfo_children():
+        f9_pic_label.pack_forget()
+    for f10_pic_label in frame.winfo_children():
+        f10_pic_label.pack_forget()
+    for f11_pic_label in frame.winfo_children():
+        f11_pic_label.pack_forget()
+    for f12_pic_label in frame.winfo_children():
+        f12_pic_label.pack_forget()
+    for f13_pic_label in frame.winfo_children():
+        f13_pic_label.pack_forget()
+    for f14_pic_label in frame.winfo_children():
+        f14_pic_label.pack_forget()
+    for f15_pic_label in frame.winfo_children():
+        f15_pic_label.pack_forget()
+    for f16_pic_label in frame.winfo_children():
+        f16_pic_label.pack_forget()
+    for f17_pic_label in frame.winfo_children():
+        f17_pic_label.pack_forget()
+    for f18_pic_label in frame.winfo_children():
+        f18_pic_label.pack_forget()
+    for f19_pic_label in frame.winfo_children():
+        f19_pic_label.pack_forget()
+    for f20_pic_label in frame.winfo_children():
+        f20_pic_label.pack_forget()
+    for f21_pic_label in frame.winfo_children():
+        f21_pic_label.pack_forget()
+    for f22_pic_label in frame.winfo_children():
+        f22_pic_label.pack_forget()
+    for f23_pic_label in frame.winfo_children():
+        f23_pic_label.pack_forget()
+    for f24_pic_label in frame.winfo_children():
+        f24_pic_label.pack_forget()
+    for f25_pic_label in frame.winfo_children():
+        f25_pic_label.pack_forget()
+    for f26_pic_label in frame.winfo_children():
+        f26_pic_label.pack_forget()
+    for f27_pic_label in frame.winfo_children():
+        f27_pic_label.pack_forget()
+    for f28_pic_label in frame.winfo_children():
+        f28_pic_label.pack_forget()
+    for f29_pic_label in frame.winfo_children():
+        f29_pic_label.pack_forget()
+    for f30_pic_label in frame.winfo_children():
+        f30_pic_label.pack_forget()
+    for f31_pic_label in frame.winfo_children():
+        f31_pic_label.pack_forget()
+    for f32_pic_label in frame.winfo_children():
+        f32_pic_label.pack_forget()
+    for f33_pic_label in frame.winfo_children():
+        f33_pic_label.pack_forget()
+    for f34_pic_label in frame.winfo_children():
+        f34_pic_label.pack_forget()
+    for f35_pic_label in frame.winfo_children():
+        f35_pic_label.pack_forget()
+    for f36_pic_label in frame.winfo_children():
+        f36_pic_label.pack_forget()
+    for f37_pic_label in frame.winfo_children():
+        f37_pic_label.pack_forget()
+    map()
+    for f4_pic_label in frame.winfo_children():
+        c1 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame4)
+        c1.place(x=707, y=630)
+    for f5_pic_label in frame.winfo_children():
+        c2 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame5)
+        c2.place(x=707, y=630)
+    for f6_pic_label in frame.winfo_children():
+        c3 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame6)
+        c3.place(x=707, y=630)
+    for f7_pic_label in frame.winfo_children():
+        c4 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame7)
+        c4.place(x=707, y=630)
+    for f8_pic_label in frame.winfo_children():
+        c5 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame8)
+        c5.place(x=707, y=630)
+    for f9_pic_label in frame.winfo_children():
+        c6 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame9)
+        c6.place(x=707, y=630)
+    for f10_pic_label in frame.winfo_children():
+        c7 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame10)
+        c7.place(x=707, y=630)
+    for f10a_pic_label in frame.winfo_children():
+        c7a = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                        command=frame10)
+        c7a.place(x=707, y=630)
+    for f10b_pic_label in frame.winfo_children():
+        c7b = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame10)
+        c7b.place(x=707, y=630)
+    for f10c_pic_label in frame.winfo_children():
+        c7c = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                        command=frame10)
+        c7c.place(x=707, y=630)
+    for f11_pic_label in frame.winfo_children():
+        c8 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame11)
+        c8.place(x=707, y=630)
+    for f12_pic_label in frame.winfo_children():
+        c9 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame12)
+        c9.place(x=707, y=630)
+    for f13_pic_label in frame.winfo_children():
+        c10 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame13)
+        c10.place(x=707, y=630)
+    for f14_pic_label in frame.winfo_children():
+        c11 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame14)
+        c11.place(x=707, y=630)
+    for f15_pic_label in frame.winfo_children():
+        c12 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame15)
+        c12.place(x=707, y=630)
+    for f16_pic_label in frame.winfo_children():
+        c13 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame16)
+        c13.place(x=707, y=630)
+    for f17_pic_label in frame.winfo_children():
+        c14 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame17)
+        c14.place(x=707, y=630)
+    for f18_pic_label in frame.winfo_children():
+        c15 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame18)
+        c15.place(x=707, y=630)
+    for f19_pic_label in frame.winfo_children():
+        c16 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame19)
+        c16.place(x=707, y=630)
+    for f20_pic_label in frame.winfo_children():
+        c17 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame20)
+        c17.place(x=707, y=630)
+    for f21_pic_label in frame.winfo_children():
+        c18 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame21)
+        c18.place(x=707, y=630)
+    for f22_pic_label in frame.winfo_children():
+        c19 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame22)
+        c19.place(x=707, y=630)
+    for f23_pic_label in frame.winfo_children():
+        c20 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame23)
+        c20.place(x=707, y=630)
+    for f24_pic_label in frame.winfo_children():
+        c21 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame24)
+        c21.place(x=707, y=630)
+    for f25_pic_label in frame.winfo_children():
+        c22 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame25)
+        c22.place(x=707, y=630)
+    for f26_pic_label in frame.winfo_children():
+        c23 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame26)
+        c23.place(x=707, y=630)
+    for f27_pic_label in frame.winfo_children():
+        c24 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame27)
+        c24.place(x=707, y=630)
+    for f28_pic_label in frame.winfo_children():
+        c25 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame28)
+        c25.place(x=707, y=630)
+    for f29_pic_label in frame.winfo_children():
+        c26 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame29)
+        c26.place(x=707, y=630)
+    for f30_pic_label in frame.winfo_children():
+        c27 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame30)
+        c27.place(x=707, y=630)
+    for f31_pic_label in frame.winfo_children():
+        c28 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame31)
+        c28.place(x=707, y=630)
+    for f32_pic_label in frame.winfo_children():
+        c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame32)
+        c29.place(x=707, y=630)
+    for f33_pic_label in frame.winfo_children():
+        c30 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame33)
+        c30.place(x=707, y=630)
+    for f34_pic_label in frame.winfo_children():
+        c31 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame34)
+        c31.place(x=707, y=630)
+    for f35_pic_label in frame.winfo_children():
+        c32 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame35)
+        c32.place(x=707, y=630)
+    for f36_pic_label in frame.winfo_children():
+        c33 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame36)
+        c33.place(x=707, y=630)
+    for f37_pic_label in frame.winfo_children():
+        c34 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                       command=frame37)
+        c34.place(x=707, y=630)
+
+def frame37():
+    y33.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f34_pic_label.img = f5_img
+    # f34_pic_label.pack()
+
+    y34.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame36():
+    y32.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f36_pic_label.img = f5_img
+    # f36_pic_label.pack()
+
+    y33.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame35():
+    y31.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f35_pic_label.img = f5_img
+    # f35_pic_label.pack()
+
+    y34.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame34():
+    y30.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f34_pic_label.img = f5_img
+    # f34_pic_label.pack()
+
+    y31.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame33():
+    y29.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f33_pic_label.img = f5_img
+    # f33_pic_label.pack()
+
+    y30.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame32():
+    y28.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f32_pic_label.img = f5_img
+    # f32_pic_label.pack()
+
+    y29.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame31():
+    y27.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f31_pic_label.img = f5_img
+    # f31_pic_label.pack()
+
+    y28.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame30():
+    y26.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f30_pic_label.img = f5_img
+    # f30_pic_label.pack()
+
+    y27.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame29():
+    y25.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f29_pic_label.img = f5_img
+    # f29_pic_label.pack()
+
+    y26.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame28():
+    y24.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f28_pic_label.img = f5_img
+    # f28_pic_label.pack()
+
+    y25.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame27():
+    y23.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f27_pic_label.img = f5_img
+    # f27_pic_label.pack()
+
+    y24.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame26():
+    y22.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f26_pic_label.img = f5_img
+    # f26_pic_label.pack()
+
+    y23.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame25():
+    y21.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f25_pic_label.img = f5_img
+    # f25_pic_label.pack()
+
+    y22.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame24():
+    y20.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f24_pic_label.img = f5_img
+    # f24_pic_label.pack()
+
+    y21.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame23():
+
+    y19.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f23_pic_label.img = f5_img
+    # f23_pic_label.pack()
+
+    y20.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+    b4.place(x=710, y=630)
+
+def frame22():
+    y18.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f22_pic_label.img = f5_img
+    # f22_pic_label.pack()
+
+    y19.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame21():
+    y17.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f21_pic_label.img = f5_img
+    # f21_pic_label.pack()
+
+    y18.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame20():
+    y16.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f20_pic_label.img = f5_img
+    # f20_pic_label.pack()
+
+    y17.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame19():
+    y15.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f19_pic_label.img = f5_img
+    # f19_pic_label.pack()
+
+    y16.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame18():
+    y14.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f18_pic_label.img = f5_img
+    # f18_pic_label.pack()
+
+    y15.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame17():
+    y13.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f17_pic_label.img = f5_img
+    # f17_pic_label.pack()
+
+    y14.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame16():
+    y12.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f16_pic_label.img = f5_img
+    # f16_pic_label.pack()
+
+    y13.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame15():
+    y11.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f15_pic_label.img = f5_img
+    # f15_pic_label.pack()
+
+    y12.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame14():
+    y10.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f14_pic_label.img = f5_img
+    # f14_pic_label.pack()
+
+    y11.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame13():
+    y9.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f13_pic_label.img = f5_img
+    # f13_pic_label.pack()
+
+    y10.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame12():
+    y8.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f12_pic_label.img = f5_img
+    # f12_pic_label.pack()
+
+    y9.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame11():
+    y7.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f11_pic_label.img = f5_img
+    # f11_pic_label.pack()
+
+    y8.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+def frame10c():
+    y6.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f10c_pic_label.img = f5_img
+    # f10c_pic_label.pack()
+
+    y7c.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+def frame10b():
+    y6.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f10_pic_label.img = f5_img
+    # f10_pic_label.pack()
+
+    y7b.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+def frame10a():
+    y6.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f10a_pic_label.img = f5_img
+    # f10a_pic_label.pack()
+
+    y7a.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+def frame10():
+    y6.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f10_pic_label.img = f5_img
+    # f10_pic_label.pack()
+
+    y7.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame9():
+    y5.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f9_pic_label.img = f5_img
+    # f9_pic_label.pack()
+
+    y6.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame8():
+    y4.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f8_pic_label.img = f5_img
+    # f8_pic_label.pack()
+
+    y5.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame7():
+    y3.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f7_pic_label.img = f5_img
+    # f7_pic_label.pack()
+
+    y4.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame6():
+    y2.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f6_pic_label.img = f5_img
+    # f6_pic_label.pack()
+
+    y3.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame5():
+
+    y1.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    # f5_pic_label.img = f5_img
+    # f5_pic_label.pack()
+
+    y2.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4.place(x=710, y=630)
+
+
+def frame4():
+
+    global m1   # This is used when you are defining a variable in the def function but using it outside the def function. It technically becomes universal
+    y.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children(): # This rarely works, but frame.winfo_children considers all the widgets in the frame, e.g. button, label, etc.
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    #f4_pic_label.img = f4_img
+    #f4_pic_label.pack()
+
+    y1.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+    b4.place(x=710, y=630)
+
+def frame3():
+
+    global b3
+    f2_pic_label.destroy()
+    f3_pic_label.img = f3_img
+    f3_pic_label.pack()
+    y.place(x=30,y=180)
+
+    b3 = tk.Button(frame, text='Next', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                  command=frame4)
+    b3.place(relx=0.20, rely=0.74)
+
+
+def frame2():
+
+    b2.destroy()
+    f1_pic_label.destroy()
+    w.destroy()
+    r.destroy()
+
+    f2_pic_label.img = f2_img
+    f2_pic_label.place(x=126,y=170)
+
+    root.after(2000, frame3)
+
+
+def frame1():
+
+    global b2
+    b1.destroy()
+    photo_label.destroy()
+    exit_button.destroy()
+    w.place(relx=0.275, rely=0.09)
+    r.place(relx=0.3, rely=0.65)
+
+    f1_pic_label.img = f1_img  # to keep the reference for the image.
+    f1_pic_label.place(x=135,y=160)  # <--- pack
+
+    b2 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Times', 16, 'bold'), border=3, command=frame2)
+    b2.place(relx=0.44, rely=0.79)
+
+
+b1 = tk.Button(frame, text='START', bg='black', fg='white', font=('Courier', 18, 'bold'), border=3, command=frame1)
+b1.place(relx=0.439, rely=0.60) # It's out of the def function, hence is the first most button that appears, the click button
+
+exit_button = tk.Button(frame, text='QUIT', bg='black', fg='white', font=('Courier', 18, 'bold'), border=3, command=root.destroy)
+exit_button.place(relx=0.448, rely=0.70)
+
+
+root.mainloop() # Last thing that should exist, the excution function
