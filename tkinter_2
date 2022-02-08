@@ -1,20 +1,1549 @@
-from tkinter import *
+# a text-based adventure game set in a hospital
+
 import time
-import os
-root = Tk()
+import sys
+from tkinter import *
+from tkinter.ttk import *
 
-frameCnt = 58
-frames = [PhotoImage(file="H:\Lucid dreams logo - gif.gif",format = 'gif -index %i' %(i)) for i in range(frameCnt)]
+root = Tk() # root is for making the window
+root['bg']='black' # window in black
+root.resizable(0,0) #the window stays in the not resizable
 
-def update(ind):
+import tkinter as tk
 
-    frame = frames[ind]
-    ind += 2
-    if ind == frameCnt:
-        ind = 0
-    label.configure(image=frame)
-    root.after(100, update, ind)
-label = Label(root)
-label.pack()
-root.after(0, update, 0)
-root.mainloop()
+canvas = tk.Canvas(root, height=700, width=800) # window size
+canvas.pack() # packing is needed for every widget
+# we can either pack, place, grid, or other stuff... I mostly used place() cause here we can use proper coordinates that we learnt in our junior
+
+# I am putting the these things out of their def fucntion
+# cause for defining, it has to be above the function where it's being forgotton(.pack_forget())/(.place_forgot()) or destroyed(.pack_destroy())/(.place_destroy())
+
+#1 logo frame <- first pg
+frame = tk.Frame(root, bg='black')
+frame.place(relwidth=1, relheight=1) #relative height and width
+
+photo = PhotoImage(file="H:\Logo_page.png")
+photo_label = tk.Label(frame, image=photo, bg='black') # making the image into a label
+photo_label.place(relx=0.25, rely=0.22, relheight=0.5, relwidth=0.5)
+
+#2 frame1 stuff
+f1_img = PhotoImage(file = "H:\Frame1,2.png")
+f1_pic_label = Label(frame, image=f1_img)
+
+w = tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72)) # text label
+r = tk.Label(root,
+             text=' The rules of the game are simple.\nChoose the command from given options.\nFind a way to escape.',
+             bg='black', fg='white', font=('Chiller', 28))
+
+# frame2 stuff
+g = tk.Label(root, text='Game loading', font=('Stencil', 28), bg="Black", fg="white")
+l = tk.Label(root,text=" . . .", font=('Stencil', 28), bg="black", fg="white")
+
+# frame3 stuff
+f3_img = PhotoImage(file = "H:\Frame3.png")
+f3_pic_label = Label(frame, image=f3_img)
+y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room.\n\nAll you want is to be freed.",
+                 font=("Bell MT", 18), justify="center", bg="#010e16", fg="white")
+
+# frame4 stuff
+b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+f4_img = PhotoImage(file = "H:\Frame4.png")
+f4_pic_label = Label(frame, image=f4_img)
+y1 = tk.Label(frame, text="A white room.\nA single bed. One window.\nThere is a door that leads to the corridor.",
+                 font=("Bell MT", 18), justify="center", bg="#0d1111", fg="white")
+
+# map
+frame_map = tk.Frame(root, bg='black')
+ma = tk.Label(frame_map, text="\n —— —— —— —— —— —— —— —— —— \n| Terrace |  + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |\n|———————————————|s|————|\n|              |    [▪⌂▪]---------------[▪⌂▪]----- t|               |\n|   First    | bathroom---|  |---cafeteria--- a|               |\n|    floor   |                 [▪⌂▪]                   |i|               |\n|              |            white_room             |r|               |\n|———————————————|s|————|\n|              |                  [▪⌂▪]---- waiting_area --[▪⌂▪] |\n| Ground |           operation_room-----|  |---morgue  |\n|   floor   |                                        [▪⌂▪]              |\n|             |                                         Exit              |\n —— —— —— —— —— —— —— —— —— ",
+                  font=("Times New Roman", 14), bg="black", fg="white") #sorry for that ^ , I was trying to put it in one line... hehe
+mt = tk.Label(frame_map, text='MAP', font=('Stencil', 22), bg="Black", fg="white")
+fmap_img = PhotoImage(file = "H:\Map.png") # Storing the photo in a variable
+fmap_pic_label = Label(frame, image=fmap_img) # Converting the variable in to a label and storing it in a new variable
+
+def map():
+
+    fmap_pic_label.img = fmap_img   # to keep the reference for the image.
+    fmap_pic_label.place(x=-10, y=-10)   # <--- place
+    frame_map.place(relx=0.15, rely=0.14, relwidth=0.7, relheight=0.7)
+    ma.place(x=83, y=95)
+    mt.place(x=245, y=65)
+
+def map1():
+
+    m1.place_forget()
+    b4.place_forget()
+    y1.place_forget()
+    f4_pic_label.pack_forget()
+    map() # I didn't know but after this function is completed the below Button works, it's so COOL
+    c1 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=frame4)
+    c1.place(x=707, y=630)
+
+
+def frame4():
+
+    global m1   # This is used when you are defining a variable in the def function but using it outside the def function. It technically becomes universal
+    y.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children(): # This rarely works, but frame.winfo_children considers all the widgets in the frame, e.g. button, label, etc.
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    f4_pic_label.img = f4_img
+    f4_pic_label.pack()
+
+    y1.place(x=35, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
+    b4.place(x=710, y=630)
+
+def frame3():
+
+    global b3
+    g.place_forget()
+    l.place_forget()
+    f3_pic_label.img = f1_img
+    f3_pic_label.pack()
+    y.place(relx=0.02, rely=0.24)
+
+    b3 = tk.Button(frame, text='Next', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2,
+                  command=frame4)
+    b3.place(relx=0.25, rely=0.74)
+
+
+def frame2():
+
+    b2.destroy()
+    f1_pic_label.destroy()
+    w.destroy()
+    r.destroy()
+
+    g.place(x=230, y=330)
+    l.place(x=492, y=330)
+
+    root.after(2000, frame3) # This delays time, I don't know how much is 2000 but you try it out
+
+
+def frame1():
+
+    global b2
+    b1.destroy()
+    photo_label.destroy()
+    w.place(relx=0.33, rely=0.3)
+    r.place(relx=0.23, rely=0.46)
+
+    f1_pic_label.img = f1_img  # to keep the reference for the image.
+    f1_pic_label.pack()  # <--- pack
+
+    b2 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame2)
+    b2.place(relx=0.4145, rely=0.75)
+
+
+b1 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame1)
+b1.place(relx=0.4145, rely=0.75) # It's out of the def function, hence is the first most button that appears, the click button
+
+root.mainloop() # Last thing that should exist, the excution function 
+
+# values: (keys)-> direction, (value)-> room
+rooms = {
+    "White_Room": {
+        "Door": "Corridor",
+        "or Inspect": "Description"
+    },
+    "Corridor": {
+        "or Left": "Bathroom",
+        "Right": "Cafeteria"
+    },
+    "Bathroom": {
+        "Investigate": "Red or Blue",
+        "or Back": "Corridor"
+    },
+    "Cafeteria": {
+        "Right": "Staircase",
+        "or Left": "Corridor"
+    },
+    "Staircase": {
+        "Back to Cafeteria (Type 'Back')": "Cafeteria",
+        "or Up": "Terrace",
+        "or Down": "Waiting_Area"
+    },
+    "Terrace": {
+        "Jump": "Death",
+        "or Back": "Staircase"
+    },
+    "Waiting_Area": {
+        "or Up": "Staircase",
+        "Exit": "Exit",
+        "or Right": "Morgue",
+        "or Left": "Operating_Room",
+        "or Inspect": "Find pepper Spray"
+    },
+    "Operating_Room": {
+        "Back": "Waiting_Area",
+        "Accept": "Death",
+        "Deny": {
+            "Crowbar": "No Death",
+            "Run": "Death",
+            "Bug_Spray": "Death"
+        }
+    },
+    "Morgue": {
+        "or Body": "Unlock a letter",
+        "Buzzing": "Death",
+        "or Back": "Waiting_Area"
+    },
+    "Exit": {
+        "Back": "Waiting_Area",
+        "or Try": "Finish"
+    }
+}
+
+inventory = []
+
+
+# functions
+
+def white_room():
+    location = "White_Room"
+    direction = ""
+
+    inventory.clear()
+    print()
+    print()
+
+    print("possible moves: Door or Inspect")
+
+    direction = input("What will you do? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "door":
+        print()
+        corridor()
+    elif direction == "inspect":
+        print()
+        time.sleep(0.6)
+        raw = input("\nIt’s plain, clean, and impersonal. ").lower()
+        enter(raw)
+        raw = input("You can’t jump out of the window; it’s grilled shut. ").lower()
+        enter(raw)
+        raw = input("The walls are clean, immaculate. The floor— pristine. The bed is always made. ").lower()
+        enter(raw)
+        raw = input("No matter how much you destroy the place, it reverts back to its original state. ").lower()
+        enter(raw)
+        white_room()
+    elif direction == "map":
+        map() + white_room()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        white_room()
+
+
+def corridor():
+    location = "Corridor"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("_______________________ ")
+    print("_______________________ ")
+    print("You are in the", location)
+    print()
+    print()
+    time.sleep(0.6)
+    raw = input("It is a long, straight hallway. White floors, white walls. ").lower()
+    enter(raw)
+    raw = input("To the left is the bathroom. To the right, the cafeteria. ").lower()
+    enter(raw)
+    print()
+
+    print()
+    print("possible moves: Left or Right")
+
+    direction = input("Move which direction? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "left":
+        print()
+        print()
+        bathroom()
+    elif direction == "right":
+        print()
+        print()
+        cafeteria()
+    elif direction == "map":
+        map() + corridor()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        corridor()
+
+
+def bathroom():
+    location = "Bathroom"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("You are in the", location)
+    print()
+    print()
+    time.sleep(0.6)
+    raw = input("A row of toilet stalls. A mirror. Sinks. A ghost that knocks. ").lower()
+    enter(raw)
+    raw = input("... ").lower()
+    enter(raw)
+    raw = input("*knock* ").lower()
+    enter(raw)
+    raw = input("*knock* *knock* ").lower()
+    enter(raw)
+    raw = input("You never did put a ghost in this bathroom, at least not consciously. ").lower()
+    enter(raw)
+    raw = input("But it’s always there now. In the last stall. Each time you come in. ").lower()
+    enter(raw)
+    raw = input("... ").lower()
+    enter(raw)
+    print()
+    print("\nWhat do you do? Investigate the Knocking or Head Back (go back to corridor) \n ")
+
+    time.sleep(0.6)
+    print("Possible moves: Investigate or Back")
+
+    direction = input("Decision? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "back":
+        print()
+        print()
+        corridor()
+    elif direction == "investigate":
+        print()
+        print()
+        bathroom_ex()
+    elif direction == "map":
+        map() + bathroom()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        bathroom()
+
+
+def bathroom_ex():
+    location = "Bathroom Stall"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("You are in the", location)
+    print()
+    time.sleep(0.6)
+    raw = input("A young girl, holding out two cards. One red and One blue. ").lower()
+    enter(raw)
+    raw = input("Her empty BLACK eyes peak at your soul from the fringes of her BLACK hair. ").lower()
+    enter(raw)
+    raw = input("She asks you to choose. But regardless of your choice, you die each time. ").lower()
+    enter(raw)
+    print()
+    raw = input("Maybe you should try something new. ").lower()
+    enter(raw)
+    print()
+    print()
+    answer = input("Which color do you choose? \n>> ").lower().strip()
+
+    if answer == "red":
+        print()
+        time.sleep(0.6)
+        raw = input("You knew it was coming, but still flinched when she stabs you. ").lower()
+        enter(raw)
+        raw = input("Her Black eyes still haunt your memories. ").lower()
+        enter(raw)
+        print("Maybe Red isn’t the answer. ")
+        raw = input("\n(Press Enter to Continue...) ").lower()
+        enter(raw)
+        print()
+        print()
+        raw = input("You wake up in the white room. ").lower()
+        enter(raw)
+        white_room()
+    elif answer == "blue":
+        print()
+        time.sleep(0.6)
+        raw = input("You knew it was coming, but still flinched when she strangles you. ").lower()
+        enter(raw)
+        raw = input("Her Black eyes still haunt your memories. ").lower()
+        enter(raw)
+        print("Maybe Blue isn’t the answer. ")
+        raw = input("\n(Press Enter to Continue...) ").lower()
+        enter(raw)
+        print()
+        print()
+        raw = input("You wake up in the white room. ").lower()
+        enter(raw)
+        white_room()
+    elif answer == "black":
+        print()
+        time.sleep(0.6)
+        raw = input("Ah. Interesting. You choose a completely different color. ").lower()
+        enter(raw)
+        raw = input("Slowly, she turns her head to the side, not stopping until it did a complete 180 degree turn. ").lower()
+        enter(raw)
+        raw = input("You let your eyes focus on the back of her head, and notice the letter 'R' written on it. ").lower()
+        enter(raw)
+        print()
+        print("You get a feeling that this is important. ")
+        print()
+        raw = input("Seeing as nothing more happened, you head back to the corridor. ").lower()
+        enter(raw)
+        print()
+        print()
+        corridor()
+    elif answer == "map":
+        map() + bathroom_ex()
+    elif answer == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        bathroom_ex()
+
+
+def cafeteria():
+    location = "Cafeteria"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("You are in the", location)
+    print()
+    time.sleep(0.7)
+    raw = input("It seems to be connected to the stairway. ").lower()
+    enter(raw)
+    raw = input("As you enter, you see the menu. ").lower()
+    enter(raw)
+    print("    —— —— —— —— —— —— —— ")
+    print("    |       menu       | ")
+    print("    | 1)juIce          | ")
+    print("    | 2)pIzza          | ")
+    print("    | 3)Ice cream      | ")
+    print("    | 4)rIce           | ")
+    print("    | 5)chIcken wIngs  | ")
+    print("    —— —— —— —— —— —— —— ")
+    time.sleep(0.5)
+    raw = input("How peculiar... The letter ‘I’ stands out. ").lower()
+    enter(raw)
+    print()
+    raw = input("Behind the counter you see a wide variety of...").lower()
+    enter(raw)
+    raw = input("Human organs... ").lower()
+    enter(raw)
+    raw = input("You don’t know why. But looking at it makes your stomach hurl each time. ").lower()
+    enter(raw)
+    print()
+    print()
+
+    answer1 = input("What do you do? \n>Run to the staircase! \n>Eat the organs! \n>Go Back to Corridor! \n(Type Run or Eat or Back) \n>> ").lower().strip()
+
+    if answer1 == "run":
+        print()
+        time.sleep(0.6)
+        raw = input("The sight of the 'food' still makes you uncomfortable. ").lower()
+        enter(raw)
+        print("Perhaps you could go up for some fresh air or go down. ")
+        print()
+        staircase()
+    elif answer1 == "eat":
+        print()
+        time.sleep(0.6)
+        raw = input("You don’t understand what compels you to do this. ").lower()
+        enter(raw)
+        raw = input("But you eat the organs. ").lower()
+        enter(raw)
+        print()
+        raw = input("You wake up in the white room. The feeling of nausea won’t leave you. ").lower()
+        enter(raw)
+        print()
+        raw = input("Maybe cannibalism isn't the answer. ").lower()
+        enter(raw)
+        raw = input("... ").lower()
+        enter(raw)
+        white_room()
+    elif answer1 == "back":
+        print()
+        time.sleep(0.6)
+        corridor()
+    elif answer1 == "map":
+        map() + cafeteria()
+    elif answer1 == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        cafeteria()
+
+
+def staircase():
+    location = "Staircase"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("You are in the", location)
+    print()
+    time.sleep(0.5)
+    print()
+    print("Possible moves: Up or Down or Cafeteria (Type: 'Back')")
+
+    direction = input("Move which direction? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "up":
+        time.sleep(0.6)
+        take_crowbar()
+    elif direction == "down":
+        print()
+        print()
+        waiting_area()
+    elif direction == "back":
+        print()
+        print()
+        cafeteria()
+    elif direction == "map":
+        map() +staircase()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        staircase()
+
+
+def take_crowbar():
+
+    while 'crowbar' not in inventory:
+        print()
+        print()
+        print()
+        raw = input("On the way up the stairs, something catches your eye. ").lower()
+        enter(raw)
+        raw = input("It's a Crowbar! ").lower()
+        enter(raw)
+        raw = input("Should you take it? ").lower()
+        enter(raw)
+        raw = input("But what could you possibly use it for? ").lower()
+        enter(raw)
+        print()
+        print()
+        print("Pick it up? ")
+        take_the_crowbar = input("Yes/No: \n>> ").lower().strip()
+
+        if take_the_crowbar == "yes":
+            add_to_inventory("crowbar")
+            time.sleep(0.5)
+            print("CROWBAR added to inventory ")
+            time.sleep(0.5)
+            print("Inventory: ")
+            print(inventory)
+            print()
+            terrace()
+        elif take_the_crowbar == "no":
+            print("You leave the Crowbar in the Terrace. ")
+            raw = input("... ").lower()
+            enter(raw)
+            print()
+            terrace()
+        elif take_the_crowbar == "map":
+            map() + take_crowbar()
+        elif take_the_crowbar == "quit":
+            print(" ")
+            time.sleep(0.6)
+            sys.exit("GAME TERMINATING...\n")
+        else:
+            print()
+            print("Invalid move! \nOnly Enter Valid Statements. ")
+            take_crowbar()
+    terrace()
+
+
+def terrace():
+    location = "Terrace"
+    direction = ""
+
+    print()
+    print()
+    time.sleep(0.6)
+    print("* ,   . +   `. *` . . +,   *  ` . + ,  . `  . ")
+    print("  .  *  ` . + ,  . `  .   . +   `. *` . . + ` ")
+    print("You are in the", location)
+    time.sleep(0.6)
+    raw = input("The stars look pretty tonight. ").lower()
+    enter(raw)
+    raw = input("You wonder what exactly you're doing here. ").lower()
+    enter(raw)
+    raw = input("You're not sure what exactly you want to do either. ").lower()
+    enter(raw)
+    raw = input("Would you like to go back downstairs or... ").lower()
+    enter(raw)
+    print()
+
+    print()
+    print("Possible moves: Jump or Back")
+
+    direction = input("Decision? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "back":
+        print()
+        time.sleep(0.6)
+        raw = input("As tempting as a trip to the stars sounds like, you decide to keep fighting. ").lower()
+        enter(raw)
+        raw = input("You could come back here anytime, anyway. ").lower()
+        enter(raw)
+        print()
+        print()
+        staircase()
+    elif direction == "jump":
+        print()
+        time.sleep(0.6)
+        print("Do you really wish to jump? Nothing special would happen. You’ll just die. ")
+        raw = input("As always wake up in the white room. ").lower()
+        enter(raw)
+        raw = input("Maybe it's different this time... ").lower()
+        enter(raw)
+        raw = input("You brace yourself and fall forward. ").lower()
+        enter(raw)
+        print()
+        time.sleep(0.6)
+        raw = input("... Only to wake up in the White Room. ").lower()
+        enter(raw)
+        print()
+        print("God dammit. ")
+        raw = input("Same thing, again and again. ").lower()
+        enter(raw)
+        white_room()
+    elif direction == "map":
+        map() + terrace()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        terrace()
+
+
+def waiting_area():
+    location = "Waiting_Area"
+    direction = ""
+
+    while direction != "exit":
+
+        print()
+        time.sleep(0.7)
+        print("You are in the", location)
+        print()
+        time.sleep(0.7)
+        raw = input("\nThe deeper levels always felt strange to you. ")
+        enter(raw)
+        raw = input("\nThe Waiting Area is nothing much, except for the safe locker. (Type 'left')")
+        enter(raw)
+        raw = input("\nTo the left is an operating room and to the right... a morgue. (Type 'right')")
+        enter(raw)
+        raw = input("\nAnd in front of you an 'exit', where the safe locker is located. (Type 'exit')")
+        enter(raw)
+        raw = input("\nThere’s also a supply closet. (Type 'inspect')")
+        enter(raw)
+        print("\nYou may also go back up the staircase. (Type 'up') ")
+        print()
+
+        time.sleep(0.7)
+        print()
+
+        direction = input("Move which direction? \n>> ").lower().strip()
+        print("You entered:", direction)
+
+        if direction == "left":
+            print()
+            print()
+            operation_room()
+        elif direction == "up":
+            print()
+            print()
+            staircase()
+        elif direction == "right":
+            print()
+            print()
+            morgue()
+        elif direction == "exit":
+            print()
+            print()
+            password()
+        elif direction == "inspect":
+            if 'bug spray' not in inventory:
+                print()
+                time.sleep(0.6)
+                raw = input("You navigate your way through the chairs. ").lower()
+                enter(raw)
+                raw = input("You see a door that leads to the cleaning closet. ").lower()
+                enter(raw)
+                raw = input("In there you find a bottle of bug spray. ").lower()
+                enter(raw)
+                print()
+                take_spray()
+            elif 'bug spray' in inventory:
+                print()
+                time.sleep(0.6)
+                print("There is nothing left to inspect. ")
+                print()
+                print()
+                waiting_area()
+            elif direction == "map":
+                map() + waiting_area()
+            elif direction == "quit":
+                print(" ")
+                time.sleep(0.6)
+                sys.exit("GAME TERMINATING...\n")
+        elif direction == "map":
+            map() + waiting_area()
+        elif direction == "quit":
+            print(" ")
+            time.sleep(0.6)
+            sys.exit("GAME TERMINATING...\n")
+        else:
+            print()
+            print("Invalid move! \nOnly Enter Valid Statements. ")
+            print()
+            print()
+            waiting_area()
+
+
+def take_spray():
+    print("Pick it up? ")
+    take_the_spray = input("Yes/No: \n>> ").lower().strip()
+    if take_the_spray == "yes":
+        add_to_inventory("bug spray")
+        print()
+        time.sleep(0.5)
+        print("Bug spray added to inventory ")
+        print()
+        time.sleep(0.5)
+        print("Inventory: ")
+        print(inventory)
+        print()
+        raw = input("You head back to the waiting_area. ").lower()
+        enter(raw)
+        print()
+        print()
+        waiting_area()
+    elif take_the_spray == "no":
+        print()
+        raw = input("You leave the Bug spray in the cabinet. ").lower()
+        enter(raw)
+        raw = input("You head back to the waiting_area. ").lower()
+        enter(raw)
+        print()
+        print()
+        waiting_area()
+    elif take_the_spray == "map":
+        map() + take_spray()
+    elif take_the_spray == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        take_spray()
+
+
+def operation_room():
+    location = "Operating_Room"
+    direction = ""
+
+    time.sleep(0.6)
+    print("You are in the", location)
+    print()
+    time.sleep(0.6)
+    raw = input("'The Mad Surgeon', as you’ve come to call him, greets you. ").lower()
+    enter(raw)
+    raw = input("He wears his scrubs and a face mask and a face shield. ").lower()
+    enter(raw)
+    raw = input("He asks you if you want to get rid of your depression. ").lower()
+    enter(raw)
+    raw = input("What a concept. But maybe it’s worth another shot... ").lower()
+    enter(raw)
+    raw = input("All you know is that you can't kill him, but you can stall for time. ").lower()
+    enter(raw)
+    raw = input("Every time he 'dies', it only takes him a few minutes to come back to life. ").lower()
+    enter(raw)
+    raw = input("Looks like he's alive again. ").lower()
+    enter(raw)
+    print()
+    raw = input("You can go Back to the Waiting_Area ").lower()
+    enter(raw)
+    print()
+
+    print("Possible moves: ", "Accept,", "Deny,", "or Back ")
+
+    direction = input("What do you do? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "back":
+        print()
+        print()
+        waiting_area()
+    elif direction == "accept":
+        print()
+        raw = input("\nYou lay on the bench, telling yourself that maybe this time he can actually cure you. ").lower()
+        enter(raw)
+        raw = input("... ").lower()
+        enter(raw)
+        raw = input("\nYou sigh as you hear him laugh. The Mad Surgeon tells you that all he wants from you are your organs. ").lower()
+        enter(raw)
+        raw = input("\nHe congratulates you for being stupid enough to think anything could cure you. ").lower()
+        enter(raw)
+        print()
+        raw = input("\nYou hope you won’t wake up in the White Room again. ").lower()
+        enter(raw)
+        raw = input("\n\nBut of course, you do. ").lower()
+        enter(raw)
+        white_room()
+    elif direction == "deny":
+        deny()
+    elif direction == "map":
+        map() + operation_room()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        operation_room()
+
+
+def deny():
+    print()
+    time.sleep(0.6)
+    raw = input("Furious, the surgeon charges at you with a scalpel. ").lower()
+    enter(raw)
+    print()
+    print("Possible moves: 'Inventory' or 'Run' ")
+    decide = input("Quick! What do you do?: \n>> ").lower().strip()
+
+    if decide == "inventory":
+        print()
+        print(inventory)
+        if not inventory:
+            print()
+            time.sleep(0.6)
+            raw = input("Uh-oh. Looks like you have nothing to defend yourself with. ").lower()
+            enter(raw)
+            print("Only thing you can do now, is run. ")
+            print("So you turn around and try to run, ")
+            print("But he catches up with you. ")
+            print()
+            print()
+            time.sleep(0.6)
+            print("You wake up in the white room. ")
+            raw = input("Maybe next time you should find something to defend yourself with... ").lower()
+            enter(raw)
+            white_room()
+        else:
+            defend = input("Pick something to defend yourself with. \n>>  ").lower().replace(" ", "")
+            if defend == "crowbar":
+                print()
+                time.sleep(0.6)
+                raw = input("The surgeon tries to stab you with his scalpel. ").lower()
+                enter(raw)
+                raw = input("You block his attacks. ").lower()
+                enter(raw)
+                raw = input("You delt him a deadly blow with your crowbar and watch as his body flops to the ground. ").lower()
+                enter(raw)
+                print()
+                raw = input("You notice his ID card. ").lower()
+                enter(raw)
+                raw = input("It has the letter 'B' written on it. ").lower()
+                enter(raw)
+                print()
+                raw = input("Feeling a little shaky, you return to the Waiting_Area. ").lower()
+                enter(raw)
+                print()
+                print()
+                waiting_area()
+            elif defend == "bugspray":
+                time.sleep(0.6)
+                raw = input("The surgeon tries to stab you with his scalpel. ").lower()
+                enter(raw)
+                raw = input("You use the bug spray, but realize how ineffective it is against his surgical mask and face shield. ").lower()
+                enter(raw)
+                raw = input("How stupid! You try to run away, but he catches up to you. ").lower()
+                enter(raw)
+                raw = input("You were unable to make it out alive. ").lower()
+                enter(raw)
+                print()
+                print()
+                raw = input("You wake up in the white room, yet again. ").lower()
+                enter(raw)
+                white_room()
+            elif defend == "map":
+                map() + deny()
+            elif defend == "quit":
+                print(" ")
+                time.sleep(0.6)
+                sys.exit("GAME TERMINATING...\n")
+            else:
+                print()
+                print("Invalid move! \nOnly Enter Valid Statements. ")
+                print()
+                print()
+                deny()
+    elif decide == "run":
+        time.sleep(0.6)
+        print()
+        raw = input("The surgeon tries to stab you with his scalpel. ").lower()
+        enter(raw)
+        raw = input("You turn around and try to run, ").lower()
+        enter(raw)
+        raw = input("But you couldn't make it in time. ").lower()
+        enter(raw)
+        print()
+        raw = input("You wake up in the white room. ").lower()
+        enter(raw)
+        white_room()
+    elif decide == "map":
+        map() + deny()
+    elif decide == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        deny()
+
+
+def morgue():
+    location = "Morgue"
+    direction = ""
+
+    print("You are in the", location)
+
+    print()
+    time.sleep(0.6)
+    raw = input("The Lights Flicker. ").lower()
+    enter(raw)
+    raw = input("This place gives you a bad vibe. ").lower()
+    enter(raw)
+    raw = input("There’s a body on the stretcher. A white sheet covers it. ").lower()
+    enter(raw)
+    raw = input("The blood seeps through the fabric. ").lower()
+    enter(raw)
+    raw = input("The foot is uncovered. You can see the toe tag. ").lower()
+    enter(raw)
+    raw = input("At the same time, you hear a sharp buzzing sound. ").lower()
+    enter(raw)
+    print()
+    raw = input("*Buzzzzzz* ").lower()
+    enter(raw)
+    print()
+    raw = input("It originates from one of the body storage cabinets. ").lower()
+    enter(raw)
+    print()
+    print("What do you do? Inspect the Body or the Buzzing? ")
+    print("(You may also go back to the Waiting_Area) ")
+
+    time.sleep(0.6)
+    print()
+    print()
+    print("Possible moves: Body or Back")
+
+    direction = input("Decision? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "back":
+        print()
+        print()
+        waiting_area()
+    elif direction == "body":
+        print()
+        time.sleep(0.6)
+        raw = input("\nYou cautiously make your way towards the body. ").lower()
+        enter(raw)
+        raw = input("\nUpon closer inspection, you notice that the foot is decomposing. ").lower()
+        enter(raw)
+        raw = input("\nThe toe tag seems to be covered in mud. How unusual. ").lower()
+        enter(raw)
+        raw = input("\nYou reach forward to dust off the mud. ").lower()
+        enter(raw)
+        print()
+        raw = input("\nSuddenly, the body sits up. ").lower()
+        enter(raw)
+        print("\nScared to death, you run back to the waiting room. ")
+        print()
+        waiting_area()
+    elif direction == "buzzing":
+        print()
+        buzz()
+    elif direction == "map":
+        map() + morgue()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        morgue()
+
+
+def buzz():
+    print()
+    time.sleep(0.6)
+    raw = input("\nYou head towards the cabinet wondering what's causing that noise. ").lower()
+    enter(raw)
+    raw = input("\nIt stops; you don't hear a thing. ").lower()
+    enter(raw)
+    raw = input("\nSomething's fishy and you know it, but you open the cabinet anyway. ").lower()
+    enter(raw)
+    print()
+    raw = input("\n*Buzzzzzz* ").lower()
+    enter(raw)
+    print()
+    raw = input("\nBefore you realize, a swarm of bluebottle flies surround you. ").lower()
+    enter(raw)
+    raw = input("\n\"It's just flies,\" you think. ").lower()
+    enter(raw)
+    raw = input("\nSomething feels off. But what? ").lower()
+    enter(raw)
+    print("\nIt's your skin. ")
+    time.sleep(0.6)
+    raw = input("\nCrap. They are feeding on your skin! ").lower()
+    enter(raw)
+    print()
+    print()
+
+    print("Possible moves: Inventory or run ")
+    decide = input("What do you do? \n>> ").lower().strip()
+
+    if decide == "inventory":
+        print()
+        print(inventory)
+        if not inventory:
+            print()
+            time.sleep(0.6)
+            raw = input("\nUh-oh. Looks like you have nothing to defend yourself with. ").lower()
+            enter(raw)
+            raw = input("\nOnly one thing left to do. ").lower()
+            enter(raw)
+            raw = input("\nYou turn around and run, ").lower()
+            enter(raw)
+            raw = input("\nBut you can't get through. It's an impenetrable swarm of flies. ").lower()
+            enter(raw)
+            raw = input("\nYou try but you get eaten to death by those flies. ").lower()
+            enter(raw)
+            print()
+            print()
+            print("\nYou wake up in the white room. ")
+            raw = input("\nMaybe next time you should find something to defend yourself with... ").lower()
+            enter(raw)
+            print()
+            print()
+            white_room()
+        elif decide == "map":
+            map() + buzz()
+        elif decide == "quit":
+            print(" ")
+            time.sleep(0.6)
+            sys.exit("GAME TERMINATING...\n")
+        else:
+            defend = input("Pick something to defend yourself with. \n>>  ").lower().replace(" ", "")
+            if defend == "bugspray":
+                print()
+                time.sleep(0.6)
+                raw = input("\nThe flies won't leave you alone. ").lower()
+                enter(raw)
+                raw = input("\nSo you use the bugspray to kill 'em. ").lower()
+                enter(raw)
+                raw = input("\nYou spray it all over the room and watch as they rain down to the ground. ").lower()
+                enter(raw)
+                raw = input("\nA simple, but effective solution. ").lower()
+                enter(raw)
+                print()
+                raw = input("\nOnce the last of them die, you notice a piece of paper in the cabinet. ").lower()
+                enter(raw)
+                raw = input("\nIt has the letter 'D' written on it. ").lower()
+                enter(raw)
+                print()
+                raw = input("\nYou get the feeling that this is important. You return to the Waiting Area. ").lower()
+                enter(raw)
+                raw = input("... ").lower()
+                enter(raw)
+                print()
+                print()
+                waiting_area()
+            elif defend == "crowbar":
+                print()
+                time.sleep(0.6)
+                raw = input("\nThe swarm of flies dive on to you. ").lower()
+                enter(raw)
+                raw = input("\nYou use the crowbar, but realize that the flies just escapes your every hit. ").lower()
+                enter(raw)
+                raw = input("\nHow stupid! You try to run away, but it's of no use ").lower()
+                enter(raw)
+                raw = input("\nYou get eaten up to death by those flies. ").lower()
+                enter(raw)
+                print()
+                print()
+                raw = input("\nYou wake up; again in the white room. ").lower()
+                enter(raw)
+                white_room()
+            elif defend == "map":
+                map() + buzz()
+            elif defend == "quit":
+                print(" ")
+                time.sleep(0.6)
+                sys.exit("GAME TERMINATING...\n")
+            else:
+                print()
+                print("Invalid move! \nOnly Enter Valid Statements. ")
+                print()
+                print()
+                buzz()
+    elif decide == "run":
+        print()
+        time.sleep(0.6)
+        raw = input("\nThe swarm of flies dive on to you. ").lower()
+        enter(raw)
+        raw = input("\nYou turn around and try to run ").lower()
+        enter(raw)
+        raw = input("\nBut you just can't get through it. ").lower()
+        enter(raw)
+        raw = input("\nAnd you get eaten up to death by those flies. ").lower()
+        enter(raw)
+        print()
+        print()
+        raw = input("\nYou wake up in the white room. ").lower()
+        enter(raw)
+        white_room()
+    elif decide == "map":
+        map() + buzz()
+    elif decide == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        buzz()
+
+
+def password():
+    location = "Exit"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("You are at the", location, ". Or you hope it is. ")
+    print()
+    time.sleep(0.6)
+    raw = input("There's a safe with a FOUR letter code. ").lower()
+    enter(raw)
+    print("Do you wish to try? Remember, you have a limited amount of attempts. ")
+    raw = input("Head Back if you think you aren't ready. ").lower()
+    enter(raw)
+    print()
+
+    print()
+    print("possible moves: Try or Back")
+
+    direction = input("Your choice? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "back":
+        print()
+        print()
+        waiting_area()
+    elif direction == "try":
+        word = "bird"
+        print()
+        time.sleep(0.6)
+        print("REMEMBER, you have 2 attemps only. ")
+        time.sleep(0.6)
+        guess = input("\nGuess the 4-letter word: ").lower().strip()
+        tries = 1
+        if guess != word:
+            print("\nINCORRECT PASSWORD")
+            print("Try again, and get it right if you wish to live. ")
+            tries += 1
+            guess = input("\nGuess the 4-letter word: ").lower().strip()
+        if guess != word and tries == 2:
+            print("\nINCORRECT PASSWORD")
+            time.sleep(0.3)
+            raw = input("You got it wrong! ").lower()
+            enter(raw)
+            raw = input("\nA tiny part of you wished that this meant you would die. For real. ").lower()
+            enter(raw)
+            raw = input("But reality is often disappointing. ").lower()
+            enter(raw)
+            print()
+            raw = input("You're back at the White Room again. ").lower()
+            enter(raw)
+            print()
+            raw = input("Just like every other time. ").lower()
+            enter(raw)
+            raw = input("Death just doesn't seem to exist here. ").lower()
+            enter(raw)
+            white_room()
+        print()
+        print("CORRECT PASSWORD ")
+        safe()
+    elif direction == "map":
+        map() + password()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        password()
+
+
+def safe():
+    print()
+    time.sleep(0.6)
+    raw = input("You open the safe, smiling, hoping for something good to happen. ").lower()
+    enter(raw)
+    raw = input("Inside, you see a locket; it was your mom's. It has a picture of us together. ").lower()
+    enter(raw)
+    time.sleep(0.3)
+    raw = input("It was the only thing that was left of hers. ").lower()
+    enter(raw)
+    print()
+    print("//FLASHBACK// ")
+    time.sleep(0.6)
+    raw = input("She used to suffer from nightmares, something similar to yours. ").lower()
+    enter(raw)
+    raw = input("But she was brave enough to resist. She even managed to overcome it. ").lower()
+    enter(raw)
+    raw = input("Perhaps you’re just not strong enough... ").lower()
+    enter(raw)
+    raw = input("You remember... She used to say: ").lower()
+    enter(raw)
+    time.sleep(0.6)
+    print("     \"My little bird, I hope when you take that leap ")
+    print("       of faith, you have nothing to fear anymore...\" ")
+    time.sleep(0.6)
+    raw = input("//FLASHBACK END// ").lower()
+    enter(raw)
+    print()
+    time.sleep(0.6)
+    raw = input("A leap of faith... ").lower()
+    enter(raw)
+    time.sleep(0.6)
+    raw = input("A leap... a Jump...?! ").lower()
+    enter(raw)
+    raw = input("Is that what it means? ").lower()
+    enter(raw)
+    raw = input("Maybe... ").lower()
+    enter(raw)
+    print()
+    print("But I’ve tried jumping off the terrace. Maybe more than a hundred times. ")
+    raw = input("It always ends in the White Room. ").lower()
+    enter(raw)
+    print()
+    raw = input("Well. There can’t be any harm in trying once more. ").lower()
+    enter(raw)
+    raw = input("It might be different. ").lower()
+    enter(raw)
+    print()
+    raw = input("You head straight to the terrace. ").lower()
+    enter(raw)
+    print()
+    print()
+    terrace_alt()
+
+
+def terrace_alt():
+    location = "Terrace"
+    direction = ""
+
+    print()
+    time.sleep(0.6)
+    print("* ,   . +   `. *` . . +,   *  ` . + ,  . `  . ")
+    print("  .  *  ` . + ,  . `  .   . +   `. *` . . + ` ")
+    print("You are in the", location)
+    time.sleep(0.6)
+    raw = input("This is it. ").lower()
+    enter(raw)
+    raw = input("You take one last look at the stars. ").lower()
+    enter(raw)
+    raw = input("You could jump... Or you could head back. ").lower()
+    enter(raw)
+    raw = input("But you've exhausted every inch of this nightmare. ").lower()
+    enter(raw)
+    raw = input("There is no point in heading back. ").lower()
+    enter(raw)
+    print()
+    print("Possible moves: Stay or Jump ")
+
+    direction = input("Decision? \n>> ").lower().strip()
+    print("You entered:", direction)
+
+    if direction == "stay":
+        print()
+        time.sleep(0.6)
+        raw = input("\nAlright. No. ").lower()
+        enter(raw)
+        raw = input("You don't want to jump. Not right now, at least. ").lower()
+        enter(raw)
+        raw = input("You could come back here anytime, anyway. ").lower()
+        enter(raw)
+        print()
+        raw = input("Right...? ").lower()
+        enter(raw)
+        print()
+        raw = input("... It doesn't feel right though... ").lower()
+        enter(raw)
+        print()
+        print("Nevertheless, you leave. ")
+        print("On the way downstairs, you feel your vision black out. ")
+        print()
+        raw = input("You slowly come to yourself. ").lower()
+        enter(raw)
+        raw = input("You're in a white room. The White Room. ").lower()
+        enter(raw)
+        print()
+        print( "You squeeze your eyes shut. It shouldn't be happening. No, not after everything— just to come back here— ")
+        print("But what else did you expect? You did nothing different. ")
+        raw = input("You were a coward who didn't take the chance to change. ").lower()
+        enter(raw)
+        print()
+        raw = input("You’re stuck. You can’t get out. ").lower()
+        enter(raw)
+        raw = input("It’s a dream. It’s a nightmare. ").lower()
+        enter(raw)
+        time.sleep(0.5)
+        print("It’s a nightmare. You’re stuck. ")
+        time.sleep(0.4)
+        print("You’re stuck. ")
+        time.sleep(0.3)
+        print("You’re stuck. You’re stuck. You’re stuck. ")
+        time.sleep(0.2)
+        print("You’re stuck. You’re stuck. You’re stuck. You’re stuck. You’re stuck. You’re stuck. ")
+        time.sleep(0.1)
+        print("Stuck. Stuck. Stuck. Stu— ")
+        raw = input("... ").lower()
+        enter(raw)
+        print()
+        print()
+        print()
+        print()
+        print("------------------------ ")
+        print("| ENDING 2/2: INSANITY | ")
+        print("------------------------ ")
+        print()
+        print()
+        print()
+        print()
+        time.sleep(0.6)
+        print("You couldn't make it out. ")
+        raw = input("You stayed, despite knowing there was a way out. ").lower()
+        enter(raw)
+        raw = input("Your grief and thoughts weigh you down. ").lower()
+        enter(raw)
+        raw = input("You wonder if you could have done anything differently. ").lower()
+        enter(raw)
+        print()
+        raw = input("If you had been brave. ").lower()
+        enter(raw)
+        print()
+        raw = input("Maybe things would have been better... ").lower()
+        enter(raw)
+        print()
+        print()
+        restart_seq()
+    elif direction == "jump":
+        print()
+        raw = input("\nYou brace yourself, and fall forward. ").lower()
+        enter(raw)
+        print()
+        raw = input("You slowly come to yourself, waking up in a white room. ").lower()
+        enter(raw)
+        raw = input("A white room? /The/ white room? ").lower()
+        enter(raw)
+        print("You squeeze your eyes shut. It couldn’t be happening. No, not after everything— just to come back here— ")
+        time.sleep(0.5)
+        print("*knock* ")
+        time.sleep(0.2)
+        raw = input("*knock* ").lower()
+        enter(raw)
+        raw = input("Someone walks in through the door— a man— a man that you recognize. ").lower()
+        enter(raw)
+        raw = input("A man from the hospital— the one you were in before the dream. ").lower()
+        enter(raw)
+        print()
+        raw = input("This isn't a part of the dream. It’s not the dream— is it the dream? ").lower()
+        enter(raw)
+        raw = input("It can’t be. There are in people here. Real people you haven’t seen in your dreams. ").lower()
+        enter(raw)
+        print()
+        raw = input("The nurse asks you if you've been sleeping well. ").lower()
+        enter(raw)
+        raw = input("You nod. ").lower()
+        enter(raw)
+        print()
+        raw = input("You search for your mother's locket on your bedside table. ").lower()
+        enter(raw)
+        raw = input("It's there. You see two faces smiling at one another. ").lower()
+        enter(raw)
+        print()
+        raw = input( "You carefully rip the picture until only your mother’s face remains, and place it back into the locket. ").lower()
+        enter(raw)
+        raw = input("Your mother lives in dreams. You belong here. ").lower()
+        enter(raw)
+        print()
+        raw = input("You’re not sure when you’re going to be okay... but that’s okay. ").lower()
+        enter(raw)
+        raw = input("It might take a while, but you will make it out of this hospital. ").lower()
+        enter(raw)
+        raw = input("With a full recovery. ").lower()
+        enter(raw)
+        raw = input("You won’t get stuck. ").lower()
+        enter(raw)
+        raw = input("You look at your mother one last time before you close the locket with a click. ").lower()
+        enter(raw)
+        print()
+        print()
+        print()
+        print("----------------------- ")
+        print("| ENDING 1/2: CLOSURE | ")
+        print("----------------------- ")
+        print()
+        print()
+        print()
+        time.sleep(0.7)
+        raw = input("It was the fear of being stuck in a hospital that put you in an endless loop of actually being stuck. ").lower()
+        enter(raw)
+        raw = input( "After coming to terms with yourself, you realize that it might take a while for you to be alright. ").lower()
+        enter(raw)
+        raw = input("But you know it’ll happen someday. ").lower()
+        enter(raw)
+        print()
+        print()
+        time.sleep(0.6)
+        print("Congratulations! You made it! ")
+        print()
+        print()
+        restart_seq()
+    elif direction == "map":
+        map() + terrace_alt()
+    elif direction == "quit":
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
+    else:
+        print()
+        print("Invalid move! \nOnly Enter Valid Statements. ")
+        print()
+        terrace_alt()
+
+
+def add_to_inventory(item):
+    inventory.append(item)
+
+
+def restart_seq():
+    print()
+    time.sleep(0.6)
+    answer1 = input("Replay Game? (Yes/No) \n>>  ").lower().strip()
+    if answer1 == "yes":
+        print("" * 5)
+        print("RESTARTING... ")
+        print()
+        print()
+        print("You're back here again. ")
+        print("You know it's a dream, that’s for sure. ")
+        print()
+        time.sleep(0.6)
+        raw = input("(Press Enter to Continue...) ").lower()
+        enter(raw)
+        raw = input("But you're stuck here. Stuck for too long. ").lower()
+        enter(raw)
+        raw = input("You can't control all of it. It feels like it's the dream that controls you. ").lower()
+        enter(raw)
+        print()
+        raw = input("You are trapped in this twisted hospital ")
+        enter(raw)
+        print("You can't wake up. You can't die. If you die, you wake up back in this room. ")
+        print()
+        raw = input("All you want is to be freed. ")
+        enter(raw)
+        print()
+        print()
+        time.sleep(0.7)
+        print("A white room. A single bed. One window. ")
+        raw = input("There is a door that leads to the corridor. ")
+        enter(raw)
+        white_room()
+    elif answer1 == "no":
+        print()
+        print("Thank you for playing :)\n")
+        sys.exit()
+    else:
+        print()
+        print("Sorry, I don't understand. English please!\n")
+        print()
+        restart_seq()
+
+
+def enter(raw):
+    while raw != "" and raw != "quit" and raw != "map":
+        raw = input("(Please press ENTER key to continue) ")
+    while raw != "map":
+        break
+    else:
+        map()
+    while raw != "quit":
+        break
+    else:
+        print(" ")
+        time.sleep(0.6)
+        sys.exit("GAME TERMINATING...\n")
