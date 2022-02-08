@@ -4,50 +4,63 @@ import time
 import sys
 from tkinter import *
 from tkinter.ttk import *
-
-root = Tk() # root is for making the window
-root['bg']='black' # window in black
-root.resizable(0,0) #the window stays in the not resizable
-
+from PIL import Image, ImageTk
+import random
+from tkinter import font
 import tkinter as tk
 
-canvas = tk.Canvas(root, height=700, width=800) # window size
-canvas.pack() # packing is needed for every widget
-# we can either pack, place, grid, or other stuff... I mostly used place() cause here we can use proper coordinates that we learnt in our junior
 
-# I am putting the these things out of their def fucntion
-# cause for defining, it has to be above the function where it's being forgotton(.pack_forget())/(.place_forgot()) or destroyed(.pack_destroy())/(.place_destroy())
+
+root = Tk()
+root.geometry("700x700")
+root['bg'] = 'black'
+root.resizable(0,0)
+
+canvas = Canvas(root, height=700, width=700)
+canvas.pack()
 
 #1 logo frame <- first pg
-frame = tk.Frame(root, bg='black')
-frame.place(relwidth=1, relheight=1) #relative height and width
+frame = tk.Frame(root, bg="black")
+frame.place(relwidth=1, relheight=1)
 
-photo = PhotoImage(file="H:\Logo_page.png")
+photo = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Programing/1 LearnPython/Screenshots/lucidd/background.png"))
 photo_label = tk.Label(frame, image=photo, bg='black') # making the image into a label
-photo_label.place(relx=0.25, rely=0.22, relheight=0.5, relwidth=0.5)
+photo_label.place(height=700, width=700)
 
 #2 frame1 stuff
-f1_img = PhotoImage(file = "H:\Frame1,2.png")
-f1_pic_label = Label(frame, image=f1_img)
 
-w = tk.Label(root, text='Welcome!', bg='black', fg='white', font=('Chiller', 72)) # text label
+
+f1_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Programing/1 LearnPython/Screenshots/lucidd/welcome.png"))
+f1_pic_label = tk.Label(frame, image=f1_img, bg="black", height=700, width=700)
+
+w = tk.Label(root,
+             text='WELCOME!',
+             bg='black',
+             fg='white',
+             font=('Yu Gothic UI Semibold', 50)
+             )
+
 r = tk.Label(root,
              text=' The rules of the game are simple.\nChoose the command from given options.\nFind a way to escape.',
-             bg='black', fg='white', font=('Chiller', 28))
+             bg='black',
+             fg='white',
+             font=('Times New Roman', 15),
+             justify='center'
+             )
 
 # frame2 stuff
-g = tk.Label(root, text='Game loading', font=('Stencil', 28), bg="Black", fg="white")
-l = tk.Label(root,text=" . . .", font=('Stencil', 28), bg="black", fg="white")
+f2_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Programing/1 LearnPython/Screenshots/lucidd/loading.png"))
+f2_pic_label = tk.Label(frame, image=f2_img, bg="black")
 
 # frame3 stuff
-f3_img = PhotoImage(file = "H:\Frame3.png")
+f3_img = PhotoImage(file = "C:/Users/shrirang/Downloads/Frame3.png")
 f3_pic_label = Label(frame, image=f3_img)
 y = tk.Label(frame, text="You're back here again. \nYou know it's a dream, that’s for sure.\nBut you're stuck here. Stuck for too long.\nYou can't control all of it.\n It feels like it's the dream that controls you. \nYou are trapped in this twisted hospital.\n You can't wake up. You can't die.\n If you die, you wake up back in this room.\n\nAll you want is to be freed.",
-                 font=("Bell MT", 18), justify="center", bg="#010e16", fg="white")
+                 font=("Times New Roman", 18), justify="center", bg="#010e16", fg="white")
 
 # frame4 stuff
-b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=root.destroy)
-f4_img = PhotoImage(file = "H:\Frame4.png")
+b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2, command=root.destroy)
+f4_img = PhotoImage(file = "C:/Users/shrirang/Downloads/Frame4.png")
 f4_pic_label = Label(frame, image=f4_img)
 y1 = tk.Label(frame, text="A white room.\nA single bed. One window.\nThere is a door that leads to the corridor.",
                  font=("Bell MT", 18), justify="center", bg="#0d1111", fg="white")
@@ -57,7 +70,7 @@ frame_map = tk.Frame(root, bg='black')
 ma = tk.Label(frame_map, text="\n —— —— —— —— —— —— —— —— —— \n| Terrace |  + `. * ,  . +  `.  *` . . + ,  *  ` . + ,  .  *   |\n|———————————————|s|————|\n|              |    [▪⌂▪]---------------[▪⌂▪]----- t|               |\n|   First    | bathroom---|  |---cafeteria--- a|               |\n|    floor   |                 [▪⌂▪]                   |i|               |\n|              |            white_room             |r|               |\n|———————————————|s|————|\n|              |                  [▪⌂▪]---- waiting_area --[▪⌂▪] |\n| Ground |           operation_room-----|  |---morgue  |\n|   floor   |                                        [▪⌂▪]              |\n|             |                                         Exit              |\n —— —— —— —— —— —— —— —— —— ",
                   font=("Times New Roman", 14), bg="black", fg="white") #sorry for that ^ , I was trying to put it in one line... hehe
 mt = tk.Label(frame_map, text='MAP', font=('Stencil', 22), bg="Black", fg="white")
-fmap_img = PhotoImage(file = "H:\Map.png") # Storing the photo in a variable
+fmap_img = PhotoImage(file = "C:/Users/shrirang/Downloads/Map.png") # Storing the photo in a variable
 fmap_pic_label = Label(frame, image=fmap_img) # Converting the variable in to a label and storing it in a new variable
 
 def map():
@@ -107,8 +120,7 @@ def frame4():
 def frame3():
 
     global b3
-    g.place_forget()
-    l.place_forget()
+    f2_pic_label.forget()
     f3_pic_label.img = f1_img
     f3_pic_label.pack()
     y.place(relx=0.02, rely=0.24)
@@ -125,10 +137,9 @@ def frame2():
     w.destroy()
     r.destroy()
 
-    g.place(x=230, y=330)
-    l.place(x=492, y=330)
+    f2_pic_label.pack(padx=0.2, pady=0.5)
 
-    root.after(2000, frame3) # This delays time, I don't know how much is 2000 but you try it out
+    root.after(2000, frame3)
 
 
 def frame1():
@@ -136,20 +147,25 @@ def frame1():
     global b2
     b1.destroy()
     photo_label.destroy()
-    w.place(relx=0.33, rely=0.3)
-    r.place(relx=0.23, rely=0.46)
+    exit_button.destroy()
+    w.place(relx=0.23, rely=0.09)
+    r.place(relx=0.25, rely=0.65)
 
     f1_pic_label.img = f1_img  # to keep the reference for the image.
     f1_pic_label.pack()  # <--- pack
 
     b2 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame2)
-    b2.place(relx=0.4145, rely=0.75)
+    b2.place(relx=0.375, rely=0.80)
 
 
-b1 = tk.Button(frame, text='Click me!', bg='black', fg='white', font=('Bradley Hand ITC', 20, 'bold'), border=2, command=frame1)
-b1.place(relx=0.4145, rely=0.75) # It's out of the def function, hence is the first most button that appears, the click button
+b1 = tk.Button(frame, text='START!', bg='black', fg='white', font=('MS Gothic', 20, 'bold'), border=2, command=frame1)
+b1.place(relx=0.4145, rely=0.60) # It's out of the def function, hence is the first most button that appears, the click button
 
-root.mainloop() # Last thing that should exist, the excution function 
+exit_button = tk.Button(frame, text=' QUIT ', bg='black', fg='white', font=('MS Gothic', 20, 'bold'), border=2, command=root.quit)
+exit_button.place(relx=0.4145, rely=0.70)
+
+
+root.mainloop() # Last thing that should exist, the excution function
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
