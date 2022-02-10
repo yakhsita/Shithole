@@ -1,39 +1,37 @@
-# frame17 stuff <-- Inspect(In Waiting_area)
-# f17_img = PhotoImage(file = "")
-# f17_pic_label = Label(frame, image=f17_img)
-y14 = tk.Label(frame, text="You navigate your way through the chairs.\nYou see a door that leads to the cleaning closet.\nIn there you find a bottle of bug spray.\n",
+# frame23 stuff <-- Morgue(right)
+# f23_img = PhotoImage(file = "")
+# f23_pic_label = Label(frame, image=f23_img)
+y20 = tk.Label(frame, text="The Lights Flicker.\nThis place gives you a bad vibe.\nThere’s a body on the stretcher. A white sheet covers it.\nThe blood seeps through the fabric.\nThe foot is uncovered. You can see the toe tag.\nAt the same time, you hear a sharp buzzing sound.\n*Buzzzzzz*\nIt originates from one of the body storage cabinets.\nWhat do you do? Inspect the Body or the Buzzing?",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
-# frame18 stuff <-- Waiting_area(Down from staircase)
-# f18_img = PhotoImage(file = "")
-# f18_pic_label = Label(frame, image=f18_img)
-y15 = tk.Label(frame, text="You are in the Waiting area.\nThe deeper levels always felt strange to you.\nThe Waiting Area is nothing much, except for the safe locker.\nTo the left is an operating room and to the right... a morgue.\nAnd in front of you an 'exit',\nwhere the safe locker is located.\nThere’s also a supply closet.\nYou may also go back up the staircase.\nMove which direction?",
+# frame24 stuff <-- Body(In morgue)
+# f24_img = PhotoImage(file = "")
+# f24_pic_label = Label(frame, image=f24_img)
+y21 = tk.Label(frame, text="You cautiously make your way towards the body.\nUpon closer inspection, you notice that the foot is decomposing.\nThe toe tag seems to be covered in mud. How unusual.\nYou reach forward to dust off the mud.\nSuddenly, the body sits up.\nScared to death, you run back to the waiting room.",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+
+# frame25ha stuff <-- Buzz
+# f25ha_img = PhotoImage(file = "")
+# f25ha_pic_label = Label(frame, image=f25ha_img)
+y22 = tk.Label(frame, text="You head towards the cabinet wondering what's causing that noise.\nIt stops; you don't hear a thing.\nSomething's fishy and you know it, but you open the cabinet anyway.\n*Buzzzzzz* \nBefore you realize, a swarm of bluebottle flies surround you.\n\"It's just flies,\" you think.\nSomething feels off. But what?\nIt's your skin.\nCrap. They are feeding on your skin!\nWhat do you do?",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+
+# frame25 stuff <-- Buzzing(Inventory)(without bugspray)
+# f25_img = PhotoImage(file = "")
+# f25_pic_label = Label(frame, image=f25_img)
+y22 = tk.Label(frame, text="Uh-oh. Looks like you have nothing to defend yourself with.\nOnly one thing left to do.\nYou turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
-# frame19 stuff <-- Operation_Theater(Left)
-# f19_img = PhotoImage(file = "")
-# f19_pic_label = Label(frame, image=f19_img)
-y16 = tk.Label(frame, text="You are in the Operation Theater.\n'The Mad Surgeon', as you’ve come to call him, greets you.\nHe wears his scrubs and a face mask and a face shield.\nHe asks you if you want to get rid of your depression.\nWhat a concept. But maybe it’s worth another shot...\nAll you know is that you can't kill him, but you can stall for time.\nEvery time he 'dies', it only takes him a few minutes to come back to life.\nLooks like he's alive again.\nYou can go Back to the Waiting_Area. What do you do?",
+# frame26 stuff <-- Buzzing(Inventory)(with bugspray)
+# f26_img = PhotoImage(file = "")
+# f26pic_label = Label(frame, image=f26_img)
+y23 = tk.Label(frame, text="\nThe flies won't leave you alone.\nSo you use the bugspray to kill 'em.\nYou spray it all over the room and watch as they rain down to the ground.\nA simple, but effective solution.\nOnce the last of them die, you notice a piece of paper in the cabinet.\nIt has the letter 'D' written on it.\nYou get the feeling that this is important. You return to the Waiting Area.\n...",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
-
-# frame20 stuff <-- Accept
-# f20_img = PhotoImage(file = "")
-# f20_pic_label = Label(frame, image=f20_img)
-y17 = tk.Label(frame, text="You lay on the bench, telling yourself that maybe this time he can actually cure you.\n...\nYou sigh as you hear him laugh. The Mad Surgeon tells you\nthat all he wants from you are your organs.\nHe congratulates you for being stupid\nenough to think anything could cure you.\nYou hope you won’t wake up in the White Room again.\n\nBut of course, you do.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-
-# frame21 stuff <-- Inventory(with crowbar)
-# f21_img = PhotoImage(file = "")
-# f21_pic_label = Label(frame, image=f21_img)
-y18 = tk.Label(frame, text="Furious, the surgeon charges at you with a scalpel.\nThe surgeon tries to stab you with his scalpel.\nYou block his attacks.\nYou delt him a deadly blow with your crowbar and\nwatch as his body flops to the ground. You notice his ID card.\nIt has the letter 'B' written on it.\nFeeling a little shaky, you return to the Waiting_Area.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-
-
-# frame22 stuff <-- Inventory(without crowbar)
-# f22_img = PhotoImage(file = "")
-# f22_pic_label = Label(frame, image=f22_img)
-y19 = tk.Label(frame, text="Furious, the surgeon charges at you with a scalpel.Uh-oh. Looks like you have nothing to defend yourself with.\nOnly thing you can do now, is run.\nSo you turn around and try to run,\nBut he catches up with you.\nMaybe next time you should find something to defend yourself with...",
+# frame26ha stuff <-- Run
+# f26ha_img = PhotoImage(file = "")
+# f26hapic_label = Label(frame, image=f26ha_img)
+y23 = tk.Label(frame, text="You turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
