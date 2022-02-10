@@ -1,37 +1,56 @@
-# frame23 stuff <-- Morgue(right)
-# f23_img = PhotoImage(file = "")
-# f23_pic_label = Label(frame, image=f23_img)
-y20 = tk.Label(frame, text="The Lights Flicker.\nThis place gives you a bad vibe.\nThere’s a body on the stretcher. A white sheet covers it.\nThe blood seeps through the fabric.\nThe foot is uncovered. You can see the toe tag.\nAt the same time, you hear a sharp buzzing sound.\n*Buzzzzzz*\nIt originates from one of the body storage cabinets.\nWhat do you do? Inspect the Body or the Buzzing?",
+# frame27 stuff <-- Exit
+# f27_img = PhotoImage(file = "")
+# f27_pic_label = Label(frame, image=f27_img)
+y24 = tk.Label(frame, text="You are at the Exit. Or you hope it is.\nThere's a safe with a FOUR letter code. Do you wish to try?\nRemember, you have a limited amount of attempts.\nHead Back if you think you aren't ready.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
-# frame24 stuff <-- Body(In morgue)
-# f24_img = PhotoImage(file = "")
-# f24_pic_label = Label(frame, image=f24_img)
-y21 = tk.Label(frame, text="You cautiously make your way towards the body.\nUpon closer inspection, you notice that the foot is decomposing.\nThe toe tag seems to be covered in mud. How unusual.\nYou reach forward to dust off the mud.\nSuddenly, the body sits up.\nScared to death, you run back to the waiting room.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-
-# frame25ha stuff <-- Buzz
-# f25ha_img = PhotoImage(file = "")
-# f25ha_pic_label = Label(frame, image=f25ha_img)
-y22 = tk.Label(frame, text="You head towards the cabinet wondering what's causing that noise.\nIt stops; you don't hear a thing.\nSomething's fishy and you know it, but you open the cabinet anyway.\n*Buzzzzzz* \nBefore you realize, a swarm of bluebottle flies surround you.\n\"It's just flies,\" you think.\nSomething feels off. But what?\nIt's your skin.\nCrap. They are feeding on your skin!\nWhat do you do?",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-
-# frame25 stuff <-- Buzzing(Inventory)(without bugspray)
-# f25_img = PhotoImage(file = "")
-# f25_pic_label = Label(frame, image=f25_img)
-y22 = tk.Label(frame, text="Uh-oh. Looks like you have nothing to defend yourself with.\nOnly one thing left to do.\nYou turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
+# frame28 stuff <-- Try
+# f28_img = PhotoImage(file = "")
+# f28_pic_label = Label(frame, image=f8_img)
+y25 = tk.Label(frame, text="REMEMBER, you have 2 attemps only.\n\nGuess the 4-letter word",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
-# frame26 stuff <-- Buzzing(Inventory)(with bugspray)
-# f26_img = PhotoImage(file = "")
-# f26pic_label = Label(frame, image=f26_img)
-y23 = tk.Label(frame, text="\nThe flies won't leave you alone.\nSo you use the bugspray to kill 'em.\nYou spray it all over the room and watch as they rain down to the ground.\nA simple, but effective solution.\nOnce the last of them die, you notice a piece of paper in the cabinet.\nIt has the letter 'D' written on it.\nYou get the feeling that this is important. You return to the Waiting Area.\n...",
+# frame29 stuff <-- Try(Entry correct)(In Exit)
+# f29_img = PhotoImage(file = "")
+# f29_pic_label = Label(frame, image=f29_img)
+y26 = tk.Label(frame, text="CORRECT PASSWORD",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+word = "bird"
+Entry = tk.Entry(frame, bg="black")
+
+
+# frame30 stuff <-- Try(Entry wrong)(In Exit)
+# f30_img = PhotoImage(file = "")
+# f30_pic_label = Label(frame, image=f30_img)
+y27 = tk.Label(frame, text="INCORRECT PASSWORD\n\nYou got it wrong!\nA tiny part of you wished that this meant you would die.\nFor real. But reality is often disappointing.\nYou're back at the White Room again.\nJust like every other time.\nDeath just doesn't seem to exist here.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
-# frame26ha stuff <-- Run
-# f26ha_img = PhotoImage(file = "")
-# f26hapic_label = Label(frame, image=f26ha_img)
-y23 = tk.Label(frame, text="You turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
+
+# frame31 stuff <--
+# f31_img = PhotoImage(file = "")
+# f31_pic_label = Label(frame, image=f31_img)
+y28 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+
+
+# frame32 stuff <--
+# f32_img = PhotoImage(file = "")
+# f32_pic_label = Label(frame, image=f32_img)
+y29 = tk.Label(frame, text="",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+
+
+# frame33 stuff <-- Safe
+# f33_img = PhotoImage(file = "")
+# f33_pic_label = Label(frame, image=f33_img)
+y30 = tk.Label(frame, text="You open the safe, smiling, hoping for something good to happen.\nInside, you see a locket; it was your mom's.\nIt has a picture of us together.\nIt was the only thing that was left of hers.\n\n//FLASHBACK//\nShe used to suffer from nightmares, something similar to yours.\nut she was brave enough to resist. She even managed to overcome it.\nPerhaps you’re just not strong enough...\nYou remember... She used to say:\n     \"My little bird, I hope when you take that leap\n       of faith, you have nothing to fear anymore...\//FLASHBACK END//\n\nA leap of faith...\nA leap... a Jump...?!\nIs that what it means?\nMaybe...\nBut I’ve tried jumping off the terrace.\nIt always ends in the White Room.\nWell, It might be different this time.\nYou head straight to the terrace.",
+                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+
+
+# frame34 stuff <-- Last Terrace
+# f34_img = PhotoImage(file = "")
+# f34_pic_label = Label(frame, image=f34_img)
+y31 = tk.Label(frame, text="This is it.\nYou take one last look at the stars.\nYou could jump... Or you could head back.\nBut you've exhausted every inch of this nightmare.\nThere is no point in heading back.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
