@@ -8,7 +8,7 @@ y24 = tk.Label(frame, text="You are at the Exit. Or you hope it is.\nThere's a s
 # frame28 stuff <-- Try
 # f28_img = PhotoImage(file = "")
 # f28_pic_label = Label(frame, image=f8_img)
-y25 = tk.Label(frame, text="REMEMBER, you have 2 attemps only.\n\nGuess the 4-letter word",
+y25 = tk.Label(frame, text="REMEMBER, you have 1 attemps only.\n\nGuess the 4-letter word",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
