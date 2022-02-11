@@ -1,12 +1,2 @@
-# frame35 stuff <-- Last Terrace(Stay)
-# f35_img = PhotoImage(file = "")
-# f35_pic_label = Label(frame, image=f35_img)
-y32 = tk.Label(frame, text="Alright. No.\nYou don't want to jump. Not right now, at least.\n... It doesn't feel like the right decision...\nNevertheless, you leave, but pass out on the way downstairs.\nYou slowly come to yourself.\nYou're in a white room. The White Room.\nYou're back to where you started.\nBut what else did you expect?\nYou were a coward who was afraid to change; to let go.\nYou’re stuck. You can’t get out.\nIt’s a nightmare, and You’re stuck.\nYou’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\n\nStuck. Stuck. Stuck. Stu—\n\n------------------------\n| ENDING 2/2: INSANITY |\n------------------------\nYou didn't leave.\nYour grief and thoughts weigh you down.\nMaybe things would have been different if you had been braver.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-
-
-# frame36 stuff <-- Last Terrace(Jump)
-# f36_img = PhotoImage(file = "")
-# f36_pic_label = Label(frame, image=f36_img)
-y33 = tk.Label(frame, text="You brace yourself and fall forward.\nYou slowly come to yourself, waking up in a white room.\nSomeone knocks on the door, and a man you recognize walks in.\nHe's from the hospital— not the one in dreams, but the one from reality.\nYou made it out...?\nYou search for your mother's locket on your bedside table.\nIt's there. You see two faces smiling at one another.\nYour mother lives in dreams. You belong here.\nYou’re not sure when you’re going to be okay... but that’s okay.\n\nIt might take a while, but you will make it out of this hospital\nYou won’t get stuck.\n\n-----------------------\n| ENDING 1/2: CLOSURE |\n-----------------------\nYou made it out. Congratulations!\nIt was the fear of being stuck in a hospital\nthat cursed you into an endless loop of nightmares.\nAfter waking, you realize it might take a while for you to be alright.\nBut you know it’ll happen someday.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+ma = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/inspect.png"))
+mt = Label(frame, image=ma)
