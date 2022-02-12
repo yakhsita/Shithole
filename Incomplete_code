@@ -1,10 +1,7 @@
 # a text-based adventure game set in a hospital
 
-import time
-import sys
 from tkinter import *
 from tkinter.ttk import *
-import random
 from tkinter import font
 import tkinter as tk
 from PIL import ImageTk, Image
@@ -30,7 +27,7 @@ frame.place(relwidth=1, relheight=1)
 
 photo = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/background.png"))
 photo_label = tk.Label(frame, image=photo, bg='black') # making the image into a label
-photo_label.place(x=-80, y=-10)
+photo_label.place(x=0, y=0)
 
 
 # frame1 stuff
@@ -212,61 +209,61 @@ y19 = tk.Label(frame, text="Furious, the surgeon charges at you with a scalpel.\
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 # frame23 stuff <-- Morgue(right)
-# f23_img = PhotoImage(file = "")
-# f23_pic_label = Label(frame, image=f23_img)
+f23_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/morgue.png"))
+f23_pic_label = Label(frame, image=f23_img)
 y20 = tk.Label(frame, text="The Lights Flicker.\nThis place gives you a bad vibe.\nThere’s a body on the stretcher. A white sheet covers it.\nThe blood seeps through the fabric.\nThe foot is uncovered. You can see the toe tag.\nAt the same time, you hear a sharp buzzing sound.\n*Buzzzzzz*\nIt originates from one of the body storage cabinets.\nWhat do you do? Inspect the Body or the Buzzing?",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 
 # frame24 stuff <-- Body(In morgue)
-# f24_img = PhotoImage(file = "")
-# f24_pic_label = Label(frame, image=f24_img)
+f24_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/deadbody.png"))
+f24_pic_label = Label(frame, image=f24_img)
 y21 = tk.Label(frame, text="You cautiously make your way towards the body.\nUpon closer inspection, you notice that the foot is decomposing.\nThe toe tag seems to be covered in mud. How unusual.\nYou reach forward to dust off the mud.\nSuddenly, the body sits up.\nScared to death, you run back to the waiting room.",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 # frame25ha stuff <-- Buzz
-# f25ha_img = PhotoImage(file = "")
-# f25ha_pic_label = Label(frame, image=f25ha_img)
+f25ha_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/flies.png"))
+f25ha_pic_label = Label(frame, image=f25ha_img)
 y22 = tk.Label(frame, text="You head towards the cabinet wondering what's causing that noise.\nIt stops; you don't hear a thing.\nSomething's fishy and you know it, but you open the cabinet anyway.\n*Buzzzzzz* \nBefore you realize, a swarm of bluebottle flies surround you.\n\"It's just flies,\" you think.\nSomething feels off. But what?\nIt's your skin.\nCrap. They are feeding on your skin!\nWhat do you do?",
-                 font=("Times New Roman", 16), justify="center", bg="black", fg="white")
+                 font=("Times New Roman", 16), justify="center", bg="black", fg="white", wraplength=400)
 
 # frame25 stuff <-- Buzzing(Inventory)(without bugspray)
-# f25_img = PhotoImage(file = "")
-# f25_pic_label = Label(frame, image=f25_img)
-y22 = tk.Label(frame, text="Uh-oh. Looks like you have nothing to defend yourself with.\nOnly one thing left to do.\nYou turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
+f25_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/death.png"))
+f25_pic_label = Label(frame, image=f25_img)
+y23 = tk.Label(frame, text="Uh-oh. Looks like you never found a bugspray.\nOnly one thing left to do.\nYou turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 
 # frame26 stuff <-- Buzzing(Inventory)(with bugspray)
-# f26_img = PhotoImage(file = "")
-# f26pic_label = Label(frame, image=f26_img)
-y23 = tk.Label(frame, text="\nThe flies won't leave you alone.\nSo you use the bugspray to kill 'em.\nYou spray it all over the room and watch as they rain down to the ground.\nA simple, but effective solution.\nOnce the last of them die, you notice a piece of paper in the cabinet.\nIt has the letter 'D' written on it.\nYou get the feeling that this is important. You return to the Waiting Area.\n...",
+f26_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/letterd.png"))
+f26_pic_label = Label(frame, image=f26_img)
+y24 = tk.Label(frame, text="\nThe flies won't leave you alone.\nSo you use the bugspray to kill 'em.\nYou spray it all over the room and watch as they rain down to the ground.\nA simple, but effective solution.\nOnce the last of them die, you notice a piece of paper in the cabinet.\nIt has the letter 'D' written on it.\nYou get the feeling that this is important. You return to the Waiting Area.\n...",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 # frame26ha stuff <-- Run
 # f26ha_img = PhotoImage(file = "")
 # f26hapic_label = Label(frame, image=f26ha_img)
-y23 = tk.Label(frame, text="You turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+y25 = tk.Label(frame, text="You turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
+                 font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 # frame27 stuff <-- Exit
 # f27_img = PhotoImage(file = "")
 # f27_pic_label = Label(frame, image=f27_img)
-y24 = tk.Label(frame, text="You are at the Exit. Or you hope it is.\nThere's a safe with a FOUR letter code. Do you wish to try?\nRemember, you have a limited amount of attempts.\nHead Back if you think you aren't ready.",
+y26 = tk.Label(frame, text="You are at the Exit. Or you hope it is.\nThere's a safe with a FOUR letter code. Do you wish to try?\nRemember, you have a limited amount of attempts.\nHead Back if you think you aren't ready.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame28 stuff <-- Try
 # f28_img = PhotoImage(file = "")
 # f28_pic_label = Label(frame, image=f8_img)
-y25 = tk.Label(frame, text="REMEMBER, you have 1 attemps only.\n\nGuess the 4-letter word",
+y27 = tk.Label(frame, text="REMEMBER, you have 1 attemps only.\n\nGuess the 4-letter word",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame29 stuff <-- Try(Entry correct)(In Exit)
 # f29_img = PhotoImage(file = "")
 # f29_pic_label = Label(frame, image=f29_img)
-y26 = tk.Label(frame, text="CORRECT PASSWORD",
+y28 = tk.Label(frame, text="CORRECT PASSWORD",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 word = "bird"
 Entry = tk.Entry(frame, bg="black")
@@ -275,56 +272,56 @@ Entry = tk.Entry(frame, bg="black")
 # frame30 stuff <-- Try(Entry wrong)(In Exit)
 # f30_img = PhotoImage(file = "")
 # f30_pic_label = Label(frame, image=f30_img)
-y27 = tk.Label(frame, text="INCORRECT PASSWORD\n\nYou got it wrong!\nA tiny part of you wished that this meant you would die.\nFor real. But reality is often disappointing.\nYou're back at the White Room again.\nJust like every other time.\nDeath just doesn't seem to exist here.",
+y29 = tk.Label(frame, text="INCORRECT PASSWORD\n\nYou got it wrong!\nA tiny part of you wished that this meant you would die.\nFor real. But reality is often disappointing.\nYou're back at the White Room again.\nJust like every other time.\nDeath just doesn't seem to exist here.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame31 stuff
 # f31_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/Bugspray.png"))
 # f31_pic_label = Label(frame, image=f31_img)
-y28 = tk.Label(frame, text="",
+y30 = tk.Label(frame, text="",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame32 stuff <--
 # f32_img = PhotoImage(file = "")
 # f32_pic_label = Label(frame, image=f32_img)
-y29 = tk.Label(frame, text="",
+y31 = tk.Label(frame, text="",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame33 stuff <-- Safe
 # f33_img = PhotoImage(file = "")
 # f33_pic_label = Label(frame, image=f33_img)
-y30 = tk.Label(frame, text="You open the safe, smiling, hoping for something good to happen.\nInside, you see a locket; it was your mom's.\nIt has a picture of us together.\nIt was the only thing that was left of hers.\n\n//FLASHBACK//\nShe used to suffer from nightmares, something similar to yours.\nut she was brave enough to resist. She even managed to overcome it.\nPerhaps you’re just not strong enough...\nYou remember... She used to say:\n     \"My little bird, I hope when you take that leap\n       of faith, you have nothing to fear anymore...\//FLASHBACK END//\n\nA leap of faith...\nA leap... a Jump...?!\nIs that what it means?\nMaybe...\nBut I’ve tried jumping off the terrace.\nIt always ends in the White Room.\nWell, It might be different this time.\nYou head straight to the terrace.",
+y32 = tk.Label(frame, text="You open the safe, smiling, hoping for something good to happen.\nInside, you see a locket; it was your mom's.\nIt has a picture of us together.\nIt was the only thing that was left of hers.\n\n//FLASHBACK//\nShe used to suffer from nightmares, something similar to yours.\nut she was brave enough to resist. She even managed to overcome it.\nPerhaps you’re just not strong enough...\nYou remember... She used to say:\n     \"My little bird, I hope when you take that leap\n       of faith, you have nothing to fear anymore...\//FLASHBACK END//\n\nA leap of faith...\nA leap... a Jump...?!\nIs that what it means?\nMaybe...\nBut I’ve tried jumping off the terrace.\nIt always ends in the White Room.\nWell, It might be different this time.\nYou head straight to the terrace.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame34 stuff <-- Last Terrace
 # f34_img = PhotoImage(file = "")
 # f34_pic_label = Label(frame, image=f34_img)
-y31 = tk.Label(frame, text="This is it.\nYou take one last look at the stars.\nYou could jump... Or you could head back.\nBut you've exhausted every inch of this nightmare.\nThere is no point in heading back.",
+y33 = tk.Label(frame, text="This is it.\nYou take one last look at the stars.\nYou could jump... Or you could head back.\nBut you've exhausted every inch of this nightmare.\nThere is no point in heading back.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame35 stuff <-- Last Terrace(Stay)
 # f35_img = PhotoImage(file = "")
 # f35_pic_label = Label(frame, image=f35_img)
-y32 = tk.Label(frame, text="Alright. No.\nYou don't want to jump. Not right now, at least.\n... It doesn't feel like the right decision...\nNevertheless, you leave, but pass out on the way downstairs.\nYou slowly come to yourself.\nYou're in a white room. The White Room.\nYou're back to where you started.\nBut what else did you expect?\nYou were a coward who was afraid to change; to let go.\nYou’re stuck. You can’t get out.\nIt’s a nightmare, and You’re stuck.\nYou’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\n\nStuck. Stuck. Stuck. Stu—\n\n------------------------\n| ENDING 2/2: INSANITY |\n------------------------\nYou didn't leave.\nYour grief and thoughts weigh you down.\nMaybe things would have been different if you had been braver.",
+y34 = tk.Label(frame, text="Alright. No.\nYou don't want to jump. Not right now, at least.\n... It doesn't feel like the right decision...\nNevertheless, you leave, but pass out on the way downstairs.\nYou slowly come to yourself.\nYou're in a white room. The White Room.\nYou're back to where you started.\nBut what else did you expect?\nYou were a coward who was afraid to change; to let go.\nYou’re stuck. You can’t get out.\nIt’s a nightmare, and You’re stuck.\nYou’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\n\nStuck. Stuck. Stuck. Stu—\n\n------------------------\n| ENDING 2/2: INSANITY |\n------------------------\nYou didn't leave.\nYour grief and thoughts weigh you down.\nMaybe things would have been different if you had been braver.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame36 stuff <-- Last Terrace(Jump)
 # f36_img = PhotoImage(file = "")
 # f36_pic_label = Label(frame, image=f36_img)
-y33 = tk.Label(frame, text="You brace yourself and fall forward.\nYou slowly come to yourself, waking up in a white room.\nSomeone knocks on the door, and a man you recognize walks in.\nHe's from the hospital— not the one in dreams, but the one from reality.\nYou made it out...?\nYou search for your mother's locket on your bedside table.\nIt's there. You see two faces smiling at one another.\nYour mother lives in dreams. You belong here.\nYou’re not sure when you’re going to be okay... but that’s okay.\n\nIt might take a while, but you will make it out of this hospital\nYou won’t get stuck.\n\n-----------------------\n| ENDING 1/2: CLOSURE |\n-----------------------\nYou made it out. Congratulations!\nIt was the fear of being stuck in a hospital\nthat cursed you into an endless loop of nightmares.\nAfter waking, you realize it might take a while for you to be alright.\nBut you know it’ll happen someday.",
+y35 = tk.Label(frame, text="You brace yourself and fall forward.\nYou slowly come to yourself, waking up in a white room.\nSomeone knocks on the door, and a man you recognize walks in.\nHe's from the hospital— not the one in dreams, but the one from reality.\nYou made it out...?\nYou search for your mother's locket on your bedside table.\nIt's there. You see two faces smiling at one another.\nYour mother lives in dreams. You belong here.\nYou’re not sure when you’re going to be okay... but that’s okay.\n\nIt might take a while, but you will make it out of this hospital\nYou won’t get stuck.\n\n-----------------------\n| ENDING 1/2: CLOSURE |\n-----------------------\nYou made it out. Congratulations!\nIt was the fear of being stuck in a hospital\nthat cursed you into an endless loop of nightmares.\nAfter waking, you realize it might take a while for you to be alright.\nBut you know it’ll happen someday.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 
 # frame37 stuff <--
 # f37_img = PhotoImage(file = "")
 # f37_pic_label = Label(frame, image=f37_img)
-y34 = tk.Label(frame, text="",
+y36 = tk.Label(frame, text="",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
 
 # crowbar-picked!
@@ -619,7 +616,7 @@ def map25():
     y21.place_forget()
     # f24_pic_label.pack_forget()
     c21 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
-                   command=frame25)
+                   command=frame25ha)
     map()
     c21.place(x=704, y=630)
 
@@ -1088,7 +1085,7 @@ def frame27():
     b4.place(x=710, y=630)
 
 
-def frame26():
+def frame26(): # buzz -> with bugspray
     y21.place_forget()
     b3.place_forget()
     f3_pic_label.pack_forget()
@@ -1098,45 +1095,25 @@ def frame26():
         ma.place_forget()
         mt.place_forget()
 
-    # f25_pic_label.img = f5_img
-    # f25_pic_label.pack()
+    f26_pic_label.img = f5_img
+    f26_pic_label.place(x=-20, y=-20)
 
-    y22.place(x=35, y=150)
+    y24.place(x=80, y=340)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=map1)
     m1.place(x=15, y=15)
+
+    b24a = tk.Button(frame, text="Waiting Area", bg="black", fg="white", font=("Small Fonts", 20), border=2,
+                     command=frame18)
+    b24a.place(x=300, y=630)
 
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=root.destroy)
     b4.place(x=710, y=630)
 
 
-def frame25():
-    y20.place_forget()
-    b3.place_forget()
-    f3_pic_label.pack_forget()
-    for c1 in frame.winfo_children():
-        c1.place_forget()
-        frame_map.place_forget()
-        ma.place_forget()
-        mt.place_forget()
-
-    # f24_pic_label.img = f5_img
-    # f24_pic_label.pack()
-
-    y21.place(x=35, y=150)
-
-    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
-                   command=map1)
-    m1.place(x=15, y=15)
-
-    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
-                   command=root.destroy)
-    b4.place(x=710, y=630)
-
-
-def frame24():
+def frame25(): # buzz -> without bugspray
 
     y19.place_forget()
     b3.place_forget()
@@ -1147,19 +1124,92 @@ def frame24():
         ma.place_forget()
         mt.place_forget()
 
-    # f23_pic_label.img = f5_img
-    # f23_pic_label.pack()
+    f25_pic_label.img = f5_img
+    f25_pic_label.pack()
 
-    y20.place(x=35, y=150)
+    y23.place(x=110, y=405)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=map1)
     m1.place(x=15, y=15)
 
+    b24a = tk.Button(frame, text="Continue...", bg="black", fg="white", font=("Small Fonts", 20), border=2,
+                     command=frame4)
+    b24a.place(x=310, y=630)
+
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2, command=root.destroy)
     b4.place(x=710, y=630)
 
-def frame23():
+
+def frame25ha(): # buzzing
+    y20.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    f25ha_pic_label.img = f5_img
+    f25ha_pic_label.place(x=-20, y=-20)
+
+    y22.place(x=205, y=150)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    if "bugspray" in inventory:
+        b25haa = tk.Button(frame, text="Run!", bg="black", fg="white", font=("Small Fonts", 17), border=2,
+                         command=frame20)
+        b25haa.place(x=280, y=480)
+
+        b25hab = tk.Button(frame, text="Use Bugspray", bg="black", fg="white", font=("Small Fonts", 17), border=2,
+                         command=frame26)
+        b25hab.place(x=400, y=480)
+    else:
+        b25haa = tk.Button(frame, text="Run!", bg="black", fg="white", font=("Small Fonts", 17), border=2,
+                         command=frame20)
+        b25haa.place(x=280, y=480)
+
+        b25hab = tk.Button(frame, text="Use Bugspray", bg="black", fg="white", font=("Small Fonts", 17), border=2,
+                         command=frame25)
+        b25hab.place(x=400, y=480)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+
+def frame24(): # body
+
+    y19.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c1 in frame.winfo_children():
+        c1.place_forget()
+        frame_map.place_forget()
+        ma.place_forget()
+        mt.place_forget()
+
+    f24_pic_label.img = f5_img
+    f24_pic_label.place(x=-20, y=-20)
+
+    y21.place(x=115, y=425)
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
+                   command=map1)
+    m1.place(x=15, y=15)
+
+    b24a = tk.Button(frame, text="Waiting Area", bg="black", fg="white", font=("Small Fonts", 20), border=2,
+                     command=frame18)
+    b24a.place(x=310, y=630)
+
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2, command=root.destroy)
+    b4.place(x=710, y=630)
+
+def frame23(): # morgue (right)
     y18.place_forget()
     b3.place_forget()
     f3_pic_label.pack_forget()
@@ -1169,14 +1219,26 @@ def frame23():
         ma.place_forget()
         mt.place_forget()
 
-    # f22_pic_label.img = f5_img
-    # f22_pic_label.pack()
+    f23_pic_label.img = f5_img
+    f23_pic_label.place(x=-2, y=-2)
 
-    y19.place(x=35, y=150)
+    y20.place(x=35, y=100)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=map1)
     m1.place(x=15, y=15)
+
+    b23a = tk.Button(frame, text="Body", bg="black", fg="white", font=("Small Fonts", 20), border=2,
+                     command=frame24)
+    b23a.place(x=605, y=115)
+
+    b23b = tk.Button(frame, text="Buzzing", bg="black", fg="white", font=("Small Fonts", 20), border=2,
+                     command=frame25ha)
+    b23b.place(x=590, y=215)
+
+    back = tk.Button(frame, text='Back', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
+                     command=frame18)
+    back.place(x=20, y=630)
 
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=root.destroy)
@@ -1250,7 +1312,7 @@ def frame20(): # accept offer
         mt.place_forget()
 
     f20_pic_label.img = f5_img
-    f20_pic_label.place(x=-2, y=-2)
+    f20_pic_label.place(x=-10, y=-2)
 
     y17.place(x=56, y=420)
 
@@ -1335,7 +1397,7 @@ def frame18(): # waiting area
                      command=frame19)
     b18a.place(x=150, y=370)
 
-    b18b = tk.Button(frame, text="Right", bg="black", fg="white", font=("Small Fonts", 20), border=2)
+    b18b = tk.Button(frame, text="Right", bg="black", fg="white", font=("Small Fonts", 20), border=2, command=frame23)
     b18b.place(x=280, y=370)
 
     if "bugspray" not in inventory:
@@ -1404,9 +1466,6 @@ def frame17(): # waiting area -> inspect
                      command=frame18)
     back.place(x=20, y=630)
 
-    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
-                   command=root.destroy)
-    b4.place(x=710, y=630)
 
 
 def frame16(): # jump off terrace
@@ -1420,9 +1479,9 @@ def frame16(): # jump off terrace
         mt.place_forget()
 
     f16_pic_label.img = f5_img
-    f16_pic_label.pack()
+    f16_pic_label.place(x=-2, y=-2)
 
-    y13.place(x=220, y=450)
+    y13.place(x=190, y=380)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
                    command=map1)
@@ -1501,9 +1560,6 @@ def frame14(): # crowbar show up
                      command=frame13)
     back.place(x=20, y=630)
 
-    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Small Fonts', 20, 'bold'), border=2,
-                   command=root.destroy)
-    b4.place(x=710, y=630)
 
 
 def frame13(): # staircase
@@ -1876,6 +1932,7 @@ def frame5(): #inspect white room
 def frame4(): #whiteroom
 
     global m1   # This is used when you are defining a variable in the def function but using it outside the def function. It technically becomes universal
+    f25_pic_label.pack_forget()
     y13.place_forget()
     b3.place_forget()
     f16_pic_label.pack_forget()
