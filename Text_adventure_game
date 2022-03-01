@@ -2,6 +2,24 @@
 
 import time
 import sys
+from tkinter import *
+from tkinter.ttk import *
+
+# creating tkinter window
+root = Tk()
+
+# Adding widgets to the root window
+Label(root, text='Click me!', font=(
+    'Bradley Hand ITC', 20, 'bold')).pack(side=BOTTOM, pady=10)
+
+# Creating a photoimage object to use image
+photo = PhotoImage(file="H:\Lucid Dreams - game logo.png")
+
+# here, image option is used to
+# set image on button
+Button(root, image=photo).pack(side=TOP)
+
+mainloop()
 
 # values: (keys)-> direction, (value)-> room
 rooms = {
