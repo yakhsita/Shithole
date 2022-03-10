@@ -22,7 +22,7 @@ canvas.pack()
 
 # 1 logo frame <- first pg
 frame = tk.Frame(root, bg="black")
-frame.place(relwidth=1, relheight=1) 
+frame.place(relwidth=1, relheight=1)
 
 photo = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/background.png"))
 photo_label = tk.Label(frame, image=photo, bg='black')   # making the image into a label
