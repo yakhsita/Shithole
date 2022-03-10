@@ -246,8 +246,7 @@ f28_img = PhotoImage(file ="Lockerr.png")
 f28_pic_label = Label(frame, image=f28_img)
 y27 = tk.Label(frame, text="REMEMBER, you have 1 attemps only.\n\nGuess the 4-letter word",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
-word = "bird"
-Entry = tk.Entry(frame, bg="black")
+
 
 # frame29 stuff <-- Try(Entry correct)(In Exit)
 f29_img = PhotoImage(file = "H:\Openlockerr.png")
@@ -258,7 +257,7 @@ y28 = tk.Label(frame, text="CORRECT PASSWORD!\n\nInside the safe, you see your m
 
 
 # frame30 stuff <-- Try(Entry wrong)(In Exit)
-# f30_img = PhotoImage(file = "")
+# f30_img = PhotoImage(file = "H:\")
 # f30_pic_label = Label(frame, image=f30_img)
 y29 = tk.Label(frame, text="INCORRECT PASSWORD\n\nYou got it wrong!\nA tiny part of you wished that this meant you would die.\nFor real. But reality is often disappointing.\nYou're back at the White Room again.\nJust like every other time.\nDeath just doesn't seem to exist here.",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
@@ -291,29 +290,29 @@ y32b = tk.Label(frame, text="A leap of faith...\nA leap... a Jump...?!\nIs that 
 f34_img = PhotoImage(file = "H:\Terracee.png")
 f34_pic_label = Label(frame, image=f34_img)
 y33 = tk.Label(frame, text="This is it.\nYou take one last look at the stars.\nYou could jump... Or you could head back.\nBut you've exhausted every inch of this nightmare.\nThere is no point in heading back.",
-                 font=("Times New Roman", 18), justify="center", bg="black", fg="white")
+                 font=("Times New Roman", 16), justify="center", bg="black", fg="white", wraplength=400)
 
 
 # frame35 stuff <-- Last Terrace(Stay)
-# f35_img = PhotoImage(file = "")
+# f35_img = PhotoImage(file = "H:\")
 # f35_pic_label = Label(frame, image=f35_img)
 y34 = tk.Label(frame, text="Alright. No.\nYou don't want to jump. Not right now, at least.\n       ... It doesn't feel like the right decision...\nNevertheless, you leave, but pass out on the way downstairs.\nYou slowly come to yourself.\nYou're in a white room. The White Room.\nYou're back to where you started.\nBut what else did you expect?\nYou're a coward who's afraid to change; to let go.\nYou’re stuck. You can’t get out.\nIt’s a nightmare, and You’re stuck.\nYou’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\nYou’re stuck. You’re stuck. You’re stuck.\n\nStuck. Stuck. Stuck. Stu—",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 # frame36 stuff <-- Last Terrace(Jump)
-# f36_img = PhotoImage(file = "")
+# f36_img = PhotoImage(file = "H:\")
 # f36_pic_label = Label(frame, image=f36_img)
 y35 = tk.Label(frame, text="You brace yourself and fall forward.\nYou slowly wake up in a white room.\nSomeone knocks on the door, and a man you recognize walks in.\nHe's from the hospital— not the one in dreams, but the one from reality.\nDoes this mean... you made it out...?\nYou search for your mother's locket on your bedside table.\nIt's there. You see two faces smiling at one another.\nYour mother lives in dreams. You belong here.\nYou’re not sure when you’re going to be okay... but that’s okay.\n\nIt might take a while, but you will make it out of this hospital\nYou won’t get stuck.",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
 
-# frame37 stuff <--
+# frame37 stuff <-- ending 1/2
 f37_img = PhotoImage(file = "H:\Endd.png")
 f37_pic_label = Label(frame, image=f37_img)
 y36 = tk.Label(frame, text="------------------------------\n| ENDING 1/2: CLOSURE |\n------------------------------\nYou made it out. Congratulations!\nIt was the fear of being stuck in a hospital\nthat cursed you into an endless loop of nightmares.\nAfter waking, you realize it might take a while for you to be alright.\nBut you know it’ll happen someday.",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
-# frame38 stuff <-- ending 1/2
+# frame38 stuff <-- ending 2/2
 f38_img = PhotoImage(file = "H:\Endd (2).png")
 f38_pic_label = Label(frame, image=f38_img)
 y37 = tk.Label(frame, text="-------------------------------\n| ENDING 2/2: INSANITY |\n-------------------------------\nYou didn't leave.\nYour grief and thoughts weigh you down.\nMaybe things would have been different if you had been braver.",
@@ -918,7 +917,7 @@ def frame37():
     b4.place(x=710, y=630)
 
 
-def frame36():
+def frame36():  # --> last terrace jump
     y31.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -942,7 +941,7 @@ def frame36():
     b4.place(x=710, y=630)
 
 
-def frame35():
+def frame35(): # --> last terrace stay
     y30.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -953,7 +952,7 @@ def frame35():
     # f34_pic_label.img = f5_img
     # f34_pic_label.pack()
 
-    y34.place(x=35, y=150)
+    y34.place(x=130, y=150)
 
     b35a = tk.Button(frame, text="...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame38)
@@ -966,7 +965,7 @@ def frame35():
     b4.place(x=710, y=630)
 
 
-def frame34():
+def frame34(): # Last terrace
     y29.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -977,7 +976,7 @@ def frame34():
     f34_pic_label.img = f5_img
     f34_pic_label.place(x=-2)
 
-    y33.place(x=35, y=150)
+    y33.place(x=225, y=200)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map34)
@@ -985,16 +984,17 @@ def frame34():
 
     b34a = tk.Button(frame, text="Stay ", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame35)
-    b34a.place(x=356, y=360)
+    b34a.place(x=364, y=360)
 
     b34b = tk.Button(frame, text="Jump", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame36)
-    b34b.place(x=356, y=440)
+    b34b.place(x=364, y=440)
+
     global b4
     b4.place(x=710, y=630)
 
 
-def frame33b():
+def frame33b(): # Safe Pg2
     y28.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -1005,24 +1005,27 @@ def frame33b():
     f33_pic_label.img = f5_img
     f33_pic_label.place(x=-2)
 
-    y32b.place(x=35, y=150)
+    f33_pic_label.img = f5_img
+    f33_pic_label.place(x=-2)
 
-    global b33a
+    y32b.place(x=230, y=360)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map33)
     m1.place(x=15, y=15)
 
-    b33a = tk.Button(frame, text="Continue...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
-                     command=frame33b)
-    b33a.place(x=310, y=630)
-    global b4
+    global b33b
+
+    b33b = tk.Button(frame, text="Terrace", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                     command=frame34)
+    b33b.place(x=350, y=630)
+
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=root.destroy)
     b4.place(x=710, y=630)
 
 
-def frame33a():
+def frame33a(): # Safe Pg1
     y28.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -1033,16 +1036,23 @@ def frame33a():
     f33_pic_label.img = f5_img
     f33_pic_label.place(x=-2)
 
-    y32a.place(x=35, y=150)
+    y32a.place(x=160, y=360)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=map32)
+                   command=map33)
     m1.place(x=15, y=15)
+
+    global b33a
+
+    b33a = tk.Button(frame, text="Continue...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                     command=frame33b)
+    b33a.place(x=315, y=630)
+
     global b4
     b4.place(x=710, y=630)
 
 
-def frame31():
+def frame31(): # Try(Entry correct)(In Exit)
     y26.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -1058,11 +1068,12 @@ def frame31():
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map31)
     m1.place(x=15, y=15)
+
     global b4
     b4.place(x=710, y=630)
 
 
-def frame30():
+def frame30(): # Try(Entry wrong)(In Exit)
     y25.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -1073,16 +1084,23 @@ def frame30():
     # f29_pic_label.img = f5_img
     # f29_pic_label.pack()
 
-    y29.place(x=120, y=200)
+    y29.place(x=123, y=200)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map30)
     m1.place(x=15, y=15)
+
+    global b30a
+
+    b30a = tk.Button(frame, text="White Room", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                     command=frame4)
+    b30a.place(x=310, y=630)
+
     global b4
     b4.place(x=710, y=630)
 
 
-def frame29():
+def frame29(): # Try(Entry correct)(In Exit)
     y24.place_forget()
     b3.place_forget()
     fmap_pic_label.place_forget()
@@ -1098,6 +1116,13 @@ def frame29():
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map29)
     m1.place(x=15, y=15)
+
+    global b28a
+
+    b28a = tk.Button(frame, text="Continue...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                     command=frame33a)
+    b28a.place(x=315, y=630)
+
     global b4
     b4.place(x=710, y=630)
 
@@ -1162,11 +1187,18 @@ def frame28():
                    command=map28)
     m1.place(x=15, y=15)
 
-    global entrie
-    entrie = tk.Entry(frame, bg="white", font=("Times New Roman", 20), border=2)
-    entrie.place(x=178, y=500)
+    global entry
+    entry = tk.Entry(frame, bg="white", font=("Times New Roman", 20), border=2)
+    entry.place(x=178, y=500)
 
-    entry1 = tk.Button(frame, text="Enter", bg="black", fg="white", font=("Times New Roman", 20), border=2, command=entry)
+    def password():
+        if entry.get() == 'bird':
+            frame29()
+        else:
+            frame30()
+
+    entry1 = tk.Button(frame, text="Enter", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                       command=password)
     entry1.place(x=508, y=491)
 
     b4.place(x=710, y=630)
