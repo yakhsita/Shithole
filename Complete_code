@@ -31,7 +31,7 @@ photo_label.place(x=0, y=-2)
 
 # frame1 stuff
 f1_img = ImageTk.PhotoImage(Image.open("C:/Users/shrirang/Desktop/welcome.png"))
-f1_pic_label = tk.Label(frame, image=f1_img, bg="black")
+f1_pic_label = tk.Label(frame, image=f1_img, bg="black") 
 
 w = tk.Label(root,
              text='WELCOME!',
