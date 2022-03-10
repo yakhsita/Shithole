@@ -1019,35 +1019,37 @@ def frame34(): # --> Last Terrace
                    command=root.destroy)
     b4.place(x=710, y=630)
 
-def frame33b():
-    y28.place_forget()
-    b3.place_forget()
-    f29_pic_label.pack_forget()
-    for c1 in frame.winfo_children():
-        c1.place_forget()
-        frame_map.place_forget()
-        ma.place_forget()
-        mt.place_forget()
+    def frame33b():  # Safe Pg2
+        y28.place_forget()
+        b3.place_forget()
+        fmap_pic_label.place_forget()
+        f3_pic_label.pack_forget()
+        for c29 in frame.winfo_children():
+            c29.place_forget()
 
-    f33_pic_label.img = f5_img
-    f33_pic_label.place(x=-2)
+        f33_pic_label.img = f5_img
+        f33_pic_label.place(x=-2)
 
-    y32b.place(x=230, y=360)
+        f33_pic_label.img = f5_img
+        f33_pic_label.place(x=-2)
 
-    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=map33)
-    m1.place(x=15, y=15)
+        y32b.place(x=230, y=360)
 
-    global b33b
+        m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                       command=map33)
+        m1.place(x=15, y=15)
 
-    b33b = tk.Button(frame, text="Terrace", bg="black", fg="white", font=("Times New Roman", 20), border=2,
-                     command=frame34)
-    b33b.place(x=310, y=630)
+        global b33b
 
-    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=root.destroy)
-    b4.place(x=710, y=630)
+        b33b = tk.Button(frame, text="Terrace", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                         command=frame34)
+        b33b.place(x=350, y=630)
 
+        b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                       command=root.destroy)
+        b4.place(x=710, y=630)
+        
+        
 def frame33a():
     y28.place_forget()
     b3.place_forget()
@@ -1369,19 +1371,19 @@ def frame25ha(): # buzzing
 
     if "bugspray" in inventory:
         b25haa = tk.Button(frame, text="Run!", bg="black", fg="white", font=("Times New Roman", 17), border=2,
-                         command=frame26ha)
+                           command=frame20)
         b25haa.place(x=280, y=480)
 
         b25hab = tk.Button(frame, text="Use Bugspray", bg="black", fg="white", font=("Times New Roman", 17), border=2,
-                         command=frame26)
+                           command=frame26)
         b25hab.place(x=400, y=480)
     else:
         b25haa = tk.Button(frame, text="Run!", bg="black", fg="white", font=("Times New Roman", 17), border=2,
-                         command=frame26ha)
+                           command=frame20)
         b25haa.place(x=280, y=480)
 
         b25hab = tk.Button(frame, text="Use Bugspray", bg="black", fg="white", font=("Times New Roman", 17), border=2,
-                         command=frame25)
+                           command=frame25)
         b25hab.place(x=400, y=480)
 
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
