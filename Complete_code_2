@@ -230,7 +230,7 @@ y24 = tk.Label(frame, text="\nThe flies won't leave you alone.\nSo you use the b
 
 # frame26ha stuff <-- Run
 f26ha_img = PhotoImage(file = "H:\Deathh.png")
-f26hapic_label = Label(frame, image=f26ha_img)
+f26ha_pic_label = Label(frame, image=f26ha_img)
 y25 = tk.Label(frame, text="You turn around and run,\nBut you can't get through. It's an impenetrable swarm of flies.\nYou try but you get eaten to death by those flies.\nYou wake up in the white room.\nMaybe next time you should find something to defend yourself with...",
                  font=("Times New Roman", 16), justify="center", bg="black", fg="white")
 
@@ -242,7 +242,7 @@ y26 = tk.Label(frame, text="You are at the Exit. Or you hope it is.\nThere's a s
 
 
 # frame28 stuff <-- Try
-f28_img = PhotoImage(file ="Lockerr.png")
+f28_img = PhotoImage(file ="H:\Lockerr.png")
 f28_pic_label = Label(frame, image=f28_img)
 y27 = tk.Label(frame, text="REMEMBER, you have 1 attemps only.\n\nGuess the 4-letter word",
                  font=("Times New Roman", 18), justify="center", bg="black", fg="white")
@@ -368,7 +368,7 @@ def map2(): #inspect
     map()
     c2.place(x=700, y=630)
 
-def map3(): #door->corridor
+def map3():  # door->corridor
 
     m1.place_forget()
     b4.place_forget()
@@ -376,14 +376,13 @@ def map3(): #door->corridor
     b6b.place_forget()
     y3.place_forget()
     f6_pic_label.pack_forget()
-    global c3
     c3 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=frame6)
     map()
     c3.place(x=700, y=630)
 
 
-def map4(): #bathroom
+def map4():  # bathroom
 
     m1.place_forget()
     b4.place_forget()
@@ -397,7 +396,7 @@ def map4(): #bathroom
     c4.place(x=700, y=630)
 
 
-def map5(): #inspect knocking
+def map5():  # inspect knocking
 
     m1.place_forget()
     b4.place_forget()
@@ -412,7 +411,7 @@ def map5(): #inspect knocking
     c5.place(x=700, y=630)
 
 
-def map9a(): #bathroom -> red
+def map9a():  # bathroom -> red
     m1.place_forget()
     b4.place_forget()
     b9aa.place_forget()
@@ -424,7 +423,7 @@ def map9a(): #bathroom -> red
     c6.place(x=700, y=630)
 
 
-def map9b(): #bathroom -> blue
+def map9b():  # bathroom -> blue
     m1.place_forget()
     b4.place_forget()
     b7ba.place_forget()
@@ -436,33 +435,33 @@ def map9b(): #bathroom -> blue
     c7.place(x=700, y=630)
 
 
-def map9c(): #bathroom -> black
+def map9c():  # bathroom -> black
     m1.place_forget()
     b4.place_forget()
     b9ca.place_forget()
     y7b.place_forget()
     f9c_pic_label.pack_forget()
     c7a = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame9c)
+                    command=frame9c)
     map()
     c7a.place(x=700, y=630)
 
 
-def map10(): #right -> cafeteria
+def map10():  # right -> cafeteria
     m1.place_forget()
     b4.place_forget()
     b10a.place_forget()
-    b10b.place_forget()
     back.place_forget()
+    b10b.place_forget()
     y7c.place_forget()
     f10_pic_label.pack_forget()
     c7b = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame10)
+                    command=frame10)
     map()
     c7b.place(x=700, y=630)
 
 
-def map11(): #cafeteria -> inspect
+def map11():  # cafeteria -> inspect
     m1.place_forget()
     b4.place_forget()
     b11a.place_forget()
@@ -470,15 +469,16 @@ def map11(): #cafeteria -> inspect
     y8.place_forget()
     f11_pic_label.pack_forget()
     c7c = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame11)
+                    command=frame11)
     map()
     c7c.place(x=700, y=630)
 
 
-def map12(): #cafeteria -> Death
+def map12():  # cafeteria -> Death
     m1.place_forget()
     b4.place_forget()
     b12a.place_forget()
+    back.place_forget()
     y9.place_forget()
     f11_pic_label.pack_forget()
     c8 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
@@ -487,7 +487,7 @@ def map12(): #cafeteria -> Death
     c8.place(x=700, y=630)
 
 
-def map13(): #staircase
+def map13():  # staircase
 
     m1.place_forget()
     b4.place_forget()
@@ -505,7 +505,7 @@ def map13(): #staircase
     c9.place(x=700, y=630)
 
 
-def map14(): #crowbar show up
+def map14():  # crowbar show up
     m1.place_forget()
     b4.place_forget()
     b14a.place_forget()
@@ -514,37 +514,39 @@ def map14(): #crowbar show up
     y11.place_forget()
     f13_pic_label.pack_forget()
     c10 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame14)
+                    command=frame14)
     map()
     c10.place(x=700, y=630)
 
 
-def map15(): #terrace
+def map15():  # terrace
     m1.place_forget()
     b4.place_forget()
     b15a.place_forget()
+    back.place_forget()
     b15b.place_forget()
     y12.place_forget()
     f14_pic_label.place_forget()
     c11 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame15)
+                    command=frame15)
     map()
     c11.place(x=700, y=630)
 
 
-def map16(): #jump off terrace
+def map16():  # jump off terrace
     m1.place_forget()
     b4.place_forget()
-    b16a.place_forget()
+    b12a.place_forget()
+    back.place_forget()
     y13.place_forget()
     f15_pic_label.place_forget()
     c12 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame16)
+                    command=frame16)
     map()
     c12.place(x=700, y=630)
 
 
-def map17(): #waiting room -> room
+def map17():  # waiting room -> room
     m1.place_forget()
     b4.place_forget()
     b17a.place_forget()
@@ -553,12 +555,12 @@ def map17(): #waiting room -> room
     y14.place_forget()
     f16_pic_label.place_forget()
     c13 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame17)
+                    command=frame17)
     map()
     c13.place(x=700, y=630)
 
 
-def map18(): # waiting room
+def map18():  # waiting room
     m1.place_forget()
     b4.place_forget()
     b18a.place_forget()
@@ -569,12 +571,12 @@ def map18(): # waiting room
     y15.place_forget()
     f17_pic_label.place_forget()
     c14 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame18)
+                    command=frame18)
     map()
     c14.place(x=700, y=630)
 
 
-def map19(): #left -> operation area
+def map19():  # left -> operation area
     m1.place_forget()
     b4.place_forget()
     b19a.place_forget()
@@ -583,48 +585,51 @@ def map19(): #left -> operation area
     y16.place_forget()
     f18_pic_label.place_forget()
     c15 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame19)
+                    command=frame19)
     map()
     c15.place(x=700, y=630)
 
 
-def map20(): #accept offer
+def map20():  # accept offer
     m1.place_forget()
     b4.place_forget()
     b20a.place_forget()
+    back.place_forget()
     y17.place_forget()
     f19_pic_label.place_forget()
     c16 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame20)
+                    command=frame20)
     map()
     c16.place(x=700, y=630)
 
 
-def map21(): #OR death w/ crowbar
+def map21():  # OR death w/ crowbar
     m1.place_forget()
     b4.place_forget()
     b21a.place_forget()
     y18.place_forget()
+    back.place_forget()
     f20_pic_label.place_forget()
     c17 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame21)
+                    command=frame21)
     map()
     c17.place(x=700, y=630)
 
 
-def map22(): #OR no death w/out crowbar
+def map22():  # OR no death w/out crowbar
     m1.place_forget()
     b4.place_forget()
     b22a.place_forget()
     y19.place_forget()
+    back.place_forget()
     f21_pic_label.place_forget()
     c18 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame22)
+                    command=frame22)
     map()
     c18.place(x=700, y=630)
 
 
-def map23(): #morgue (right)
+def map23():  # morgue (right)
     m1.place_forget()
     b4.place_forget()
     b23a.place_forget()
@@ -633,55 +638,72 @@ def map23(): #morgue (right)
     y20.place_forget()
     # f22_pic_label.pack_forget()
     c19 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame23)
+                    command=frame23)
     map()
     c19.place(x=700, y=630)
 
 
-def map24(): #body
+def map24():  # body
     m1.place_forget()
     b4.place_forget()
     b24a.place_forget()
+    back.place_forget()
     y21.place_forget()
     # f23_pic_label.pack_forget()
     c20 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame24)
+                    command=frame24)
     map()
     c20.place(x=700, y=630)
 
-def map25ha(): #buzzing
+
+def map25ha():  # buzzing
     m1.place_forget()
     b4.place_forget()
     b25haa.place_forget()
     b25hab.place_forget()
+    back.place_forget()
     y22.place_forget()
     # f24_pic_label.pack_forget()
     c21 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame25ha)
+                    command=frame25ha)
     map()
     c21.place(x=700, y=630)
 
 
-def map25(): #buzz -> without spray
+def map25():  # buzz -> without spray
     m1.place_forget()
     b4.place_forget()
     b25a.place_forget()
+    back.place_forget()
     y23.place_forget()
     # f24_pic_label.pack_forget()
     c21 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame25)
+                    command=frame25)
     map()
     c21.place(x=700, y=630)
 
 
-def map26(): #buzz -> with bugspray
+def map26():  # buzz -> with bugspray
     m1.place_forget()
     b4.place_forget()
     b26a.place_forget()
+    back.place_forget()
     y24.place_forget()
     # f25_pic_label.pack_forget()
     c22 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame26)
+                    command=frame26)
+    map()
+    c22.place(x=700, y=630)
+
+def map26ha():  # buzz -> with bugspray
+    m1.place_forget()
+    b4.place_forget()
+    b26haa.place_forget()
+    back.place_forget()
+    y24.place_forget()
+    # f25_pic_label.pack_forget()
+    c22 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                    command=frame26ha)
     map()
     c22.place(x=700, y=630)
 
@@ -694,7 +716,7 @@ def map27():
     y25.place_forget()
     f27_pic_label.place_forget()
     c23 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame27)
+                    command=frame27)
     map()
     c23.place(x=700, y=630)
 
@@ -705,7 +727,7 @@ def map28():
     y26.place_forget()
     # f28_pic_label.pack_forget()
     c24 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame28)
+                    command=frame28)
     map()
     c24.place(x=700, y=630)
 
@@ -713,10 +735,11 @@ def map28():
 def map29():
     m1.place_forget()
     b4.place_forget()
+    b28a.place_forget()
     y27.place_forget()
     # f28_pic_label.pack_forget()
     c25 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame29)
+                    command=frame29)
     map()
     c25.place(x=700, y=630)
 
@@ -727,7 +750,7 @@ def map30():
     y28.place_forget()
     # f29_pic_label.pack_forget()
     c26 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame30)
+                    command=frame30)
     map()
     c26.place(x=700, y=630)
 
@@ -738,7 +761,7 @@ def map31():
     y29.place_forget()
     # f30_pic_label.pack_forget()
     c27 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame31)
+                    command=frame31)
     map()
     c27.place(x=700, y=630)
 
@@ -749,42 +772,55 @@ def map32():
     y30.place_forget()
     # f31_pic_label.pack_forget()
     c28 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame32)
+                    command=frame32)
     map()
     c28.place(x=700, y=630)
+
+def map33b():
+    m1.place_forget()
+    b4.place_forget()
+    y31.place_forget()
+    b33b.place_forget()
+    # f32_pic_label.pack_forget()
+    c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                    command=frame33b)
+    map()
+    c29.place(x=700, y=630)
 
 
 def map33():
     m1.place_forget()
     b4.place_forget()
     y31.place_forget()
+    b33a.place_forget()
     # f32_pic_label.pack_forget()
     c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame33)
+                    command=frame33a)
     map()
     c29.place(x=700, y=630)
 
 
 def map34():
-
     m1.place_forget()
     b4.place_forget()
-    y32.place_forget()
-    # f33_pic_label.pack_forget()
+    b34a.place_forget()
+    b34b.place_forget()
+    y32a.place_forget()
+    f33_pic_label.pack_forget()
     c30 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame34)
+                    command=frame34)
     map()
     c30.place(x=700, y=630)
 
 
 def map35():
-
     m1.place_forget()
     b4.place_forget()
+    b35a.place_forget()
     y33.place_forget()
     # f34_pic_label.pack_forget()
     c31 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame35)
+                    command=frame35)
     map()
     c31.place(x=700, y=630)
 
@@ -792,10 +828,11 @@ def map35():
 def map36():
     m1.place_forget()
     b4.place_forget()
+    b36a.place_forget
     y34.place_forget()
     # f35_pic_label.pack_forget()
     c32 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame36)
+                    command=frame36)
     map()
     c32.place(x=700, y=630)
 
@@ -806,7 +843,7 @@ def map37():
     y35.place_forget()
     # f36_pic_label.pack_forget()
     c33 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame37)
+                    command=frame37)
     map()
     c33.place(x=700, y=630)
 
@@ -817,7 +854,7 @@ def map38():
     y36.place_forget()
     # f37_pic_label.pack_forget()
     c34 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=frame38)
+                    command=frame38)
     map()
     c34.place(x=700, y=630)
 
@@ -933,10 +970,10 @@ def frame36():  # --> last terrace jump
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map36)
     m1.place(x=15, y=15)
-
-    b35a = tk.Button(frame, text="...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+    global b36a
+    b36a = tk.Button(frame, text="...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame37)
-    b35a.place(x=370, y=630)
+    b36a.place(x=370, y=630)
     global b4
     b4.place(x=710, y=630)
 
@@ -953,7 +990,7 @@ def frame35(): # --> last terrace stay
     # f34_pic_label.pack()
 
     y34.place(x=130, y=150)
-
+    global b35a
     b35a = tk.Button(frame, text="...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame38)
     b35a.place(x=370, y=630)
@@ -981,7 +1018,7 @@ def frame34(): # Last terrace
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map34)
     m1.place(x=15, y=15)
-
+    global b34a
     b34a = tk.Button(frame, text="Stay ", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame35)
     b34a.place(x=364, y=360)
@@ -1094,7 +1131,7 @@ def frame30(): # Try(Entry wrong)(In Exit)
 
     b30a = tk.Button(frame, text="White Room", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame4)
-    b30a.place(x=310, y=630)
+    b30a.place(x=320, y=630)
 
     global b4
     b4.place(x=710, y=630)
@@ -1125,49 +1162,6 @@ def frame29(): # Try(Entry correct)(In Exit)
 
     global b4
     b4.place(x=710, y=630)
-
-def entry(): # Entry
-
-    guess = Entry.get()
-    choice= str(guess).lower()
-
-    if choice == word:
-        y24.place_forget()
-        b3.place_forget()
-        fmap_pic_label.place_forget()
-        f3_pic_label.pack_forget()
-        for c25 in frame.winfo_children():
-            c25.place_forget()
-
-        f29_pic_label.img = f5_img
-        f29_pic_label.place(x=-2)
-
-        y28.place(x=200, y=360)
-
-        m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                       command=map29)
-        m1.place(x=15, y=15)
-
-        b4.place(x=710, y=630)
-
-    else:
-        y25.place_forget()
-        b3.place_forget()
-        fmap_pic_label.place_forget()
-        f3_pic_label.pack_forget()
-        for c26 in frame.winfo_children():
-            c26.place_forget()
-
-        y29.place(x=120, y=200)
-
-        m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                       command=map30)
-        b30a = tk.Button(frame, text="White Room", bg="black", fg="white", font=("Times New Roman", 20), border=2,
-                         command=frame4)
-        b30a.place(x=320, y=630)
-        m1.place(x=15, y=15)
-
-        b4.place(x=710, y=630)
 
 
 def frame28():
@@ -1230,6 +1224,34 @@ def frame27(): # Exit
                      command=frame18)
     back.place(x=20, y=630)
     global b4
+    b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                   command=root.destroy)
+    b4.place(x=710, y=630)
+
+def frame26ha():  # buzz -> without bugspray
+
+    y19.place_forget()
+    b3.place_forget()
+    f3_pic_label.pack_forget()
+    for c22 in frame.winfo_children():
+        c22.place_forget()
+
+    f26ha_pic_label.img = f5_img
+    f26ha_pic_label.place(x=-2)
+
+    y25.place(x=110, y=405)
+
+    global b26haa
+    global back
+
+    m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                   command=map26ha)
+    m1.place(x=15, y=15)
+
+    b26haa = tk.Button(frame, text="Continue...", bg="black", fg="white", font=("Times New Roman", 20), border=2,
+                       command=frame4)
+    b26haa.place(x=310, y=630)
+
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=root.destroy)
     b4.place(x=710, y=630)
@@ -1838,9 +1860,11 @@ def frame10(): # right -> cafeteria
     b4 = tk.Button(frame, text='Quit', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=root.destroy)
     b4.place(x=710, y=630)
+
     global b10a
     global b10b
     global back
+
     b10a = tk.Button(frame, text='Staircase', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                      command=frame13)
     b10a.place(x=255, y=630)
@@ -2156,7 +2180,7 @@ def frame2(): #loading
     #f2_pic_label.img = f2_img
     #f2_pic_label.place(x=-10, y=90)
 
-    root.after(3000, frame3)
+    root.after(2000, frame3)
 
 
 def frame1(): #welcome
