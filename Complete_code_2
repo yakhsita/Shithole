@@ -536,7 +536,7 @@ def map15():  # terrace
 def map16():  # jump off terrace
     m1.place_forget()
     b4.place_forget()
-    b12a.place_forget()
+    b16a.place_forget()
     back.place_forget()
     y13.place_forget()
     f15_pic_label.place_forget()
@@ -724,6 +724,8 @@ def map27():
 def map28():
     m1.place_forget()
     b4.place_forget()
+    entry.place_forget()
+    entry1.place_forget()
     y26.place_forget()
     # f28_pic_label.pack_forget()
     c24 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
@@ -776,19 +778,8 @@ def map32():
     map()
     c28.place(x=700, y=630)
 
-def map33b():
-    m1.place_forget()
-    b4.place_forget()
-    y31.place_forget()
-    b33b.place_forget()
-    # f32_pic_label.pack_forget()
-    c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                    command=frame33b)
-    map()
-    c29.place(x=700, y=630)
 
-
-def map33():
+def map33a():
     m1.place_forget()
     b4.place_forget()
     y31.place_forget()
@@ -796,6 +787,19 @@ def map33():
     # f32_pic_label.pack_forget()
     c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                     command=frame33a)
+    map()
+    c29.place(x=700, y=630)
+
+
+def map33b():
+    m1.place_forget()
+    b4.place_forget()
+    b33b.place_forget()
+    y31.place_forget()
+    b33b.place_forget()
+    # f32_pic_label.pack_forget()
+    c29 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
+                    command=frame33b)
     map()
     c29.place(x=700, y=630)
 
@@ -828,7 +832,7 @@ def map35():
 def map36():
     m1.place_forget()
     b4.place_forget()
-    b36a.place_forget
+    b36a.place_forget()
     y34.place_forget()
     # f35_pic_label.pack_forget()
     c32 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
@@ -1022,7 +1026,7 @@ def frame34(): # Last terrace
     b34a = tk.Button(frame, text="Stay ", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame35)
     b34a.place(x=364, y=360)
-
+    global b34b
     b34b = tk.Button(frame, text="Jump", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                      command=frame36)
     b34b.place(x=364, y=440)
@@ -1048,7 +1052,7 @@ def frame33b(): # Safe Pg2
     y32b.place(x=230, y=360)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=map33)
+                   command=map33b)
     m1.place(x=15, y=15)
 
     global b33b
@@ -1076,7 +1080,7 @@ def frame33a(): # Safe Pg1
     y32a.place(x=160, y=360)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
-                   command=map33)
+                   command=map33a)
     m1.place(x=15, y=15)
 
     global b33a
@@ -1191,6 +1195,7 @@ def frame28():
         else:
             frame30()
 
+    global entry1
     entry1 = tk.Button(frame, text="Enter", bg="black", fg="white", font=("Times New Roman", 20), border=2,
                        command=password)
     entry1.place(x=508, y=491)
