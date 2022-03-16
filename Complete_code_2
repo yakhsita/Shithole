@@ -749,6 +749,7 @@ def map29():
 def map30():
     m1.place_forget()
     b4.place_forget()
+    b30a.place_forget()
     y28.place_forget()
     # f29_pic_label.pack_forget()
     c26 = tk.Button(frame, text='Close', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
@@ -2138,17 +2139,17 @@ def frame4(): #whiteroom
     f4_pic_label.img = f4_img
     f4_pic_label.place(x=-2)
 
-    y1.place(x=180, y=370)
+    y1.place(x=185, y=370)
 
     global b4a
     global b4b
     global b4
 
     b4a = tk.Button(frame, text="Inspect", bg="black", fg="white", font=("Times New Roman", 20), border=2, command=frame5)
-    b4a.place(x=230, y=500)
+    b4a.place(x=235, y=500)
 
     b4b = tk.Button(frame, text="Door", bg="black", fg="white", font=("Times New Roman", 20), border=2, command=frame6)
-    b4b.place(x=450, y=500)
+    b4b.place(x=455, y=500)
 
     m1 = tk.Button(frame, text='Map', bg='black', fg='white', font=('Times New Roman', 20, 'bold'), border=2,
                    command=map1)
